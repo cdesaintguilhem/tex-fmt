@@ -2,18 +2,19 @@
 echo "Getting performance metrics"
 DIR="$(mktemp -d)"
 cp -r ../tests/* "$DIR"
-cargo build --release
 
 calc(){ awk "BEGIN { print ""$*"" }"; }
 
-echo
-echo -n "Test files: $(find "$DIR"/*/* | wc -l) files, "
-echo -n "$(wc -l --total=only "$DIR"/source/* "$DIR"/target/*) lines, "
-du -hs "$DIR" | cut -f 1
-echo
+echo -n "Test files: $(find "$DIR"/*/* | wc -l | cut -w -f 2) files, "
+echo -n "$(wc -l "$DIR"/source/* "$DIR"/target/* | grep "total" | cut -w -f 2) lines, "
+echo "$(du -hs "$DIR" | cut -f 1)\n"
+
 
 # tex-fmt
 TEXFMTFILE="hyperfine-tex-fmt.csv"
+echo "Building release binary"
+cargo build --release
+echo "Running benchmark"
 hyperfine --warmup 10 \
     --min-runs 20 \
     --export-csv $TEXFMTFILE \
