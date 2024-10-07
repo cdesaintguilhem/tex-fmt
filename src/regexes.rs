@@ -16,6 +16,14 @@ pub const ENV_BEGIN: &str = "\\begin{";
 pub const ENV_END: &str = "\\end{";
 /// Acceptable LaTeX file extensions
 pub const EXTENSIONS: [&str; 4] = [".tex", ".bib", ".sty", ".cls"];
+/// Match a LaTeX \chapter{...}
+pub const CHAPTER: &str = "\\chapter{";
+/// Match a LaTeX \section{...}
+pub const SECTION: &str = "\\section{";
+/// Match a LaTeX \subsection{...}
+pub const SUB_SECTION: &str = "\\subsection{";
+/// Match a LaTeX \subsubsection{...}
+pub const SUB_SUB_SECTION: &str = "\\subsubsection{";
 
 /// Names of LaTeX list environments
 const LISTS: [&str; 5] = [

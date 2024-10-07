@@ -4,7 +4,9 @@ use crate::ignore::*;
 use crate::indent::*;
 use crate::logging::*;
 use crate::parse::*;
-use crate::regexes::{ENV_BEGIN, ENV_END, ITEM};
+use crate::regexes::{
+    CHAPTER, ENV_BEGIN, ENV_END, ITEM, SECTION, SUB_SECTION, SUB_SUB_SECTION,
+};
 use crate::subs::*;
 use crate::verbatim::*;
 use crate::wrap::*;
@@ -37,6 +39,7 @@ pub fn format_file(
         if let Some((linum_old, mut line)) = queue.pop() {
             let pattern = Pattern::new(&line);
             let temp_state: State;
+
             (line, temp_state) = apply_indent(
                 &line,
                 linum_old,
@@ -47,6 +50,7 @@ pub fn format_file(
                 &pattern,
                 indent_char,
             );
+
             if needs_env_new_line(&line, &temp_state, &pattern) {
                 let env_lines =
                     put_env_new_line(&line, &temp_state, file, args, logs);
@@ -123,6 +127,8 @@ impl State {
 
 /// Record whether a line contains certain patterns to avoid recomputing
 pub struct Pattern {
+    /// Wheter a section-type command pattern is present
+    pub contains_section: bool,
     /// Whether a begin environment pattern is present
     pub contains_env_begin: bool,
     /// Whether an end environment pattern is present
@@ -135,6 +141,12 @@ impl Pattern {
     /// Check if a string contains patterns
     pub fn new(s: &str) -> Self {
         Self {
+            contains_section: {
+                s.contains(CHAPTER)
+                    || s.contains(SECTION)
+                    || s.contains(SUB_SECTION)
+                    || s.contains(SUB_SUB_SECTION)
+            },
             contains_env_begin: s.contains(ENV_BEGIN),
             contains_env_end: s.contains(ENV_END),
             contains_item: s.contains(ITEM),
