@@ -4,6 +4,7 @@ use crate::ignore::*;
 use crate::indent::*;
 use crate::logging::*;
 use crate::parse::*;
+use crate::regexes::RE_SECTION_SHARED_LINE;
 use crate::regexes::{
     CHAPTER, ENV_BEGIN, ENV_END, ITEM, SECTION, SUB_SECTION, SUB_SUB_SECTION,
 };
@@ -35,10 +36,12 @@ pub fn format_file(
     let mut new_text = String::with_capacity(text.len());
     let indent_char = if args.usetabs { "\t" } else { " " };
 
+    let mut previous_line = String::default();
+
     loop {
         if let Some((linum_old, mut line)) = queue.pop() {
             let pattern = Pattern::new(&line);
-            let temp_state: State;
+            let mut temp_state: State;
 
             (line, temp_state) = apply_indent(
                 &line,
@@ -51,7 +54,50 @@ pub fn format_file(
                 indent_char,
             );
 
-            if needs_env_new_line(&line, &temp_state, &pattern) {
+            if !temp_state.verbatim.visual
+                && !temp_state.ignore.visual
+                && pattern.contains_section
+                && linum_old > 1
+            {
+                if let Some(captures) = RE_SECTION_SHARED_LINE.captures(&line) {
+                    // This regex captures sectioning commands that have text before them with named capture groups for
+                    // the text before and after the command.
+
+                    // Add the text before the command to the new text with a trailing line ending
+                    new_text.push_str(&captures["prev"]);
+                    new_text.push_str(LINE_END);
+                    temp_state.linum_new += 1;
+
+                    // Add an an empty line before the sectioning command
+                    new_text.push_str(LINE_END);
+                    temp_state.linum_new += 1;
+
+                    // Add the sectioning command with a trailing line ending
+                    new_text.push_str(&captures["command"]);
+                    new_text.push_str(LINE_END);
+                    temp_state.linum_new += 1;
+
+                    // If there was trailing text after the sectioning command, add it as a new line to be processed
+                    if !captures["next"].is_empty() {
+                        queue.push((linum_old, captures["next"].to_string()));
+                    }
+                } else {
+                    // When the regex doesn't match we are on a line that has a sectioning command with no text
+                    // preceding it
+
+                    // If the previous line is not empty, insert a new empty line before the sectioning command
+                    if !previous_line.is_empty() {
+                        new_text.push_str(LINE_END);
+                        temp_state.linum_new += 1;
+                    }
+
+                    // Add the line with the sectioning command to the new text
+                    new_text.push_str(&line);
+                    new_text.push_str(LINE_END);
+                    temp_state.linum_new += 1;
+                }
+                state = temp_state;
+            } else if needs_env_new_line(&line, &temp_state, &pattern) {
                 let env_lines =
                     put_env_new_line(&line, &temp_state, file, args, logs);
                 if env_lines.is_some() {
@@ -81,6 +127,9 @@ pub fn format_file(
                 new_text.push_str(LINE_END);
                 state.linum_new += 1;
             }
+
+            // Save the line that was just processed for reference for the next one
+            previous_line = line;
         } else if let Some((linum_old, line)) = old_lines.next() {
             queue.push((linum_old, line.to_string()));
         } else {

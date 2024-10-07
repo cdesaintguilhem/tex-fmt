@@ -59,4 +59,7 @@ lazy_static! {
         Regex::new(r"(?P<prev>\S.*?)(?P<env>\\end\{)").unwrap();
     pub static ref RE_ITEM_SHARED_LINE: Regex =
         Regex::new(r"(?P<prev>\S.*?)(?P<env>\\item)").unwrap();
+    pub static ref RE_SECTION_SHARED_LINE: Regex = Regex::new(
+        r"(?P<prev>\S.*?)(?P<command>\\(section|subsection|subsubsection|chapter|part|sectionstarred|subsectionstarred|subsubsectionstarred)\*?\{[^}]*\})(?P<next>.*)")
+    .unwrap();
 }
