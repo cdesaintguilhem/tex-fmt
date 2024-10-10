@@ -42,13 +42,13 @@ pub fn needs_env_new_line(
 }
 
 /// Ensure LaTeX environments begin on new lines
-pub fn put_env_new_line(
-    line: &str,
+pub fn put_env_new_line<'a>(
+    line: &'a str,
     state: &State,
     file: &str,
     args: &Cli,
     logs: &mut Vec<Log>,
-) -> Option<(String, String)> {
+) -> (&'a str, Option<&'a str>) {
     if args.trace {
         record_line_log(
             logs,
@@ -60,31 +60,19 @@ pub fn put_env_new_line(
             "Placing environment on new line.",
         );
     }
+
+    // If there is one, find the index of the start of the comment and split the line into its comment and text parts.
     let comment_index = find_comment_index(line);
-    let comment = get_comment(line, comment_index);
-    let mut text = remove_comment(line, comment_index);
-    let mut temp = RE_ENV_BEGIN_SHARED_LINE
-        .replace(text, format!("$prev{LINE_END}$env"))
-        .to_string();
-    text = &temp;
-    if !text.contains(LINE_END) {
-        temp = RE_ENV_END_SHARED_LINE
-            .replace(text, format!("$prev{LINE_END}$env"))
-            .to_string();
-        text = &temp;
+
+    let captures = RE_ENV_ITEM_SHARED_LINE
+        .captures(line)
+        .expect("This captures because the pattern says so.");
+
+    let (line, [prev, rest, _]) = captures.extract();
+
+    if comment_index.is_some() && captures.get(2).unwrap().start() > comment_index.unwrap() {
+        (line, None)
+    } else {
+        (prev, Some(rest))
     }
-    if !text.contains(LINE_END) {
-        temp = RE_ITEM_SHARED_LINE
-            .replace(text, format!("$prev{LINE_END}$env"))
-            .to_string();
-        text = &temp;
-    }
-    if text.contains(LINE_END) {
-        let split = text.split_once(LINE_END).unwrap();
-        let split_0 = split.0.to_string();
-        let mut split_1 = split.1.to_string();
-        split_1.push_str(comment);
-        return Some((split_0, split_1));
-    }
-    None
 }
