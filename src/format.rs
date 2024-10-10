@@ -95,7 +95,6 @@ pub fn format_file(
     }
 
     if !indents_return_to_zero(&state) {
-        println!("{state:?}");
         record_file_log(logs, Warn, file, "Indent does not return to zero.");
     }
 
