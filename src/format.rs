@@ -69,30 +69,24 @@ pub fn format_file(
                 if env_lines.is_some() {
                     queue.push((linum_old, env_lines.clone().unwrap().1));
                     queue.push((linum_old, env_lines.clone().unwrap().0));
-                } else {
-                    state = temp_state;
-                    new_text.push_str(&line);
-                    new_text.push_str(LINE_END);
-                    state.linum_new += 1;
-                };
-            } else if needs_wrap(&line, &temp_state, args) {
+                    continue;
+                }
+            }
+
+            if needs_wrap(&line, &temp_state, args) {
                 let wrapped_lines =
                     apply_wrap(&line, &temp_state, file, args, logs);
                 if wrapped_lines.is_some() {
                     queue.push((linum_old, wrapped_lines.clone().unwrap().1));
                     queue.push((linum_old, wrapped_lines.clone().unwrap().0));
-                } else {
-                    state = temp_state;
-                    new_text.push_str(&line);
-                    new_text.push_str(LINE_END);
-                    state.linum_new += 1;
-                };
-            } else {
-                state = temp_state;
-                new_text.push_str(&line);
-                new_text.push_str(LINE_END);
-                state.linum_new += 1;
+                    continue;
+                }
             }
+
+            state = temp_state;
+            new_text.push_str(&line);
+            new_text.push_str(LINE_END);
+            state.linum_new += 1;
         } else if let Some((linum_old, line)) = old_lines.next() {
             queue.push((linum_old, line.to_string()));
         } else {
