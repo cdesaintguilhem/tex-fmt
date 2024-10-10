@@ -30,13 +30,17 @@ pub fn format_file(
     let mut queue: Vec<(usize, String)> = vec![];
     let mut new_text = String::with_capacity(2 * old_tex.len());
 
-    // Select the character used for indentation
+    // Select the character used for indentation.
     let indent_char = if args.usetabs { "\t" } else { " " };
 
     loop {
         if let Some((linum_old, mut line)) = queue.pop() {
+            // Read the patterns present on this line.
             let pattern = Pattern::new(&line);
+
             let temp_state: State;
+
+            // Apply indent based on the current state and the patterns in the line.
             (line, temp_state) = apply_indent(
                 &line,
                 linum_old,
@@ -47,6 +51,18 @@ pub fn format_file(
                 &pattern,
                 indent_char,
             );
+
+            // Split the line based on:
+            // - environment commands, and
+            // - sectioning commands,
+            // and add the split to the queue.
+
+            // Wrap the line after indenting, and add the wrap to the queue.
+
+            // TODO: implement debug checks that the indent and the line length are correct.
+
+            // Add line to new text
+
             if needs_env_new_line(&line, &temp_state, &pattern) {
                 let env_lines =
                     put_env_new_line(&line, &temp_state, file, args, logs);
