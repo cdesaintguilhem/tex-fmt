@@ -94,7 +94,8 @@ pub fn format_file(
         }
     }
 
-    if !indents_return_to_zero(&new_text) {
+    if !indents_return_to_zero(&state) {
+        println!("{state:?}");
         record_file_log(logs, Warn, file, "Indent does not return to zero.");
     }
 
@@ -166,6 +167,6 @@ impl Pattern {
 }
 
 /// Ensure that the indentation returns to zero at the end of the file
-fn indents_return_to_zero(text: &str) -> bool {
-    !text.lines().last().unwrap_or_default().starts_with(' ')
+fn indents_return_to_zero(state: &State) -> bool {
+    state.indent.actual == 0
 }
