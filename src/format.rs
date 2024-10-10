@@ -14,23 +14,23 @@ use std::iter::zip;
 
 /// Central function to format a file
 pub fn format_file(
-    text: &str,
+    old_tex: &str,
     file: &str,
     args: &Cli,
     logs: &mut Vec<Log>,
 ) -> String {
     record_file_log(logs, Info, file, "Formatting started.");
-    let mut old_text = remove_extra_newlines(text);
-    if !args.usetabs {
-        old_text = remove_tabs(&old_text, args);
-    }
-    old_text = remove_trailing_spaces(&old_text);
 
+    // Clean the source file and zip its lines with line numbers
+    let old_text = clean_text(old_tex, args);
+    let mut old_lines = zip(1.., old_text.lines());
+
+    // Initialise
     let mut state = State::new();
-    let old_lines = old_text.lines();
-    let mut old_lines = zip(1.., old_lines);
     let mut queue: Vec<(usize, String)> = vec![];
-    let mut new_text = String::with_capacity(2 * text.len());
+    let mut new_text = String::with_capacity(2 * old_tex.len());
+
+    // Select the character used for indentation
     let indent_char = if args.usetabs { "\t" } else { " " };
 
     loop {
@@ -91,6 +91,19 @@ pub fn format_file(
     new_text = remove_trailing_spaces(&new_text);
     record_file_log(logs, Info, file, "Formatting complete.");
     new_text
+}
+
+/// Cleans the given text by removing extra line breaks and trailing spaces, and tabs if they shouldn't be used.
+fn clean_text(text: &str, args: &Cli) -> String {
+    let mut text = remove_extra_newlines(text);
+
+    if !args.usetabs {
+        text = remove_tabs(&text, args);
+    }
+
+    text = remove_trailing_spaces(&text);
+
+    text
 }
 
 /// Information on the current state during formatting
