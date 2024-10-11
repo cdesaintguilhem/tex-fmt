@@ -31,14 +31,43 @@ pub fn needs_env_new_line(
     state: &State,
     pattern: &Pattern,
 ) -> bool {
-    !state.verbatim.visual
+    // Check if we should format this line and if we've matched an environment.
+    let not_ignored_and_contains_env = !state.verbatim.visual
         && !state.ignore.visual
         && (pattern.contains_env_begin
             || pattern.contains_env_end
             || pattern.contains_item)
         && (RE_ENV_BEGIN_SHARED_LINE.is_match(line)
             || RE_ENV_END_SHARED_LINE.is_match(line)
-            || RE_ITEM_SHARED_LINE.is_match(line))
+            || RE_ITEM_SHARED_LINE.is_match(line));
+
+    // If we're not ignoring and we've matched an environment ...
+    if not_ignored_and_contains_env {
+        // Check if there is a comment.
+        if let Some(comment_index) = find_comment_index(line) {
+            // If the match is after the comment index ...
+            if RE_ENV_ITEM_SHARED_LINE
+                .captures(line)
+                .unwrap() // Doesn't panic because we've matched an environment.
+                .get(2)
+                .unwrap() // Doesn't panic because the regex has 4 groups so index 2 is in bounds.
+                .start()
+                > comment_index
+            {
+                // ... then we don't need a new line.
+                false
+            } else {
+                // Otherwise, the match is before the comment and we need a new line.
+                true
+            }
+        } else {
+            // If there isn't any comment, then the match is in the text and we need a new line.
+            true
+        }
+    } else {
+        // If we're ignoring or we didn't match an environment, we don't need a new line.
+        false
+    }
 }
 
 /// Ensure LaTeX environments begin on new lines
@@ -49,30 +78,31 @@ pub fn put_env_new_line<'a>(
     args: &Cli,
     logs: &mut Vec<Log>,
 ) -> (&'a str, Option<&'a str>) {
-    if args.trace {
-        record_line_log(
-            logs,
-            Trace,
-            file,
-            state.linum_new,
-            state.linum_old,
-            line,
-            "Placing environment on new line.",
-        );
-    }
-
     // If there is one, find the index of the start of the comment and split the line into its comment and text parts.
     let comment_index = find_comment_index(line);
 
     let captures = RE_ENV_ITEM_SHARED_LINE
         .captures(line)
-        .expect("This captures because the pattern says so.");
+        .expect(&line);
 
     let (line, [prev, rest, _]) = captures.extract();
 
-    if comment_index.is_some() && captures.get(2).unwrap().start() > comment_index.unwrap() {
+    if comment_index.is_some()
+        && captures.get(2).unwrap().start() > comment_index.unwrap()
+    {
         (line, None)
     } else {
+        if args.trace {
+            record_line_log(
+                logs,
+                Trace,
+                file,
+                state.linum_new,
+                state.linum_old,
+                line,
+                "Placing environment on new line.",
+            );
+        }
         (prev, Some(rest))
     }
 }
