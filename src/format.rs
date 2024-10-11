@@ -68,17 +68,7 @@ pub fn format_file(
                     indent_char,
                 );
 
-                // Split the line based on:
-                // - environment commands, and
-                // - sectioning commands,
-                // and add the split to the queue.
-
                 // Wrap the line after indenting, and add the wrap to the queue.
-
-                // TODO: implement debug checks that the indent and the line length are correct.
-
-                // Add line to new text
-
                 if needs_wrap(&line, &temp_state, args) {
                     let wrapped_lines =
                         apply_wrap(&line, &temp_state, file, args, logs);
@@ -96,6 +86,7 @@ pub fn format_file(
                 }
             }
 
+            // Add line to new text
             state = temp_state;
             new_text.push_str(&line);
             new_text.push_str(LINE_END);
