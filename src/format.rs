@@ -64,13 +64,13 @@ pub fn format_file(
             // Add line to new text
 
             if needs_env_new_line(&line, &temp_state, &pattern) {
-                let env_lines =
+                let (this_line, next_line) =
                     put_env_new_line(&line, &temp_state, file, args, logs);
-                if env_lines.is_some() {
-                    queue.push((linum_old, env_lines.clone().unwrap().1));
-                    queue.push((linum_old, env_lines.clone().unwrap().0));
-                    continue;
+                if let Some(next_line) = next_line {
+                    queue.push((linum_old, next_line.to_string()));
                 }
+                queue.push((linum_old, this_line.to_string()));
+                continue;
             }
 
             if needs_wrap(&line, &temp_state, args) {
