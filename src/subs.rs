@@ -70,39 +70,32 @@ pub fn needs_env_new_line(
     }
 }
 
-/// Ensure LaTeX environments begin on new lines
+/// Ensure LaTeX environments begin on new lines.
+///
+/// Returns a tuple containing:
+/// 1. a reference to the line that was given, shortened because of the split
+/// 2. a reference to the part of the line that was split
 pub fn put_env_new_line<'a>(
     line: &'a str,
     state: &State,
     file: &str,
     args: &Cli,
     logs: &mut Vec<Log>,
-) -> (&'a str, Option<&'a str>) {
-    // If there is one, find the index of the start of the comment and split the line into its comment and text parts.
-    let comment_index = find_comment_index(line);
-
-    let captures = RE_ENV_ITEM_SHARED_LINE
-        .captures(line)
-        .expect(&line);
+) -> (&'a str, &'a str) {
+    let captures = RE_ENV_ITEM_SHARED_LINE.captures(line).expect(&line);
 
     let (line, [prev, rest, _]) = captures.extract();
 
-    if comment_index.is_some()
-        && captures.get(2).unwrap().start() > comment_index.unwrap()
-    {
-        (line, None)
-    } else {
-        if args.trace {
-            record_line_log(
-                logs,
-                Trace,
-                file,
-                state.linum_new,
-                state.linum_old,
-                line,
-                "Placing environment on new line.",
-            );
-        }
-        (prev, Some(rest))
+    if args.trace {
+        record_line_log(
+            logs,
+            Trace,
+            file,
+            state.linum_new,
+            state.linum_old,
+            line,
+            "Placing environment on new line.",
+        );
     }
+    (prev, rest)
 }
