@@ -2,11 +2,9 @@
 
 use crate::comments::*;
 use crate::format::*;
-use crate::ignore::*;
 use crate::logging::*;
 use crate::parse::*;
 use crate::regexes::*;
-use crate::verbatim::*;
 use core::cmp::max;
 use log::Level::{Trace, Warn};
 
@@ -112,37 +110,28 @@ fn get_indent(line: &str, prev_indent: &Indent, pattern: &Pattern) -> Indent {
 /// Apply the correct indentation to a line
 pub fn apply_indent(
     line: &str,
-    linum_old: usize,
-    state: &State,
+    state: &mut State,
     logs: &mut Vec<Log>,
     file: &str,
     args: &Cli,
     pattern: &Pattern,
     indent_char: &str,
-) -> (String, State) {
+) -> String {
     #![allow(clippy::too_many_arguments)]
-    let mut new_state = state.clone();
-    new_state.linum_old = linum_old;
 
-    new_state.ignore = get_ignore(line, &new_state, logs, file, true);
-    new_state.verbatim =
-        get_verbatim(line, &new_state, logs, file, true, pattern);
-
-    let new_line = if new_state.verbatim.visual || new_state.ignore.visual {
-        line.to_string()
-    } else {
+    let new_line = {
         // calculate indent
         let comment_index = find_comment_index(line);
-        let line_strip = &remove_comment(line, comment_index);
+        let line_strip = remove_comment(line, comment_index);
         let mut indent = get_indent(line_strip, &state.indent, pattern);
-        new_state.indent = indent.clone();
+        state.indent = indent.clone();
         if args.trace {
             record_line_log(
                 logs,
                 Trace,
                 file,
                 state.linum_new,
-                new_state.linum_old,
+                state.linum_old,
                 line,
                 &format!(
                     "Indent: actual = {}, visual = {}:",
@@ -156,8 +145,8 @@ pub fn apply_indent(
                 logs,
                 Warn,
                 file,
-                new_state.linum_new,
-                new_state.linum_old,
+                state.linum_new,
+                state.linum_old,
                 line,
                 "Indent is negative.",
             );
@@ -182,5 +171,5 @@ pub fn apply_indent(
         }
     };
 
-    (new_line, new_state)
+    new_line
 }

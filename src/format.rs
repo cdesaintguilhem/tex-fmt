@@ -38,48 +38,65 @@ pub fn format_file(
             // Read the patterns present on this line.
             let pattern = Pattern::new(&line);
 
-            let temp_state: State;
+            // Temporary state for working on this line
+            let mut temp_state = state.clone();
 
-            // Apply indent based on the current state and the patterns in the line.
-            (line, temp_state) = apply_indent(
-                &line,
-                linum_old,
-                &state,
-                logs,
-                file,
-                args,
-                &pattern,
-                indent_char,
-            );
+            temp_state.linum_old = linum_old;
+            temp_state.ignore =
+                get_ignore(&line, &temp_state, logs, file, true);
+            temp_state.verbatim =
+                get_verbatim(&line, &temp_state, logs, file, true, &pattern);
 
-            // Split the line based on:
-            // - environment commands, and
-            // - sectioning commands,
-            // and add the split to the queue.
+            // If the line should not be ignored ...
+            if !(temp_state.verbatim.visual || temp_state.ignore.visual) {
+                // ... format it.
 
-            // Wrap the line after indenting, and add the wrap to the queue.
+                // Apply indent based on the current state and the patterns in the line.
+                line = apply_indent(
+                    &line,
+                    &mut temp_state,
+                    logs,
+                    file,
+                    args,
+                    &pattern,
+                    indent_char,
+                );
 
-            // TODO: implement debug checks that the indent and the line length are correct.
+                // Split the line based on:
+                // - environment commands, and
+                // - sectioning commands,
+                // and add the split to the queue.
 
-            // Add line to new text
+                // Wrap the line after indenting, and add the wrap to the queue.
 
-            if needs_env_new_line(&line, &temp_state, &pattern) {
-                let (this_line, next_line) =
-                    put_env_new_line(&line, &temp_state, file, args, logs);
-                if let Some(next_line) = next_line {
-                    queue.push((linum_old, next_line.to_string()));
-                }
-                queue.push((linum_old, this_line.to_string()));
-                continue;
-            }
+                // TODO: implement debug checks that the indent and the line length are correct.
 
-            if needs_wrap(&line, &temp_state, args) {
-                let wrapped_lines =
-                    apply_wrap(&line, &temp_state, file, args, logs);
-                if wrapped_lines.is_some() {
-                    queue.push((linum_old, wrapped_lines.clone().unwrap().1));
-                    queue.push((linum_old, wrapped_lines.clone().unwrap().0));
+                // Add line to new text
+
+                if needs_env_new_line(&line, &temp_state, &pattern) {
+                    let (this_line, next_line) =
+                        put_env_new_line(&line, &temp_state, file, args, logs);
+                    if let Some(next_line) = next_line {
+                        queue.push((linum_old, next_line.to_string()));
+                    }
+                    queue.push((linum_old, this_line.to_string()));
                     continue;
+                }
+
+                if needs_wrap(&line, &temp_state, args) {
+                    let wrapped_lines =
+                        apply_wrap(&line, &temp_state, file, args, logs);
+                    if wrapped_lines.is_some() {
+                        queue.push((
+                            linum_old,
+                            wrapped_lines.clone().unwrap().1,
+                        ));
+                        queue.push((
+                            linum_old,
+                            wrapped_lines.clone().unwrap().0,
+                        ));
+                        continue;
+                    }
                 }
             }
 
