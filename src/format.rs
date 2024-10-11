@@ -51,6 +51,15 @@ pub fn format_file(
             if !(temp_state.verbatim.visual || temp_state.ignore.visual) {
                 // ... format it.
 
+                if needs_env_new_line(&line, &temp_state, &pattern) {
+                    let (this_line, next_line) =
+                        put_env_new_line(&line, &temp_state, file, args, logs);
+                    if let Some(next_line) = next_line {
+                        queue.push((linum_old, next_line.to_string()));
+                    }
+                    line = this_line.to_string();
+                }
+
                 // Apply indent based on the current state and the patterns in the line.
                 line = apply_indent(
                     &line,
@@ -72,16 +81,6 @@ pub fn format_file(
                 // TODO: implement debug checks that the indent and the line length are correct.
 
                 // Add line to new text
-
-                if needs_env_new_line(&line, &temp_state, &pattern) {
-                    let (this_line, next_line) =
-                        put_env_new_line(&line, &temp_state, file, args, logs);
-                    if let Some(next_line) = next_line {
-                        queue.push((linum_old, next_line.to_string()));
-                    }
-                    queue.push((linum_old, this_line.to_string()));
-                    continue;
-                }
 
                 if needs_wrap(&line, &temp_state, args) {
                     let wrapped_lines =
