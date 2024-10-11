@@ -72,15 +72,9 @@ pub fn format_file(
                 if needs_wrap(&line, &temp_state, args) {
                     let wrapped_lines =
                         apply_wrap(&line, &temp_state, file, args, logs);
-                    if wrapped_lines.is_some() {
-                        queue.push((
-                            linum_old,
-                            wrapped_lines.clone().unwrap().1,
-                        ));
-                        queue.push((
-                            linum_old,
-                            wrapped_lines.clone().unwrap().0,
-                        ));
+                    if let Some((this_line, next_line)) = wrapped_lines {
+                        queue.push((linum_old, next_line));
+                        queue.push((linum_old, this_line));
                         continue;
                     }
                 }
