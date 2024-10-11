@@ -38,19 +38,16 @@ pub fn format_file(
             // Read the patterns present on this line.
             let pattern = Pattern::new(&line);
 
-            // Temporary state for working on this line
+            // Temporary state for working on this line.
             let mut temp_state = state.clone();
 
+            // Update the state with the line number from the queue.
             temp_state.linum_old = linum_old;
-            temp_state.ignore =
-                get_ignore(&line, &temp_state, logs, file, true);
-            temp_state.verbatim =
-                get_verbatim(&line, &temp_state, logs, file, true, &pattern);
 
             // If the line should not be ignored ...
-            if !(temp_state.verbatim.visual || temp_state.ignore.visual) {
-                // ... format it.
-
+            if !set_format_ignore(&line, &mut temp_state, logs, file, &pattern)
+            {
+                // Check if the line should be split because of a pattern that should begin on a new line.
                 if needs_env_new_line(&line, &temp_state, &pattern) {
                     let (this_line, next_line) =
                         put_env_new_line(&line, &temp_state, file, args, logs);
@@ -117,6 +114,20 @@ pub fn format_file(
     new_text = remove_trailing_spaces(&new_text);
     record_file_log(logs, Info, file, "Formatting complete.");
     new_text
+}
+
+fn set_format_ignore(
+    line: &String,
+    temp_state: &mut State,
+    logs: &mut Vec<Log>,
+    file: &str,
+    pattern: &Pattern,
+) -> bool {
+    temp_state.ignore = get_ignore(line, temp_state, logs, file, true);
+    temp_state.verbatim =
+        get_verbatim(line, temp_state, logs, file, true, pattern);
+
+    temp_state.verbatim.visual || temp_state.ignore.visual
 }
 
 /// Cleans the given text by removing extra line breaks and trailing spaces, and tabs if they shouldn't be used.
