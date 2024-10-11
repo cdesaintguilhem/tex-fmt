@@ -45,8 +45,13 @@ pub fn format_file(
             temp_state.linum_old = linum_old;
 
             // If the line should not be ignored ...
-            if !set_format_ignore(&line, &mut temp_state, logs, file, &pattern)
-            {
+            if !set_ignore_and_report(
+                &line,
+                &mut temp_state,
+                logs,
+                file,
+                &pattern,
+            ) {
                 // Check if the line should be split because of a pattern that should begin on a new line.
                 if needs_env_new_line(&line, &temp_state, &pattern) {
                     // Split the line into two ...
@@ -101,7 +106,9 @@ pub fn format_file(
     new_text
 }
 
-fn set_format_ignore(
+/// Sets the `ignore` and `verbatim` flags in the given [State] based on `line` and returns whether `line` should be
+/// ignored by formatting.
+fn set_ignore_and_report(
     line: &String,
     temp_state: &mut State,
     logs: &mut Vec<Log>,
