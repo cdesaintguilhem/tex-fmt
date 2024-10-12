@@ -109,7 +109,7 @@ fn get_indent(line: &str, prev_indent: &Indent, pattern: &Pattern) -> Indent {
 
 /// Calculates the indent for `line` based on its contents. This functions saves the calculated [Indent], which might be
 /// negative, to the given [State], and then ensures that the returned [Indent] is non-negative.
-fn calculate_indent(
+pub fn calculate_indent(
     line: &str,
     state: &mut State,
     logs: &mut Vec<Log>,
@@ -161,23 +161,20 @@ fn calculate_indent(
     indent
 }
 
-/// Apply the correct indentation to a line
+/// Apply the given indentation to a line
 pub fn apply_indent(
     line: &str,
-    state: &mut State,
-    logs: &mut Vec<Log>,
-    file: &str,
+    indent: Indent,
     args: &Cli,
-    pattern: &Pattern,
     indent_char: &str,
 ) -> String {
-    // calculate indent
-    let indent = calculate_indent(line, state, logs, file, args, pattern);
-
-    // apply indent
+    // Remove white space from the start of the line
     let trimmed_line = line.trim_start();
+
+    // If the line is now empty, return a new empty String
     if trimmed_line.is_empty() {
         String::new()
+    // Otherwise, allocate enough memory to fit line with the added indentation and insert the appropriate string slices
     } else {
         let n_indent_chars = usize::try_from(indent.visual * args.tab).unwrap();
         let mut new_line =

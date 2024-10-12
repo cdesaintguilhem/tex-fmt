@@ -63,15 +63,15 @@ pub fn format_file(
                 }
 
                 // Apply indent based on the current state and the patterns in the line.
-                line = apply_indent(
+                let indent = calculate_indent(
                     &line,
                     &mut temp_state,
                     logs,
                     file,
                     args,
                     &pattern,
-                    indent_char,
                 );
+                line = apply_indent(&line, indent, args, indent_char);
 
                 // Wrap the line after indenting, and add the wrap to the queue.
                 if needs_wrap(&line, &temp_state, args) {
