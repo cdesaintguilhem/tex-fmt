@@ -43,27 +43,24 @@ pub fn needs_env_new_line(
 
     // If we're not ignoring and we've matched an environment ...
     if not_ignored_and_contains_env {
-        // Check if there is a comment.
-        if let Some(comment_index) = find_comment_index(line) {
-            // If the match is after the comment index ...
+        // ... return `true` if the comment index is `None` (which implies the split point must be in text), otherwise
+        // compare the index of the comment with the split point.
+        find_comment_index(line).map_or(true, |comment_index| {
             if RE_ENV_ITEM_SHARED_LINE
                 .captures(line)
-                .unwrap() // Doesn't panic because we've matched an environment.
+                .unwrap() // Doesn't panic because we've matched split point.
                 .get(2)
                 .unwrap() // Doesn't panic because the regex has 4 groups so index 2 is in bounds.
                 .start()
                 > comment_index
             {
-                // ... then we don't need a new line.
+                // If the split point is past the comment index, then we don't split the line,
                 false
             } else {
-                // Otherwise, the match is before the comment and we need a new line.
+                // otherwise, the split point is before the comment and we do split the line.
                 true
             }
-        } else {
-            // If there isn't any comment, then the match is in the text and we need a new line.
-            true
-        }
+        })
     } else {
         // If we're ignoring or we didn't match an environment, we don't need a new line.
         false
@@ -82,7 +79,7 @@ pub fn put_env_new_line<'a>(
     args: &Cli,
     logs: &mut Vec<Log>,
 ) -> (&'a str, &'a str) {
-    let captures = RE_ENV_ITEM_SHARED_LINE.captures(line).expect(&line);
+    let captures = RE_ENV_ITEM_SHARED_LINE.captures(line).unwrap();
 
     let (line, [prev, rest, _]) = captures.extract();
 

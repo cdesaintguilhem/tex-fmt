@@ -109,7 +109,7 @@ pub fn format_file(
 /// Sets the `ignore` and `verbatim` flags in the given [State] based on `line` and returns whether `line` should be
 /// ignored by formatting.
 fn set_ignore_and_report(
-    line: &String,
+    line: &str,
     temp_state: &mut State,
     logs: &mut Vec<Log>,
     file: &str,
@@ -186,5 +186,6 @@ impl Pattern {
 
 /// Ensure that the indentation returns to zero at the end of the file
 fn indents_return_to_zero(state: &State) -> bool {
+    #![allow(clippy::missing_const_for_fn)]
     state.indent.actual == 0
 }
