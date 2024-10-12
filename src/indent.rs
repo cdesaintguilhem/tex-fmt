@@ -107,21 +107,23 @@ fn get_indent(line: &str, prev_indent: &Indent, pattern: &Pattern) -> Indent {
     Indent { actual, visual }
 }
 
-/// Apply the correct indentation to a line
-pub fn apply_indent(
+/// Calculates the indent for `line` based on its contents. This functions saves the calculated [Indent], which might be
+/// negative, to the given [State], and then ensures that the returned [Indent] is non-negative.
+fn calculate_indent(
     line: &str,
     state: &mut State,
     logs: &mut Vec<Log>,
     file: &str,
     args: &Cli,
     pattern: &Pattern,
-    indent_char: &str,
-) -> String {
-    // calculate indent
+) -> Indent {
+    // Calculate the new indent by first removing the comment from the line (if there is one) to ignore diffs from
+    // characters in there.
     let comment_index = find_comment_index(line);
     let line_strip = remove_comment(line, comment_index);
     let mut indent = get_indent(line_strip, &state.indent, pattern);
-    state.indent = indent.clone();
+
+    // Record the indent to the logs.
     if args.trace {
         record_line_log(
             logs,
@@ -137,6 +139,11 @@ pub fn apply_indent(
         );
     }
 
+    // Save the indent to the state. Note, this indent might be negative; it is saved without correction so that this is
+    // not forgotten for the next iterations.
+    state.indent = indent.clone();
+
+    // However, we can't negatively indent a line. So we log the negative indent and reset the values to 0.
     if (indent.visual < 0) || (indent.actual < 0) {
         record_line_log(
             logs,
@@ -150,6 +157,22 @@ pub fn apply_indent(
         indent.actual = indent.actual.max(0);
         indent.visual = indent.visual.max(0);
     }
+
+    indent
+}
+
+/// Apply the correct indentation to a line
+pub fn apply_indent(
+    line: &str,
+    state: &mut State,
+    logs: &mut Vec<Log>,
+    file: &str,
+    args: &Cli,
+    pattern: &Pattern,
+    indent_char: &str,
+) -> String {
+    // calculate indent
+    let indent = calculate_indent(line, state, logs, file, args, pattern);
 
     // apply indent
     let trimmed_line = line.trim_start();
