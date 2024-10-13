@@ -5,6 +5,12 @@ use crate::format::*;
 use crate::logging::*;
 use crate::parse::*;
 use log::Level::{Trace, Warn};
+use unicode_width::UnicodeWidthChar;
+
+// String slice to start wrapped text lines
+pub const TEXT_LINE_START: &str = "";
+// String slice to start wrapped comment lines
+pub const COMMENT_LINE_START: &str = "% ";
 
 /// Check if a line needs wrapping
 pub fn needs_wrap(line: &str, state: &State, args: &Cli) -> bool {
@@ -19,8 +25,13 @@ fn find_wrap_point(line: &str, args: &Cli) -> Option<usize> {
     let mut wrap_point: Option<usize> = None;
     let mut after_char = false;
     let mut prev_char: Option<char> = None;
-    for (i, c) in line.chars().enumerate() {
-        if i >= args.wrap_min.into() && wrap_point.is_some() {
+
+    let mut line_width = 0;
+
+    // Return *byte* index rather than *char* index.
+    for (i, c) in line.char_indices() {
+        line_width += c.width().expect("No control characters in text.");
+        if line_width > args.wrap_min.into() && wrap_point.is_some() {
             break;
         }
         if c == ' ' && prev_char != Some('\\') {
@@ -36,13 +47,13 @@ fn find_wrap_point(line: &str, args: &Cli) -> Option<usize> {
 }
 
 /// Wrap a long line into a short prefix and a suffix
-pub fn apply_wrap(
-    line: &str,
+pub fn apply_wrap<'a>(
+    line: &'a str,
     state: &State,
     file: &str,
     args: &Cli,
     logs: &mut Vec<Log>,
-) -> Option<(String, String)> {
+) -> Option<[&'a str; 3]> {
     if args.trace {
         record_line_log(
             logs,
@@ -73,11 +84,15 @@ pub fn apply_wrap(
     };
 
     wrap_point.map(|p| {
-        let line_start =
-            comment_index.map_or("", |c| if p > c { "%" } else { "" });
-        let line_1: String = line.chars().take(p).collect();
-        let mut line_2: String = line.chars().skip(p).collect();
-        line_2.insert_str(0, line_start);
-        (line_1, line_2)
+        let this_line = &line[0..p];
+        let next_line_start = comment_index.map_or("", |c| {
+            if p > c {
+                COMMENT_LINE_START
+            } else {
+                TEXT_LINE_START
+            }
+        });
+        let next_line = &line[p + 1..];
+        [this_line, next_line_start, next_line]
     })
 }

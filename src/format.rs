@@ -77,9 +77,14 @@ pub fn format_file(
                 if needs_wrap(&line, &temp_state, args) {
                     let wrapped_lines =
                         apply_wrap(&line, &temp_state, file, args, logs);
-                    if let Some((this_line, next_line)) = wrapped_lines {
-                        queue.push((linum_old, next_line));
-                        queue.push((linum_old, this_line));
+                    if let Some([this_line, next_line_start, next_line]) =
+                        wrapped_lines
+                    {
+                        queue.push((
+                            linum_old,
+                            [next_line_start, next_line].concat(),
+                        ));
+                        queue.push((linum_old, this_line.to_string()));
                         continue;
                     }
                 }
