@@ -33,7 +33,7 @@ fn find_wrap_point(
     args: &Cli,
 ) -> Option<usize> {
     let mut wrap_point: Option<usize> = None;
-    let mut after_char = false;
+    let mut space_after_comment = false;
     let mut prev_char: Option<char> = None;
 
     let mut line_width = 0;
@@ -48,11 +48,13 @@ fn find_wrap_point(
             break;
         }
         if c == ' ' && prev_char != Some('\\') {
-            if after_char {
+            if !space_after_comment {
                 wrap_point = Some(i);
             }
-        } else if c != '%' {
-            after_char = true;
+        } else if c == '%' && prev_char != Some('\\') {
+            space_after_comment = true;
+        } else {
+            space_after_comment = false;
         }
         prev_char = Some(c);
     }
