@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 echo "Getting performance metrics"
 
-BRANCH="3-refactor-logic"
+BRANCH="pr-refactor-logic"
 echo "Comparing branch ${BRANCH} with main"
 
 DIR="$(mktemp -d)"
