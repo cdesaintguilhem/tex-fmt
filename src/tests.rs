@@ -60,7 +60,7 @@ fn test_source() {
             &format!("tests/source/{file}"),
             &format!("tests/target/{file}"),
         ) {
-            panic!("Failed in {file}");
+            panic!("Failed in {file}")
         }
     }
 }
