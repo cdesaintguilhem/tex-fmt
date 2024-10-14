@@ -76,9 +76,9 @@ pub fn format_file(
                     .expect("Visual indent is non-negative.");
 
                 // Wrap the line before applying the indent, and loop back if the line needed wrapping.
-                if needs_wrap(&line.trim_start(), indent_length, args) {
+                if needs_wrap(line.trim_start(), indent_length, args) {
                     let wrapped_lines = apply_wrap(
-                        &line.trim_start(),
+                        line.trim_start(),
                         indent_length,
                         &temp_state,
                         file,
@@ -98,7 +98,7 @@ pub fn format_file(
                 }
 
                 // Lastly, apply the indent if the line didn't need wrapping.
-                line = apply_indent(&line, indent, args, indent_char);
+                line = apply_indent(&line, &indent, args, indent_char);
             }
 
             // Add line to new text

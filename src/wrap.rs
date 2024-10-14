@@ -7,9 +7,9 @@ use crate::parse::*;
 use log::Level::{Trace, Warn};
 use unicode_width::UnicodeWidthChar;
 
-// String slice to start wrapped text lines
+/// String slice to start wrapped text lines
 pub const TEXT_LINE_START: &str = "";
-// String slice to start wrapped comment lines
+/// String slice to start wrapped comment lines
 pub const COMMENT_LINE_START: &str = "% ";
 
 /// Check if a line needs wrapping

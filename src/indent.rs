@@ -164,7 +164,7 @@ pub fn calculate_indent(
 /// Apply the given indentation to a line
 pub fn apply_indent(
     line: &str,
-    indent: Indent,
+    indent: &Indent,
     args: &Cli,
     indent_char: &str,
 ) -> String {
