@@ -13,25 +13,29 @@ pub const TEXT_LINE_START: &str = "";
 pub const COMMENT_LINE_START: &str = "% ";
 
 /// Check if a line needs wrapping
-pub fn needs_wrap(line: &str, state: &State, args: &Cli) -> bool {
-    !args.keep
-        && !state.verbatim.visual
-        && !state.ignore.visual
-        && (line.chars().count() > args.wrap.into())
+pub fn needs_wrap(line: &str, indent_length: usize, args: &Cli) -> bool {
+    !args.keep && (line.chars().count() + indent_length > args.wrap.into())
 }
 
 /// Find the best place to break a long line
-fn find_wrap_point(line: &str, args: &Cli) -> Option<usize> {
+fn find_wrap_point(
+    line: &str,
+    indent_length: usize,
+    args: &Cli,
+) -> Option<usize> {
     let mut wrap_point: Option<usize> = None;
     let mut after_char = false;
     let mut prev_char: Option<char> = None;
 
     let mut line_width = 0;
 
+    let wrap_boundary = usize::from(args.wrap_min) - indent_length;
+
     // Return *byte* index rather than *char* index.
     for (i, c) in line.char_indices() {
         line_width += c.width().expect("No control characters in text.");
-        if line_width > args.wrap_min.into() && wrap_point.is_some() {
+
+        if line_width > wrap_boundary && wrap_point.is_some() {
             break;
         }
         if c == ' ' && prev_char != Some('\\') {
@@ -49,6 +53,7 @@ fn find_wrap_point(line: &str, args: &Cli) -> Option<usize> {
 /// Wrap a long line into a short prefix and a suffix
 pub fn apply_wrap<'a>(
     line: &'a str,
+    indent_length: usize,
     state: &State,
     file: &str,
     args: &Cli,
@@ -65,7 +70,7 @@ pub fn apply_wrap<'a>(
             "Wrapping long line.",
         );
     }
-    let wrap_point = find_wrap_point(line, args);
+    let wrap_point = find_wrap_point(line, indent_length, args);
     let comment_index = find_comment_index(line);
 
     match wrap_point {

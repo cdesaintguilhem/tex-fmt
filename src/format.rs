@@ -62,7 +62,7 @@ pub fn format_file(
                     line = this_line.to_string();
                 }
 
-                // Apply indent based on the current state and the patterns in the line.
+                // Calculate the indent based on the current state and the patterns in the line.
                 let indent = calculate_indent(
                     &line,
                     &mut temp_state,
@@ -71,12 +71,20 @@ pub fn format_file(
                     args,
                     &pattern,
                 );
-                line = apply_indent(&line, indent, args, indent_char);
 
-                // Wrap the line after indenting, and add the wrap to the queue.
-                if needs_wrap(&line, &temp_state, args) {
-                    let wrapped_lines =
-                        apply_wrap(&line, &temp_state, file, args, logs);
+                let indent_length = usize::try_from(indent.visual * args.tab)
+                    .expect("Visual indent is non-negative.");
+
+                // Wrap the line before applying the indent, and loop back if the line needed wrapping.
+                if needs_wrap(&line.trim_start(), indent_length, args) {
+                    let wrapped_lines = apply_wrap(
+                        &line.trim_start(),
+                        indent_length,
+                        &temp_state,
+                        file,
+                        args,
+                        logs,
+                    );
                     if let Some([this_line, next_line_start, next_line]) =
                         wrapped_lines
                     {
@@ -88,6 +96,9 @@ pub fn format_file(
                         continue;
                     }
                 }
+
+                // Lastly, apply the indent if the line didn't need wrapping.
+                line = apply_indent(&line, indent, args, indent_char);
             }
 
             // Add line to new text
