@@ -1,9 +1,9 @@
 //! Utilities for indenting source lines
 
+use crate::cli::*;
 use crate::comments::*;
 use crate::format::*;
 use crate::logging::*;
-use crate::parse::*;
 use crate::regexes::*;
 use core::cmp::max;
 use log::Level::{Trace, Warn};
