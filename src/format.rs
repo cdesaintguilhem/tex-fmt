@@ -14,7 +14,7 @@ use std::iter::zip;
 
 /// Central function to format a file
 pub fn format_file(
-    old_tex: &str,
+    old_text: &str,
     file: &str,
     args: &Cli,
     logs: &mut Vec<Log>,
@@ -22,13 +22,13 @@ pub fn format_file(
     record_file_log(logs, Info, file, "Formatting started.");
 
     // Clean the source file and zip its lines with line numbers
-    let old_text = clean_text(old_tex, args);
+    let old_text = clean_text(old_text, args);
     let mut old_lines = zip(1.., old_text.lines());
 
     // Initialise
     let mut state = State::new();
     let mut queue: Vec<(usize, String)> = vec![];
-    let mut new_text = String::with_capacity(2 * old_tex.len());
+    let mut new_text = String::with_capacity(2 * old_text.len());
 
     // Select the character used for indentation.
     let indent_char = if args.usetabs { "\t" } else { " " };
