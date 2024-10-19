@@ -28,7 +28,7 @@ fn find_wrap_point(
 
     let mut line_width = 0;
 
-    let wrap_boundary = usize::from(args.wrap_min) - indent_length;
+    let wrap_boundary = usize::from(args.wrap) - indent_length;
 
     // Return *byte* index rather than *char* index.
     for (i, c) in line.char_indices() {
