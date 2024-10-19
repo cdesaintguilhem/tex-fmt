@@ -64,7 +64,7 @@ fn get_diff(line: &str, pattern: &Pattern) -> i8 {
 }
 
 /// Calculate dedentation for the current line
-fn get_back(line: &str, pattern: &Pattern) -> i8 {
+fn get_back(line: &str, pattern: &Pattern, args: &Cli) -> i8 {
     let mut back: i8 = 0;
 
     // other environments get single indents
@@ -86,9 +86,13 @@ fn get_back(line: &str, pattern: &Pattern) -> i8 {
     // Check first whether there are any closing delimiters
     if CLOSES.iter().any(|c| line.contains(*c)) {
         let mut cumul: i8 = back;
-        for c in line.chars() {
-            cumul -= i8::from(OPENS.contains(&c));
-            cumul += i8::from(CLOSES.contains(&c));
+        for (pos, c) in line.chars().enumerate() {
+            // Don't take into account delimiters located beyond the wrap point,
+            // if lines are being wrapped.
+            if args.keep || pos < args.wrap.into() {
+                cumul -= i8::from(OPENS.contains(&c));
+                cumul += i8::from(CLOSES.contains(&c));
+            }
             back = max(cumul, back);
         }
     }
@@ -102,9 +106,14 @@ fn get_back(line: &str, pattern: &Pattern) -> i8 {
 }
 
 /// Calculate indentation properties of the current line
-fn get_indent(line: &str, prev_indent: &Indent, pattern: &Pattern) -> Indent {
+fn get_indent(
+    line: &str,
+    prev_indent: &Indent,
+    pattern: &Pattern,
+    args: &Cli,
+) -> Indent {
     let diff = get_diff(line, pattern);
-    let back = get_back(line, pattern);
+    let back = get_back(line, pattern, args);
     let actual = prev_indent.actual + diff;
     let visual = prev_indent.actual - back;
     Indent { actual, visual }
@@ -126,7 +135,7 @@ pub fn calculate_indent(
     // (if there is one) to ignore diffs from characters in there.
     let comment_index = find_comment_index(line);
     let line_strip = remove_comment(line, comment_index);
-    let mut indent = get_indent(line_strip, &state.indent, pattern);
+    let mut indent = get_indent(line_strip, &state.indent, pattern, args);
 
     // Record the indent to the logs.
     if args.trace {
