@@ -66,7 +66,7 @@ pub fn format_file(
                 // Calculate the indent based on the current state
                 // and the patterns in the line.
                 let indent = calculate_indent(
-                    &line,
+                    line.trim_start(),
                     &mut temp_state,
                     logs,
                     file,

@@ -63,7 +63,8 @@ fn get_diff(line: &str, pattern: &Pattern) -> i8 {
     diff
 }
 
-/// Calculate dedentation for the current line
+/// Calculate dedentation for the current line, assumes that the line has been
+/// trimmed of whitespace at the start.
 fn get_back(line: &str, pattern: &Pattern, args: &Cli) -> i8 {
     let mut back: i8 = 0;
 
@@ -86,10 +87,24 @@ fn get_back(line: &str, pattern: &Pattern, args: &Cli) -> i8 {
     // Check first whether there are any closing delimiters
     if CLOSES.iter().any(|c| line.contains(*c)) {
         let mut cumul: i8 = back;
+        let mut has_wrap_point = false;
+        let mut is_space_after_comment = false;
+        let prev_char: Option<char> = None;
+
         for (pos, c) in line.chars().enumerate() {
+            if !has_wrap_point && c == ' ' && prev_char != Some('\\') {
+                if !is_space_after_comment {
+                    has_wrap_point = true;
+                }
+            } else if c == '%' && prev_char != Some('\\') {
+                is_space_after_comment = true;
+            } else {
+                is_space_after_comment = false;
+            }
+
             // Don't take into account delimiters located beyond the wrap point,
             // if lines are being wrapped.
-            if args.keep || pos < args.wrap.into() {
+            if args.keep || pos < args.wrap.into() || !has_wrap_point {
                 cumul -= i8::from(OPENS.contains(&c));
                 cumul += i8::from(CLOSES.contains(&c));
             }
