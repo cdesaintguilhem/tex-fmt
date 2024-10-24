@@ -2597,7 +2597,8 @@ We now introduce some examples of basic categorical operations in order to give
 some early examples. Suppose we have terms \(a : \arr s \star t\) and \(b : \arr
 t \star u\) in some context \(\Gamma\). Then the ps-context
 \[ \Delta = (x : \star), (y : \star), (f : \arr x \star y), (z : \star), (g :
-\arr y \star z) \] from \cref{judg:ps} can be used to form the 1-composite:
+\arr y \star z) \]
+from \cref{judg:ps} can be used to form the 1-composite:
 \[ a *_0 b = \Coh \Delta {\arr x \star z} {\langle s, t, a, u, b \rangle}\]
 It is often not necessary to give all the terms in a substitution, especially
 when the substitution is from a pasting diagram (or more generally a globular
@@ -3433,9 +3434,9 @@ Using the canonical type, we can define the canonical identity on a term.
   \label{def:canonical-id}
   Given a term \(t : \Term_\Gamma\), let its \emph{canonical identity} be given
   by:
-  \[ \id(t) \equiv \id(\ty(t), t)\] This construction can be iterated, and we
-  say that a term is an \emph{iterated canonical identity} if it is on the form
-  \(\id^k(t)\) for some \(k\).
+  \[ \id(t) \equiv \id(\ty(t), t)\]
+  This construction can be iterated, and we say that a term is an \emph{iterated
+  canonical identity} if it is on the form \(\id^k(t)\) for some \(k\).
 \end{definition}
 
 There is not much more that can be proved about the definitional equality at
@@ -7890,8 +7891,7 @@ done using the diagrammatic notation introduced in \cref{sec:wedge-sums}.
   \begin{itemize}
     \item When \(P = [k]\) and \(S = [S_0,\dots,S_k,\dots,S_n]\) we define
       \(\iota\) by \(\ty(\iota) = \star\) and:
-    % https://q.uiver.app/?q=WzAsNixbMCwwLCJTXzBcXHZlZVxcZG90c1xcdmVlIFNfe2stMX0iXSxbNCwwLCJTX3trKzF9IFxcdmVlIFxcZG90cyBcXHZlZSBTX24iXSxbMiwwLCJUIl0sWzMsMCwiXFx2ZWUiXSxbMSwwLCJcXHZlZSJdLFsyLDIsIlQiXSxbNSwyLCJcXGlkIl1d
-    % % tex-fmt: skip
+    % https://q.uiver.app/?q=WzAsNixbMCwwLCJTXzBcXHZlZVxcZG90c1xcdmVlIFNfe2stMX0iXSxbNCwwLCJTX3trKzF9IFxcdmVlIFxcZG90cyBcXHZlZSBTX24iXSxbMiwwLCJUIl0sWzMsMCwiXFx2ZWUiXSxbMSwwLCJcXHZlZSJdLFsyLDIsIlQiXSxbNSwyLCJcXGlkIl1d % tex-fmt: skip
       \[
         \begin{tikzcd}[column sep=smaller,row sep=10pt]
           {[S_0,\dots,S_{k-1}]} & \doubleplus & T & \doubleplus &
@@ -7905,8 +7905,7 @@ done using the diagrammatic notation introduced in \cref{sec:wedge-sums}.
     \item When \(P = k :: Q\), \(S = [S_0,\dots,S_k,\dots,S_n]\), and \(T =
       [T_0]\) (by the trunk height condition) we define \(\iota\) by
       \(\ty(\iota) = \star\) and:
-    % https://q.uiver.app/?q=WzAsNixbMCwwLCJcXGxmbG9vciBbU18xLFxcZG90cyxTX3trLTF9XSBcXHJmbG9vciJdLFs0LDAsIlxcbGZsb29yIFtTX3trKzF9LFxcZG90cyxTX25dIFxccmZsb29yIl0sWzIsMCwiXFxTaWdtYSBcXGxmbG9vciBcXGluc2VydGlvbiB7U19rfSB7UCd9IHtUXzF9IFxccmZsb29yIl0sWzMsMCwiXFx2ZWUiXSxbMSwwLCJcXHZlZSJdLFsyLDIsIlxcU2lnbWEgXFxsZmxvb3IgVF8xIFxccmZsb29yIl0sWzUsMiwiXFxTaWdtYSBcXGlvdGFfe1NfayxQJyxUXzF9Il1d
-    % % tex-fmt: skip
+    % https://q.uiver.app/?q=WzAsNixbMCwwLCJcXGxmbG9vciBbU18xLFxcZG90cyxTX3trLTF9XSBcXHJmbG9vciJdLFs0LDAsIlxcbGZsb29yIFtTX3trKzF9LFxcZG90cyxTX25dIFxccmZsb29yIl0sWzIsMCwiXFxTaWdtYSBcXGxmbG9vciBcXGluc2VydGlvbiB7U19rfSB7UCd9IHtUXzF9IFxccmZsb29yIl0sWzMsMCwiXFx2ZWUiXSxbMSwwLCJcXHZlZSJdLFsyLDIsIlxcU2lnbWEgXFxsZmxvb3IgVF8xIFxccmZsb29yIl0sWzUsMiwiXFxTaWdtYSBcXGlvdGFfe1NfayxQJyxUXzF9Il1d % tex-fmt: skip
       \[
         \begin{tikzcd}[column sep=smaller, row sep=10pt]
           {[S_0,\dots,S_{k-1}]} & \vee & {\Sigma \insertion {S_k} {Q}
@@ -7928,8 +7927,7 @@ done using the diagrammatic notation introduced in \cref{sec:wedge-sums}.
   \begin{itemize}
     \item When \(P = [k]\) and \(S = [S_0,\dots,S_k,\dots,S_n]\) we define
       \(\kappa\) by \(\ty(\kappa) = \star\) and:
-    % https://q.uiver.app/?q=WzAsMTAsWzAsMCwiXFxsZmxvb3IgW1NfMSxcXGRvdHMsU197ay0xfV0gXFxyZmxvb3IiXSxbNCwwLCJcXGxmbG9vciBbU197aysxfSxcXGRvdHMsU19uXSBcXHJmbG9vciJdLFsyLDAsIlxcbGZsb29yIFQgXFxyZmxvb3IiXSxbMywwLCJcXHZlZSJdLFsxLDAsIlxcdmVlIl0sWzIsMiwiXFxTaWdtYSBcXGxmbG9vciBTX2sgXFxyZmxvb3IiXSxbMCwyLCJcXGxmbG9vciBbU18xLFxcZG90cyxTX3trLTF9XFxyZmxvb3IiXSxbMSwyLCJcXHZlZSJdLFszLDIsIlxcdmVlIl0sWzQsMiwiXFxsZmxvb3IgW1Nfe2srMX0sXFxkb3RzLFNfbl0gXFxyZmxvb3IiXSxbNSwyLCJcXHtcXG1hdGhjYWx7VX1fVF5uLCBcXG1hdGhjYWx7Q31fVF5uXFx9Il0sWzYsMCwiXFxpZCJdLFs5LDEsIlxcaWQiXV0=
-    % % tex-fmt: skip
+    % https://q.uiver.app/?q=WzAsMTAsWzAsMCwiXFxsZmxvb3IgW1NfMSxcXGRvdHMsU197ay0xfV0gXFxyZmxvb3IiXSxbNCwwLCJcXGxmbG9vciBbU197aysxfSxcXGRvdHMsU19uXSBcXHJmbG9vciJdLFsyLDAsIlxcbGZsb29yIFQgXFxyZmxvb3IiXSxbMywwLCJcXHZlZSJdLFsxLDAsIlxcdmVlIl0sWzIsMiwiXFxTaWdtYSBcXGxmbG9vciBTX2sgXFxyZmxvb3IiXSxbMCwyLCJcXGxmbG9vciBbU18xLFxcZG90cyxTX3trLTF9XFxyZmxvb3IiXSxbMSwyLCJcXHZlZSJdLFszLDIsIlxcdmVlIl0sWzQsMiwiXFxsZmxvb3IgW1Nfe2srMX0sXFxkb3RzLFNfbl0gXFxyZmxvb3IiXSxbNSwyLCJcXHtcXG1hdGhjYWx7VX1fVF5uLCBcXG1hdGhjYWx7Q31fVF5uXFx9Il0sWzYsMCwiXFxpZCJdLFs5LDEsIlxcaWQiXV0= % tex-fmt: skip
       \[
         \begin{tikzcd}[column sep=smaller,row sep = 10pt]
           {[S_0,\dots,S_{k-1}]} & \doubleplus & {T} & \doubleplus &
@@ -7949,8 +7947,7 @@ done using the diagrammatic notation introduced in \cref{sec:wedge-sums}.
     \item When \(P = k :: Q\), \(S = [S_0,\dots,S_k,\dots,S_n]\), and \(T =
       [T_0]\) (by the trunk height condition) we define \(\kappa\) by
       \(\ty(\kappa) = \star\) and:
-    % https://q.uiver.app/?q=WzAsMTAsWzAsMCwiXFxsZmxvb3IgW1NfMSxcXGRvdHMsU197ay0xfV0gXFxyZmxvb3IiXSxbNCwwLCJcXGxmbG9vciBbU197aysxfSxcXGRvdHMsU19uXSBcXHJmbG9vciJdLFsyLDAsIlxcU2lnbWEgXFxsZmxvb3IgXFxpbnNlcnRpb24ge1Nfa30ge1AnfSB7VF8xfSBcXHJmbG9vciJdLFszLDAsIlxcdmVlIl0sWzEsMCwiXFx2ZWUiXSxbMiwyLCJcXFNpZ21hIFxcbGZsb29yIFNfayBcXHJmbG9vciJdLFswLDIsIlxcbGZsb29yIFtTXzEsXFxkb3RzLFNfe2stMX1cXHJmbG9vciJdLFsxLDIsIlxcdmVlIl0sWzMsMiwiXFx2ZWUiXSxbNCwyLCJcXGxmbG9vciBbU197aysxfSxcXGRvdHMsU19uXSBcXHJmbG9vciJdLFs1LDIsIlxcU2lnbWEgXFxrYXBwYV97U19rLFAnLFRfMX0iXSxbNiwwLCJcXGlkIl0sWzksMSwiXFxpZCJdXQ==
-    % % tex-fmt: skip
+    % https://q.uiver.app/?q=WzAsMTAsWzAsMCwiXFxsZmxvb3IgW1NfMSxcXGRvdHMsU197ay0xfV0gXFxyZmxvb3IiXSxbNCwwLCJcXGxmbG9vciBbU197aysxfSxcXGRvdHMsU19uXSBcXHJmbG9vciJdLFsyLDAsIlxcU2lnbWEgXFxsZmxvb3IgXFxpbnNlcnRpb24ge1Nfa30ge1AnfSB7VF8xfSBcXHJmbG9vciJdLFszLDAsIlxcdmVlIl0sWzEsMCwiXFx2ZWUiXSxbMiwyLCJcXFNpZ21hIFxcbGZsb29yIFNfayBcXHJmbG9vciJdLFswLDIsIlxcbGZsb29yIFtTXzEsXFxkb3RzLFNfe2stMX1cXHJmbG9vciJdLFsxLDIsIlxcdmVlIl0sWzMsMiwiXFx2ZWUiXSxbNCwyLCJcXGxmbG9vciBbU197aysxfSxcXGRvdHMsU19uXSBcXHJmbG9vciJdLFs1LDIsIlxcU2lnbWEgXFxrYXBwYV97U19rLFAnLFRfMX0iXSxbNiwwLCJcXGlkIl0sWzksMSwiXFxpZCJdXQ== % tex-fmt: skip
       \[
         \begin{tikzcd}[column sep=smaller, row sep = 10pt]
           {[S_0,\dots,S_{k-1}]} & \vee & {\Sigma \insertion {S_k} {Q}
@@ -9130,7 +9127,8 @@ wherever possible.
       \{M_m\}\mathbf{s_{k+1}}\{L_{k+1}\}s_{k+2}\cdots \{L_n\}s_{n+1} : A\]
 
     \item Suppose \(P = k :: Q\) so that
-      \[T = [T_0] \qquad M = t_0\{M_0\}t_1 : B\] Define \(\insertion L P M\) as:
+      \[T = [T_0] \qquad M = t_0\{M_0\}t_1 : B\]
+      Define \(\insertion L P M\) as:
       \[s_0\{L_0\}s_1\cdots \{L_{k-1}\}\mathbf{s_k}\{\insertion {L_k} {Q}
       {M_0}\}\mathbf{s_{k+1}}\{L_{k+1}\}s_{k+2} \cdots \{L_n\}s_{n+1} : A\]
   \end{itemize}
@@ -9227,13 +9225,13 @@ There are two fundamental cases for the boundary of an inserted tree:
 We begin with the first case. Suppose we have an insertion point \((S, P, T)\)
 and a dimension \(n \in \mathbb{N}\). The main criterion for the boundary having
 no interaction with the insertion is that:
-\[ n \leq \th(T) \] When this condition holds, taking the \(n\)-boundary of
-\(T\) returns a linear tree, and we have already seen that inserting linear
-trees has no effect on the head tree. We illustrate this case in the diagram
-below, where the tree \(T\) has trunk height \(3\) and we set \(n = 2\). The
-dashed line represents taking the boundary operation, and it is easy to see that
-the two boundary of \(S\) and the insertion tree \(\insertion S P T\) are the
-same.
+\[ n \leq \th(T) \]
+When this condition holds, taking the \(n\)-boundary of \(T\) returns a linear
+tree, and we have already seen that inserting linear trees has no effect on the
+head tree. We illustrate this case in the diagram below, where the tree \(T\)
+has trunk height \(3\) and we set \(n = 2\). The dashed line represents taking
+the boundary operation, and it is easy to see that the two boundary of \(S\) and
+the insertion tree \(\insertion S P T\) are the same.
 
 \[\insertion{
     \begin{tikzpicture}[xscale=1.4,every node/.append
@@ -9300,10 +9298,11 @@ these results in the following lemma.
   \label{lem:insertion-bd-1}
   Let \(n \in \mathbb{N}\) and suppose \((S,P,T)\) is an insertion point such
   that \(n \leq \th(T)\). Then:
-  \[ \bound n S \equiv \bound n {\insertion S P T}\] If we further have \(n <
-  \lh(P)\) then:
+  \[ \bound n S \equiv \bound n {\insertion S P T}\]
+  If we further have \(n < \lh(P)\) then:
   \[ \incbd n \epsilon S \circ \kappa_{S,P,T} \equiv^{\mathsf{max}} \incbd n
-  \epsilon {\insertion S P T}\] for \(\epsilon \in \{-,+\}\).
+  \epsilon {\insertion S P T}\]
+  for \(\epsilon \in \{-,+\}\).
 \end{lemma}
 
 \begin{proof}
@@ -9316,8 +9315,8 @@ We now move to the second case. We again suppose we have an insertion point
 \((S,P,T)\) and dimension \(n \in \mathbb{N}\). To perform an insertion into the
 boundary \(\bound n S\), the dimension \(n\) must be high enough not to remove
 the branch \(P\) from \(S\). More specifically, we must have the inequality:
-\[ n > \bh(P)\] which ensures that the list \(P\) is still a branch of \(\bound
-n S\).
+\[ n > \bh(P)\]
+which ensures that the list \(P\) is still a branch of \(\bound n S\).
 
 \begin{definition}
   Let \(S\) be a tree with a branch \(P\), and let \(n > \bh(P)\). Then there is
@@ -9383,23 +9382,24 @@ yields the truncation of the inserted tree.
 As with the previous case, we explore the interaction of the boundary inclusion
 labellings and the exterior labelling. We aim to give conditions under which:
 \[ \incbd n - S \bullet \kappa_{S,P,T} \equiv \kappa_{\bound n S,\bound n
-P,\bound n T} \bullet \incbd n - {\insertion S P T}\] We examine the action of
-each side of the equation on the path \(\olsi {\bound n P}\). On the right-hand
-side, this path is sent by \(\kappa\) to a standard coherence, and so on the
-left-hand side, \((\incbd n - S)(\olsi {\bound n P}) \) must also be sent to a
-standard coherence by \(\kappa\). If \((\incbd n - S)( \olsi {\bound n P})\) is
-a maximal path, which will always be the case when \(n \geq \lh(P)\), then it
-will be sent to a standard coherence. Alternatively, if \(n \leq \lh(P)\) then
-\(\lh(\bound n P) = n\) and if \(n > \th(T)\) then the standard term returned by
-\(\kappa_{S,P,T}\) will be a standard coherence. These conditions lead to the
-following lemma.
+P,\bound n T} \bullet \incbd n - {\insertion S P T}\]
+We examine the action of each side of the equation on the path \(\olsi {\bound n
+P}\). On the right-hand side, this path is sent by \(\kappa\) to a standard
+coherence, and so on the left-hand side, \((\incbd n - S)(\olsi {\bound n P}) \)
+must also be sent to a standard coherence by \(\kappa\). If \((\incbd n - S)(
+\olsi {\bound n P})\) is a maximal path, which will always be the case when \(n
+\geq \lh(P)\), then it will be sent to a standard coherence. Alternatively, if
+\(n \leq \lh(P)\) then \(\lh(\bound n P) = n\) and if \(n > \th(T)\) then the
+standard term returned by \(\kappa_{S,P,T}\) will be a standard coherence. These
+conditions lead to the following lemma.
 
 \begin{lemma}
   \label{lem:insertion-bd-2}
   Let \(n \in \mathbb{N}\) and suppose \((S,P,T)\) is an insertion point with
   \(n > \bh(P)\). Then:
   \[ \insertion {\bound n S} {\bound n P} {\bound n T} \equiv \bound n
-  {\insertion S P T} \] Suppose further that one of the following holds:
+  {\insertion S P T} \]
+  Suppose further that one of the following holds:
   \begin{enumerate}
     \item \(n > \th(T)\) and \(n \leq \lh(P)\)
     \item \(n \geq \lh(P)\)
@@ -9407,7 +9407,8 @@ following lemma.
   Then:
   \[ \incbd n \epsilon S \bullet \kappa_{S,P,T} \equiv^{\mathsf{max}}
     \kappa_{\bound n S,\bound n P,\bound n T} \bullet \incbd n \epsilon
-    {\insertion S P T} \] for \(\epsilon \in \{-,+\}\).
+  {\insertion S P T} \]
+  for \(\epsilon \in \{-,+\}\).
 \end{lemma}
 \begin{proof}
   See the functions \func{Catt.Tree.Insertion.Properties}{insertion-bd-2} and
@@ -9462,7 +9463,7 @@ We can then proceed to the main theorem of this section.
   we have:
   \[\insertion S P T \vdash_{\mathcal{R}} \stdtm {\bound n S} n \sub {\incbd n
     \epsilon S \bullet \kappa_{S,P,T}} = \stdtm {\bound n {\insertion S P T}} n
-    \sub {\incbd n \epsilon {\insertion S P T}}\]
+  \sub {\incbd n \epsilon {\insertion S P T}}\]
   \[\insertion S P T \vdash_{\mathcal{R}} \stdty S n \sub {\kappa_{S,P,T}} =
   \stdty {\insertion S P T} n\]
 
@@ -9470,31 +9471,30 @@ We can then proceed to the main theorem of this section.
   \[\insertion S P T \vdash_{\mathcal{R}} \stdcoh S n \sub {\kappa_{S,P,T}} =
     \stdcoh {\insertion S P T} n \qquad \insertion S P T
     \vdash_{\mathcal{R}}\stdtm S n \sub {\kappa_{S,P,T}} = \stdtm {\insertion S
-    P T} n \]
+  P T} n \]
 \end{theorem}
 
 \begin{proof}
   We prove all three properties by mutual induction: We begin with the equality:
   \[ \stdtm {\bound n S} n \sub {\incbd n \epsilon S \bullet \kappa_{S,P,T}} =
     \stdtm {\bound n {\insertion S P T}} n \sub {\incbd n \epsilon {\insertion S
-    P T}}\] The conditions for either
-    \cref{lem:insertion-bd-1,lem:insertion-bd-2} must hold, and so we treat in
-    case separately. If the conditions for \cref{lem:insertion-bd-1} hold then
-    the required equality is immediately implied by \(\bound n {\insertion S P
-    T} \equiv \bound n S\) and \(\incbd n \epsilon S \bullet \kappa_{S,P,T}
-    \equiv \incbd n \epsilon {\insertion S P T}\). If instead the conditions for
-    \cref{lem:insertion-bd-2} hold then:
+  P T}}\]
+  The conditions for either \cref{lem:insertion-bd-1,lem:insertion-bd-2} must
+  hold, and so we treat in case separately. If the conditions for
+  \cref{lem:insertion-bd-1} hold then the required equality is immediately
+  implied by \(\bound n {\insertion S P T} \equiv \bound n S\) and \(\incbd n
+    \epsilon S \bullet \kappa_{S,P,T} \equiv \incbd n \epsilon {\insertion S P
+  T}\). If instead the conditions for \cref{lem:insertion-bd-2} hold then:
   \begin{align*}
-    \stdtm {\bound n S} n \sub {\incbd n \epsilon S \bullet
-    \kappa_{S,P,T}} &\equiv \stdtm {\bound n S} n \sub
-    {\kappa_{\bound n S, \bound n P, \bound n T} \bullet \incbd n
-    \epsilon {\insertion S P T}}\\
-    &\equiv \stdtm {\bound n S} n \sub {\kappa_{\bound n S, \bound n
-    P, \bound n T}} \sub {\incbd n \epsilon {\insertion S P T}}\\
-    &= \stdtm {\insertion {\bound n S} {\bound n P} {\bound n T}} n
-    \sub{\incbd n \epsilon {\insertion S P T}}\\
-    &\equiv \stdtm {\bound n {\insertion S P T}} n \sub {\incbd n
-    \epsilon {\insertion S P T}}
+    \stdtm {\bound n S} n \sub {\incbd n \epsilon S \bullet \kappa_{S,P,T}}
+    &\equiv \stdtm {\bound n S} n \sub {\kappa_{\bound n S, \bound n P, \bound n
+    T} \bullet \incbd n \epsilon {\insertion S P T}}\\
+    &\equiv \stdtm {\bound n S} n \sub {\kappa_{\bound n S, \bound n P, \bound n
+    T}} \sub {\incbd n \epsilon {\insertion S P T}}\\
+    &= \stdtm {\insertion {\bound n S} {\bound n P} {\bound n T}} n \sub{\incbd
+    n \epsilon {\insertion S P T}}\\
+    &\equiv \stdtm {\bound n {\insertion S P T}} n \sub {\incbd n \epsilon
+    {\insertion S P T}}
   \end{align*}
   where the definitional equality is due to the inductive hypothesis on terms.
 
@@ -9516,18 +9516,18 @@ We can then proceed to the main theorem of this section.
 
   We now consider the case for standard coherences, where we must prove that:
   \[ \SCoh S {\stdty S n} {\kappa_{S,P,T}} = \SCoh {\insertion S P T} {\stdty
-  {\insertion S P T} n} {\id} \] By \cref{lem:iota-kappa-comm}, \(\olsi P \sub
-  \kappa_{S,P,T}\) is the standard coherence \(\stdcoh T {\lh(P)} \sub
-  {\iota_{S,P,T}}\), and so the left-hand side of the above equation admits an
-  insertion. Therefore:
+  {\insertion S P T} n} {\id} \]
+  By \cref{lem:iota-kappa-comm}, \(\olsi P \sub \kappa_{S,P,T}\) is the standard
+  coherence \(\stdcoh T {\lh(P)} \sub {\iota_{S,P,T}}\), and so the left-hand
+  side of the above equation admits an insertion. Therefore:
   \begin{align*}
-    \SCoh S {\stdty S n} {\kappa_{S,P,T}} &= \SCoh {\insertion S P T}
-    {\stdty S n \sub {\kappa_{S,P,T}}} {\insertion {\kappa_{S,P,T}} P
+    \SCoh S {\stdty S n} {\kappa_{S,P,T}} &= \SCoh {\insertion S P T} {\stdty S
+    n \sub {\kappa_{S,P,T}}} {\insertion {\kappa_{S,P,T}} P
     {\iota_{S,P,T}}}&\text{by insertion}\\
-    &\equiv \SCoh {\insertion S P T} {\stdty S n \sub
-    {\kappa_{S,P,T}}} {\id}&\text{by \cref{lem:kappa-iota-insert}}\\
-    &= \SCoh {\insertion S P T} {\stdty {\insertion S P T} n}
-    {\id}&\text{by inductive hypothesis}\\
+    &\equiv \SCoh {\insertion S P T} {\stdty S n \sub {\kappa_{S,P,T}}}
+    {\id}&\text{by \cref{lem:kappa-iota-insert}}\\
+    &= \SCoh {\insertion S P T} {\stdty {\insertion S P T} n} {\id}&\text{by
+    inductive hypothesis}\\
     &\equiv \stdcoh {\insertion S P T} n
   \end{align*}
   The equality for standard terms follows from the equality for standard
@@ -9546,8 +9546,8 @@ We can then proceed to the main theorem of this section.
   \begin{align*}
     \stdcoh S n \sub L &= \SCoh {\insertion S P T} {\stdty S n \sub
     {\kappa_{S,P,T}}} {\insertion L P M}\\
-    &= \SCoh {\insertion S P T} {\stdty {\insertion S P T} n}
-    {\insertion L P M}\\
+    &= \SCoh {\insertion S P T} {\stdty {\insertion S P T} n} {\insertion L P
+    M}\\
     &= \stdcoh {\insertion S P T} n \sub {\insertion L P M}
   \end{align*}
   and so \(s\) is equal to a standard coherence over the tree \(\insertion S P
@@ -9604,157 +9604,235 @@ given. This can again be done under a non-linearity condition.
 \end{definition}
 
 A simple inductive proof shows that:
-\[\olsi {\insertion S P Q} \equiv \olsi Q \sub{\iota_{S,P,T}}\] Now given
-insertion points \((S,P,T)\) and \((T, Q ,U)\) with \(T\) non-linear we have
-that the triple \((\insertion S P T, \insertion S P Q, U)\) is another insertion
-point. Therefore, two ways of performing both insertions, which are depicted in
-\cref{fig:chained-insertion}.
+\[\olsi {\insertion S P Q} \equiv \olsi Q \sub{\iota_{S,P,T}}\]
+Now given insertion points \((S,P,T)\) and \((T, Q ,U)\) with \(T\) non-linear
+we have that the triple \((\insertion S P T, \insertion S P Q, U)\) is another
+insertion point. Therefore, two ways of performing both insertions, which are
+depicted in \cref{fig:chained-insertion}.
 
 \begin{figure}[ht]
   \centering
-  \newsavebox\chaintop \sbox\chaintop{\(\insertion{\insertion{
+  \newsavebox\chaintop
+  \sbox\chaintop{\(\insertion{\insertion{
           \begin{tikzpicture}[xscale=1.4,every node/.append
-            style={scale=0.85},baseline=(x21.base)] \node [on grid] at (0,0)
-            (x01) {$\bullet$}; \node [on grid] at (-0.5,1) (x11) {$\bullet$};
-            \node [on grid] at (0.5,1)(x12){$\bullet$}; \node [on grid, Diag1]
-            at (0,2) (x21){$\bullet$}; \node [on grid] at (1,2)
-            (x22){$\bullet$}; \node [on grid, Diag1] at (0,3)(x31) {$\bullet$};
-            \node [on grid] at (1,3) (x32) {$\bullet$}; \node [on grid, Diag1]
-            at (0,4)(x41) {$\bullet$}; \node [on grid] at (1,4)(x42)
-            {$\bullet$};
+            style={scale=0.85},baseline=(x21.base)]
+            \node [on grid] at (0,0) (x01) {$\bullet$};
+            \node [on grid] at (-0.5,1) (x11) {$\bullet$};
+            \node [on grid] at (0.5,1)(x12){$\bullet$};
+            \node [on grid, Diag1] at (0,2) (x21){$\bullet$};
+            \node [on grid] at (1,2) (x22){$\bullet$};
+            \node [on grid, Diag1] at (0,3)(x31) {$\bullet$};
+            \node [on grid] at (1,3) (x32) {$\bullet$};
+            \node [on grid, Diag1] at (0,4)(x41) {$\bullet$};
+            \node [on grid] at (1,4)(x42) {$\bullet$};
             \begin{scope}[on background layer]
-              \draw (x01.center) to (x11.center); \draw (x01.center) to
-              (x12.center); \draw[very thick,Diag1] (x12.center) to
-              (x21.center); \draw (x12.center) to (x22.center); \draw[very
-              thick,Diag1] (x21.center) to (x31.center); \draw (x22.center) to
-              (x32.center); \draw[very thick,Diag1] (x31.center) to
-              (x41.center); \draw (x32.center) to (x42.center);
+              \draw (x01.center) to (x11.center);
+              \draw (x01.center) to (x12.center);
+              \draw[very thick,Diag1] (x12.center) to (x21.center);
+              \draw (x12.center) to (x22.center);
+              \draw[very thick,Diag1] (x21.center) to (x31.center);
+              \draw (x22.center) to (x32.center);
+              \draw[very thick,Diag1] (x31.center) to (x41.center);
+              \draw (x32.center) to (x42.center);
             \end{scope}
-        \end{tikzpicture}\quad} {[1,0]} {\quad
+        \end{tikzpicture}\quad}
+        {[1,0]}
+        {\quad
           \begin{tikzpicture}[xscale=1.4,every node/.append
-            style={scale=0.85},baseline=(x21.base), Diag1] \node [on grid] at
-            (0,0) (x01) {$\bullet$}; \node [on grid] at (0,1) (x11) {$\bullet$};
-            \node [on grid] at (0,2) (x21){$\bullet$}; \node [on grid] at
-            (-0.5,3)(x31) {$\bullet$}; \node [on grid] at (0.5,3) (x32)
-            {$\bullet$}; \node [on grid, Diag2] at (-0.5,4)(x41) {$\bullet$};
-            \node [on grid] at (0.5,4)(x42) {$\bullet$}; \draw (x01.center) to
-            (x11.center); \draw (x11.center) to (x21.center); \draw (x21.center)
-            to (x31.center); \draw (x21.center) to (x32.center);
+            style={scale=0.85},baseline=(x21.base), Diag1]
+            \node [on grid] at (0,0) (x01) {$\bullet$};
+            \node [on grid] at (0,1) (x11) {$\bullet$};
+            \node [on grid] at (0,2) (x21){$\bullet$};
+            \node [on grid] at (-0.5,3)(x31) {$\bullet$};
+            \node [on grid] at (0.5,3) (x32) {$\bullet$};
+            \node [on grid, Diag2] at (-0.5,4)(x41) {$\bullet$};
+            \node [on grid] at (0.5,4)(x42) {$\bullet$};
+            \draw (x01.center) to (x11.center);
+            \draw (x11.center) to (x21.center);
+            \draw (x21.center) to (x31.center);
+            \draw (x21.center) to (x32.center);
             \begin{scope}[on background layer]
               \draw[very thick, Diag2] (x31.center) to (x41.center);
             \end{scope}
-            \draw (x32.center) to (x42.center); \end{tikzpicture}}\quad}
-      {[0,0,0,0]} {
+            \draw (x32.center) to (x42.center);
+      \end{tikzpicture}}\quad}
+      {[0,0,0,0]}
+      {
         \begin{tikzpicture}[xscale=1.4,every node/.append
-          style={scale=0.85},baseline=(x21.base), Diag2] \node [on grid] at
-          (0,0) (x01) {$\bullet$}; \node [on grid] at (0,1) (x11) {$\bullet$};
-          \node [on grid] at (0,2) (x21){$\bullet$}; \node [on grid] at
-          (0,3)(x31) {$\bullet$}; \node [on grid] at (-0.5,4)(x41) {$\bullet$};
-          \node [on grid] at (0.5,4)(x42) {$\bullet$}; \draw (x01.center) to
-          (x11.center); \draw (x11.center) to (x21.center); \draw (x21.center)
-          to (x31.center); \draw (x31.center) to (x41.center); \draw
-          (x31.center) to (x42.center); \end{tikzpicture}}\)}
-          \newsavebox\chainleft \sbox\chainleft{\(\insertion{
+          style={scale=0.85},baseline=(x21.base), Diag2]
+          \node [on grid] at (0,0) (x01) {$\bullet$};
+          \node [on grid] at (0,1) (x11) {$\bullet$};
+          \node [on grid] at (0,2) (x21){$\bullet$};
+          \node [on grid] at (0,3)(x31) {$\bullet$};
+          \node [on grid] at (-0.5,4)(x41) {$\bullet$};
+          \node [on grid] at (0.5,4)(x42) {$\bullet$};
+          \draw (x01.center) to (x11.center);
+          \draw (x11.center) to (x21.center);
+          \draw (x21.center) to (x31.center);
+          \draw (x31.center) to (x41.center);
+          \draw (x31.center) to (x42.center);
+  \end{tikzpicture}}\)}
+  \newsavebox\chainleft
+  \sbox\chainleft{\(\insertion{
         \begin{tikzpicture}[xscale=1.4,every node/.append
-          style={scale=0.85},baseline=(x21.base)] \node [on grid, Diag1] at
-          (0,0) (x01) {$\bullet$}; \node [on grid] at (-0.5,1) (x11)
-          {$\bullet$}; \node [on grid, Diag1] at (0.5,1)(x12){$\bullet$}; \node
-          [on grid, Diag1] at (0,2) (x21){$\bullet$}; \node [on grid] at (1,2)
-          (x22){$\bullet$}; \node [on grid, Diag1] at (-0.33,3)(x31)
-          {$\bullet$}; \node [on grid, Diag1] at (0.33,3) (x32) {$\bullet$};
-          \node [on grid] at (1,3) (x33) {$\bullet$}; \node [on grid, Diag2] at
-          (-0.33,4)(x41) {$\bullet$}; \node [on grid, Diag1] at (0.33,4)(x42)
-          {$\bullet$}; \node [on grid] at (1,4)(x43) {$\bullet$};
+          style={scale=0.85},baseline=(x21.base)]
+          \node [on grid, Diag1] at (0,0) (x01) {$\bullet$};
+          \node [on grid] at (-0.5,1) (x11) {$\bullet$};
+          \node [on grid, Diag1] at (0.5,1)(x12){$\bullet$};
+          \node [on grid, Diag1] at (0,2) (x21){$\bullet$};
+          \node [on grid] at (1,2) (x22){$\bullet$};
+          \node [on grid, Diag1] at (-0.33,3)(x31) {$\bullet$};
+          \node [on grid, Diag1] at (0.33,3) (x32) {$\bullet$};
+          \node [on grid] at (1,3) (x33) {$\bullet$};
+          \node [on grid, Diag2] at (-0.33,4)(x41) {$\bullet$};
+          \node [on grid, Diag1] at (0.33,4)(x42) {$\bullet$};
+          \node [on grid] at (1,4)(x43) {$\bullet$};
           \begin{scope}[on background layer]
-            \draw (x01.center) to (x11.center); \draw[Diag1] (x01.center) to
-            (x12.center); \draw[Diag1] (x12.center) to (x21.center); \draw
-            (x12.center) to (x22.center); \draw[Diag1] (x21.center) to
-            (x31.center); \draw[Diag1] (x21.center) to (x32.center); \draw
-            (x22.center) to (x33.center); \draw[very thick,Diag2] (x31.center)
-            to (x41.center); \draw[Diag1] (x32.center) to (x42.center); \draw
-            (x33.center) to (x43.center);
+            \draw (x01.center) to (x11.center);
+            \draw[Diag1] (x01.center) to (x12.center);
+            \draw[Diag1] (x12.center) to (x21.center);
+            \draw (x12.center) to (x22.center);
+            \draw[Diag1] (x21.center) to (x31.center);
+            \draw[Diag1] (x21.center) to (x32.center);
+            \draw (x22.center) to (x33.center);
+            \draw[very thick,Diag2] (x31.center) to (x41.center);
+            \draw[Diag1] (x32.center) to (x42.center);
+            \draw (x33.center) to (x43.center);
           \end{scope}
-      \end{tikzpicture}\quad} {[1,0,0,0]} {
+      \end{tikzpicture}\quad}
+      {[1,0,0,0]}
+      {
         \begin{tikzpicture}[xscale=1.4,every node/.append
-          style={scale=0.85},baseline=(x21.base), Diag2] \node [on grid] at
-          (0,0) (x01) {$\bullet$}; \node [on grid] at (0,1) (x11) {$\bullet$};
-          \node [on grid] at (0,2) (x21){$\bullet$}; \node [on grid] at
-          (0,3)(x31) {$\bullet$}; \node [on grid] at (-0.5,4)(x41) {$\bullet$};
-          \node [on grid] at (0.5,4)(x42) {$\bullet$}; \draw (x01.center) to
-          (x11.center); \draw (x11.center) to (x21.center); \draw (x21.center)
-          to (x31.center); \draw (x31.center) to (x41.center); \draw
-          (x31.center) to (x42.center); \end{tikzpicture}}\) }
-          \newsavebox\chainright \sbox\chainright{\(\insertion{
+          style={scale=0.85},baseline=(x21.base), Diag2]
+          \node [on grid] at (0,0) (x01) {$\bullet$};
+          \node [on grid] at (0,1) (x11) {$\bullet$};
+          \node [on grid] at (0,2) (x21){$\bullet$};
+          \node [on grid] at (0,3)(x31) {$\bullet$};
+          \node [on grid] at (-0.5,4)(x41) {$\bullet$};
+          \node [on grid] at (0.5,4)(x42) {$\bullet$};
+          \draw (x01.center) to (x11.center);
+          \draw (x11.center) to (x21.center);
+          \draw (x21.center) to (x31.center);
+          \draw (x31.center) to (x41.center);
+          \draw (x31.center) to (x42.center);
+    \end{tikzpicture}}\)
+  }
+  \newsavebox\chainright
+  \sbox\chainright{\(\insertion{
         \begin{tikzpicture}[xscale=1.4,every node/.append
-          style={scale=0.85},baseline=(x21.base)] \node [on grid] at (0,0) (x01)
-          {$\bullet$}; \node [on grid] at (-0.5,1) (x11) {$\bullet$}; \node [on
-          grid] at (0.5,1)(x12){$\bullet$}; \node [on grid, Diag1] at (0,2)
-          (x21){$\bullet$}; \node [on grid] at (1,2) (x22){$\bullet$}; \node [on
-          grid, Diag1] at (0,3)(x31) {$\bullet$}; \node [on grid] at (1,3) (x32)
-          {$\bullet$}; \node [on grid, Diag1] at (0,4)(x41) {$\bullet$}; \node
-          [on grid] at (1,4)(x42) {$\bullet$};
+          style={scale=0.85},baseline=(x21.base)]
+          \node [on grid] at (0,0) (x01) {$\bullet$};
+          \node [on grid] at (-0.5,1) (x11) {$\bullet$};
+          \node [on grid] at (0.5,1)(x12){$\bullet$};
+          \node [on grid, Diag1] at (0,2) (x21){$\bullet$};
+          \node [on grid] at (1,2) (x22){$\bullet$};
+          \node [on grid, Diag1] at (0,3)(x31) {$\bullet$};
+          \node [on grid] at (1,3) (x32) {$\bullet$};
+          \node [on grid, Diag1] at (0,4)(x41) {$\bullet$};
+          \node [on grid] at (1,4)(x42) {$\bullet$};
           \begin{scope}[on background layer]
-            \draw (x01.center) to (x11.center); \draw (x01.center) to
-            (x12.center); \draw[very thick,Diag1] (x12.center) to (x21.center);
-            \draw (x12.center) to (x22.center); \draw[very thick,Diag1]
-            (x21.center) to (x31.center); \draw (x22.center) to (x32.center);
-            \draw[very thick,Diag1] (x31.center) to (x41.center); \draw
-            (x32.center) to (x42.center);
+            \draw (x01.center) to (x11.center);
+            \draw (x01.center) to (x12.center);
+            \draw[very thick,Diag1] (x12.center) to (x21.center);
+            \draw (x12.center) to (x22.center);
+            \draw[very thick,Diag1] (x21.center) to (x31.center);
+            \draw (x22.center) to (x32.center);
+            \draw[very thick,Diag1] (x31.center) to (x41.center);
+            \draw (x32.center) to (x42.center);
           \end{scope}
-      \end{tikzpicture}\quad} {[1,0]} {
+      \end{tikzpicture}\quad}
+      {[1,0]}
+      {
         \begin{tikzpicture}[xscale=1.4,every node/.append
-          style={scale=0.85},baseline=(x21.base), Diag2] \node [on grid] at
-          (0,0) (x01) {$\bullet$}; \node [on grid] at (0,1) (x11) {$\bullet$};
-          \node [on grid] at (0,2) (x21){$\bullet$}; \node [on grid] at
-          (-0.5,3)(x31) {$\bullet$}; \node [on grid, Diag1] at (0.5,3) (x32)
-          {$\bullet$}; \node [on grid] at (-0.83,4)(x41) {$\bullet$}; \node [on
-          grid] at (-0.16,4)(x42) {$\bullet$}; \node [on grid, Diag1] at
-          (0.5,4)(x43) {$\bullet$}; \draw (x01.center) to (x11.center); \draw
-          (x11.center) to (x21.center); \draw (x21.center) to (x31.center);
-          \draw (x31.center) to (x41.center); \draw (x31.center) to
-          (x42.center);
+          style={scale=0.85},baseline=(x21.base), Diag2]
+          \node [on grid] at (0,0) (x01) {$\bullet$};
+          \node [on grid] at (0,1) (x11) {$\bullet$};
+          \node [on grid] at (0,2) (x21){$\bullet$};
+          \node [on grid] at (-0.5,3)(x31) {$\bullet$};
+          \node [on grid, Diag1] at (0.5,3) (x32) {$\bullet$};
+          \node [on grid] at (-0.83,4)(x41) {$\bullet$};
+          \node [on grid] at (-0.16,4)(x42) {$\bullet$};
+          \node [on grid, Diag1] at (0.5,4)(x43) {$\bullet$};
+          \draw (x01.center) to (x11.center);
+          \draw (x11.center) to (x21.center);
+          \draw (x21.center) to (x31.center);
+          \draw (x31.center) to (x41.center);
+          \draw (x31.center) to (x42.center);
           \begin{scope}[on background layer]
-            \draw[Diag1] (x21.center) to (x32.center); \draw[Diag1] (x32.center)
-            to (x43.center);
+            \draw[Diag1] (x21.center) to (x32.center);
+            \draw[Diag1] (x32.center) to (x43.center);
           \end{scope}
-    \end{tikzpicture}}\) } \newsavebox\chainbot \sbox\chainbot{\(
+    \end{tikzpicture}}\)
+  }
+  \newsavebox\chainbot
+  \sbox\chainbot{\(
       \begin{tikzpicture}[xscale=1.4,every node/.append
-        style={scale=0.85},baseline=(x21.base)] \node [on grid, Diag2] at
-        (0.125,0) (x01) {$\bullet$}; \node [on grid] at (-0.3125,1) (x11)
-        {$\bullet$}; \node [on grid, Diag2] at (0.5625,1)(x12){$\bullet$}; \node
-        [on grid, Diag2] at (0.125,2) (x21){$\bullet$}; \node [on grid] at (1,2)
-        (x22){$\bullet$}; \node [on grid, Diag2] at (-0.25,3)(x31) {$\bullet$};
-        \node [on grid, Diag1] at (0.5,3) (x32) {$\bullet$}; \node [on grid] at
-        (1,3) (x33) {$\bullet$}; \node [on grid, Diag2] at (-0.5,4)(x41)
-        {$\bullet$}; \node [on grid, Diag2] at (0,4)(x42) {$\bullet$}; \node [on
-        grid, Diag1] at (0.5,4)(x43) {$\bullet$}; \node [on grid] at (1,4)(x44)
-        {$\bullet$};
+        style={scale=0.85},baseline=(x21.base)]
+        \node [on grid, Diag2] at (0.125,0) (x01) {$\bullet$};
+        \node [on grid] at (-0.3125,1) (x11) {$\bullet$};
+        \node [on grid, Diag2] at (0.5625,1)(x12){$\bullet$};
+        \node [on grid, Diag2] at (0.125,2) (x21){$\bullet$};
+        \node [on grid] at (1,2) (x22){$\bullet$};
+        \node [on grid, Diag2] at (-0.25,3)(x31) {$\bullet$};
+        \node [on grid, Diag1] at (0.5,3) (x32) {$\bullet$};
+        \node [on grid] at (1,3) (x33) {$\bullet$};
+        \node [on grid, Diag2] at (-0.5,4)(x41) {$\bullet$};
+        \node [on grid, Diag2] at (0,4)(x42) {$\bullet$};
+        \node [on grid, Diag1] at (0.5,4)(x43) {$\bullet$};
+        \node [on grid] at (1,4)(x44) {$\bullet$};
         \begin{scope}[on background layer]
-          \draw (x01.center) to (x11.center); \draw[Diag2] (x01.center) to
-          (x12.center); \draw[Diag2] (x12.center) to (x21.center); \draw
-          (x12.center) to (x22.center); \draw[Diag2] (x21.center) to
-          (x31.center); \draw[Diag1] (x21.center) to (x32.center); \draw
-          (x22.center) to (x33.center); \draw[Diag2] (x31.center) to
-          (x41.center); \draw[Diag2] (x31.center) to (x42.center); \draw[Diag1]
-          (x32.center) to (x43.center); \draw (x33.center) to (x44.center);
+          \draw (x01.center) to (x11.center);
+          \draw[Diag2] (x01.center) to (x12.center);
+          \draw[Diag2] (x12.center) to (x21.center);
+          \draw (x12.center) to (x22.center);
+          \draw[Diag2] (x21.center) to (x31.center);
+          \draw[Diag1] (x21.center) to (x32.center);
+          \draw (x22.center) to (x33.center);
+          \draw[Diag2] (x31.center) to (x41.center);
+          \draw[Diag2] (x31.center) to (x42.center);
+          \draw[Diag1] (x32.center) to (x43.center);
+          \draw (x33.center) to (x44.center);
         \end{scope}
-    \end{tikzpicture}\) }
+    \end{tikzpicture}\)
+  }
 
   \begin{tikzpicture}
     \node(chaintop) at (0,0) {\fcolorbox{gray}{white}{\usebox\chaintop}};
     \node(chainleft) at (-4.5,-6){\fcolorbox{gray}{white}{\usebox\chainleft}};
     \node(chainright) at (4.5,-6){\fcolorbox{gray}{white}{\usebox\chainright}};
     \node(chainbot) at (0,-12){\fcolorbox{gray}{white}{\usebox\chainbot}};
-    \draw[arrows={->[scale=1.5]}, line join=round, decorate, decoration={
-    zigzag, segment length=4, amplitude=1.2,post=lineto, post length=2pt }]
-    (chaintop) to (chainleft); \draw[arrows={->[scale=1.5]}, line join=round,
-    decorate, decoration={ zigzag, segment length=4, amplitude=1.2,post=lineto,
-    post length=2pt }] (chaintop) to (chainright); \draw[arrows={->[scale=1.5]},
-    line join=round, decorate, decoration={ zigzag, segment length=4,
-    amplitude=1.2,post=lineto, post length=2pt }] (chainleft) to (chainbot);
-    \draw[arrows={->[scale=1.5]}, line join=round, decorate, decoration={
-    zigzag, segment length=4, amplitude=1.2,post=lineto, post length=2pt }]
-    (chainright) to (chainbot);
+    \draw[arrows={->[scale=1.5]},
+      line join=round,
+      decorate, decoration={
+        zigzag,
+        segment length=4,
+        amplitude=1.2,post=lineto,
+        post length=2pt
+    }] (chaintop) to (chainleft);
+    \draw[arrows={->[scale=1.5]},
+      line join=round,
+      decorate, decoration={
+        zigzag,
+        segment length=4,
+        amplitude=1.2,post=lineto,
+        post length=2pt
+    }] (chaintop) to (chainright);
+    \draw[arrows={->[scale=1.5]},
+      line join=round,
+      decorate, decoration={
+        zigzag,
+        segment length=4,
+        amplitude=1.2,post=lineto,
+        post length=2pt
+    }] (chainleft) to (chainbot);
+    \draw[arrows={->[scale=1.5]},
+      line join=round,
+      decorate, decoration={
+        zigzag,
+        segment length=4,
+        amplitude=1.2,post=lineto,
+        post length=2pt
+    }] (chainright) to (chainbot);
   \end{tikzpicture}
   \caption{Chained insertion.}
   \label{fig:chained-insertion}
@@ -9776,10 +9854,10 @@ the following diagram:
     \arrow["{\kappa_{S,P,T}}", from=1-3, to=2-3]
     \arrow["{\kappa_{\insertion S P T, \insertion S P Q, U}}", from=2-3, to=3-3]
     \arrow["{\iota_{\insertion S P T, \insertion S P Q, U}}"', from=3-1, to=3-3]
-    \arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180,
-    scale=1.5}, draw=none, from=2-3, to=1-2]
-    \arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180,
-    scale=1.5}, draw=none, from=3-3, to=2-1]
+    \arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180, scale=1.5},
+    draw=none, from=2-3, to=1-2]
+    \arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180, scale=1.5},
+    draw=none, from=3-3, to=2-1]
   \end{tikzcd}
 \]
 The top pushout square is given by the insertion of \(T\) into \(S\) along
@@ -9804,10 +9882,10 @@ which is given by the diagram below:
     \arrow["{\iota_{T,Q,U}}"', from=3-1, to=3-2]
     \arrow["{\kappa_{S,P,\insertion T Q U}}", from=1-4, to=3-4]
     \arrow["{\iota_{S,P,\insertion T Q U}}"', from=3-2, to=3-4]
-    \arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180,
-    scale=1.5}, draw=none, from=3-4, to=1-2]
-    \arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180,
-    scale=1.5}, draw=none, from=3-2, to=2-1]
+    \arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180, scale=1.5},
+    draw=none, from=3-4, to=1-2]
+    \arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180, scale=1.5},
+    draw=none, from=3-2, to=2-1]
   \end{tikzcd}
 \]
 The left-hand pushout square is given by the insertion of \(U\) into \(T\) along
@@ -9836,10 +9914,9 @@ following lemma.
 \end{lemma}
 \begin{proof}
   See the functions
-  \func{Catt.Tree.Insertion.Properties}{insertion-tree-inserted-branch}
-  and
-  \func{Catt.Tree.Insertion.Properties}{label-from-inserted-branch}
-  in the formalisation module \module{Catt.Tree.Insertion.Properties}, and
+  \func{Catt.Tree.Insertion.Properties}{insertion-tree-inserted-branch} and
+  \func{Catt.Tree.Insertion.Properties}{label-from-inserted-branch} in the
+  formalisation module \module{Catt.Tree.Insertion.Properties}, and
   \funcn{Catt.Typing.Insertion.Equality}{22361}{κ-inserted-branch} in module
   \module{Catt.Typing.Insertion.Equality}.
 \end{proof}
@@ -9929,10 +10006,10 @@ form}.
   A \emph{reduction system} is given by a relation \(s \red t\) on terms. The
   relation \(\red^{*}\) is defined to be the reflexive transitive closure of
   \(\red\), and so \(s \red^* t\) exactly when there is some chain
-  \[s \equiv u_0 \red \cdots \red u_k \equiv t\] for \(k \in \mathbb{N}\) (which
-  could be \(0\) with \(s \equiv t\)) and terms \(u_i\) for \(i \leq k\).
-  Further define \(\leftrightsquigarrow\) to be the reflexive symmetric
-  transitive closure of \(\red\).
+  \[s \equiv u_0 \red \cdots \red u_k \equiv t\]
+  for \(k \in \mathbb{N}\) (which could be \(0\) with \(s \equiv t\)) and terms
+  \(u_i\) for \(i \leq k\). Further define \(\leftrightsquigarrow\) to be the
+  reflexive symmetric transitive closure of \(\red\).
 
   When a term \(s\) admits no reductions, that is there is no \(t\) such that
   \(s \red t\), we say it is in \emph{normal form}.
@@ -9956,14 +10033,16 @@ constructors and ensure that reductions do not happen ``in parallel''.
   \begin{mathpar}
     \inferrule{(\Gamma, s, t) \in \mathcal{R}}{s \redr t}\textsc{rule} \and
     \inferrule{A \redr B}{\Coh \Delta A \sigma \redr \Coh \Delta B
-    \sigma}\textsc{cell} \and \inferrule{\sigma \redr \tau}{\Coh \Delta A \sigma
-    = \Coh \Delta A \tau}\textsc{arg} \\
-    \inferrule{s \redr s'}{\arr s A t \redr \arr {s'} A t}\and \inferrule{t
-    \redr t'}{\arr s A t \redr \arr s A {t'}}\and \inferrule{A \redr A'}{\arr s
-    A t \redr \arr s {A'} t}\\
+    \sigma}\textsc{cell} \and
+    \inferrule{\sigma \redr \tau}{\Coh \Delta A \sigma = \Coh \Delta A
+    \tau}\textsc{arg} \\
+    \inferrule{s \redr s'}{\arr s A t \redr \arr {s'} A t}\and
+    \inferrule{t \redr t'}{\arr s A t \redr \arr s A {t'}}\and
+    \inferrule{A \redr A'}{\arr s A t \redr \arr s {A'} t}\\
     \inferrule{\sigma \redr \tau}{\langle \sigma, s \rangle \redr \langle \tau,
-    s \rangle}\and \inferrule{s \redr t}{\langle \sigma, s \rangle \redr \langle
-    \sigma, t \rangle}
+    s \rangle}\and
+    \inferrule{s \redr t}{\langle \sigma, s \rangle \redr \langle \sigma, t
+    \rangle}
   \end{mathpar}
   \caption[Reduction rules]{Rules for \(\rightsquigarrow_{\mathcal{R}}\).}
   \label{fig:reduction}
@@ -9996,11 +10075,11 @@ rules for equality.
   \(\redr\), we get:
   \begin{align*}
     \Gamma \vdash s = t &\iff s \redrts t \\
-    \intertext{for \(s,t : \Term_\Gamma\) such that \(\Gamma \vdash s
-    : A\) and \(\Gamma \vdash t : A\) for some \(A : \Type_\Gamma\)}
+    \intertext{for \(s,t : \Term_\Gamma\) such that \(\Gamma \vdash s : A\) and
+    \(\Gamma \vdash t : A\) for some \(A : \Type_\Gamma\)}
     \Gamma \vdash A = B &\iff A \redrts B \\
-    \intertext{for \(A,B : \Type_\Gamma\) such that \(\Gamma \vdash
-    A\) and \(\Gamma \vdash B\)}
+    \intertext{for \(A,B : \Type_\Gamma\) such that \(\Gamma \vdash A\) and
+    \(\Gamma \vdash B\)}
     \Gamma \vdash \sigma = \tau &\iff \sigma \redrts \tau
   \end{align*}
   for \(\sigma, \tau : \arr \Delta \star \Gamma\) such that \(\Gamma \vdash
@@ -10030,8 +10109,8 @@ to prove that reduction is preserved by application of substitution.
   substitutions \(\tau\) and \(\mu\). Furthermore, if \(\sigma \redr \tau\),
   then:
   \[ s \sub \sigma \redr^* s \sub \tau \qquad A \sub \sigma \redr^* A \sub \tau
-  \qquad \mu \bullet \sigma \redr^* \mu \bullet \tau\] for term \(s\), type
-  \(A\), and substitution \(\mu\).
+  \qquad \mu \bullet \sigma \redr^* \mu \bullet \tau\]
+  for term \(s\), type \(A\), and substitution \(\mu\).
 \end{proposition}
 \begin{proof}
   The first part by a simple induction on the reduction in the premise. The
@@ -10050,17 +10129,18 @@ know that this will eventually result in a normal form, a property known as
 \begin{definition}
   A reduction system \(\red\) is \emph{strongly terminating} if there is no
   infinite sequence of reductions:
-  \[ s_0 \red s_1 \red s_2 \red \cdots \] For such a reduction, applying
-  reductions to a term will eventually reach a normal form.
+  \[ s_0 \red s_1 \red s_2 \red \cdots \]
+  For such a reduction, applying reductions to a term will eventually reach a
+  normal form.
 \end{definition}
 
 Demonstrating the termination of the reduction systems defined in
 \cref{sec:cattsu,sec:cattsua} will be non-trivial, as each reduction adds new
 constructions to the term, which could themselves admit reductions. Suppose we
 have the following reduction due to endo-coherence removal (see \cref{sec:ecr}):
-\[ \Coh \Delta {\arr s A s} \sigma \red \id(A \sub \sigma,s \sub \sigma) \] The
-identity term was not present in the premise of the reduction, and the term \(s
-\sub \sigma\) is newly created by the reduction, and could itself admit any
+\[ \Coh \Delta {\arr s A s} \sigma \red \id(A \sub \sigma,s \sub \sigma) \]
+The identity term was not present in the premise of the reduction, and the term
+\(s \sub \sigma\) is newly created by the reduction, and could itself admit any
 number of reductions.
 
 To prove termination, we will exploit that although each reduction creates new
@@ -10095,8 +10175,8 @@ arguments~\cite{lipparini16}.
       \begin{equation*}
         \sc(\Coh \Delta A \sigma) =
         \begin{cases*}
-          \omega^{\dim(A)} \+ \sc(\sigma)&if \(\Coh \Delta A \sigma\)
-          is an identity\\
+          \omega^{\dim(A)} \+ \sc(\sigma)&if \(\Coh \Delta A \sigma\) is an
+          identity\\
           2\omega^{\dim(A)} \+ \sc(\sigma)&otherwise
         \end{cases*}
       \end{equation*}
@@ -10129,19 +10209,20 @@ appeal to an induction on dimension.
 \begin{proof}
   By a simple induction on reductions, we immediately have that if \(s \redr t\)
   then \(\sc(s) \geq \sc(t)\), with the inequality strict when the reduction is
-  not a cell reduction. We then proceed by induction on the dimension. Suppose
-  there is an infinite reduction sequence, starting with a \(k\)-dimensional
-  term:
-  \[ s_0 \red s_1 \red s_2 \red \cdots\] Then by assumption, only finitely many
-  of these reductions do not use the cell rule, as otherwise we would obtain an
-  infinite chain of ordinals
-  \[ \sc(s_0) \geq \sc(s_1) \geq \sc(s_2) \geq \cdots\] where infinitely many of
-  these inequalities are strict. Therefore, there is an \(n\) such that:
-  \[ s_n \red s_{n+1} \red \cdots\] are all cell reductions. Each of these
-  reductions reduces one of finitely many subterms of \(s_n\), and each of these
-  subterms has dimension less than \(k\), so by inductive hypothesis, none of
-  these subterms can be reduced infinitely often, contradicting the existence of
-  an infinite reduction sequence.
+  not a cell reduction. We then proceed by induction on the dimension.
+  Suppose there is an infinite reduction sequence, starting with a
+  \(k\)-dimensional term:
+  \[ s_0 \red s_1 \red s_2 \red \cdots\]
+  Then by assumption, only finitely many of these reductions do not use the cell
+  rule, as otherwise we would obtain an infinite chain of ordinals
+  \[ \sc(s_0) \geq \sc(s_1) \geq \sc(s_2) \geq \cdots\]
+  where infinitely many of these inequalities are strict. Therefore, there is an
+  \(n\) such that:
+  \[ s_n \red s_{n+1} \red \cdots\]
+  are all cell reductions. Each of these reductions reduces one of finitely many
+  subterms of \(s_n\), and each of these subterms has dimension less than \(k\),
+  so by inductive hypothesis, none of these subterms can be reduced infinitely
+  often, contradicting the existence of an infinite reduction sequence.
 \end{proof}
 
 We can immediately prove that disc removal reduces syntactic complexity.
@@ -10164,11 +10245,12 @@ We can immediately prove that disc removal reduces syntactic complexity.
 \end{proof}
 
 We note that as stated so far the reduction:
-\[ \id(A,s) \red \id(A,s)\] is a valid instance of endo-coherence removal for
-type \(A\) and term \(s\), which will break termination. We therefore let
-\(\ecr'\) be the equality rule set obtained by removing all triples
-\((\Gamma,s,t)\) from \(\ecr\) where \(s\) is already an identity. We justify
-replacing \ecr by \ecr' with the following lemma.
+\[ \id(A,s) \red \id(A,s)\]
+is a valid instance of endo-coherence removal for type \(A\) and term \(s\),
+which will break termination. We therefore let \(\ecr'\) be the equality rule
+set obtained by removing all triples \((\Gamma,s,t)\) from \(\ecr\) where \(s\)
+is already an identity. We justify replacing \ecr by \ecr' with the following
+lemma.
 
 \begin{lemma}
   \label{lem:always-ecr}
@@ -10182,7 +10264,8 @@ replacing \ecr by \ecr' with the following lemma.
   some \(n\), \(s \equiv d_n\), \(A \equiv \wk(U^n)\), and \(\sigma \equiv
   \{B,t\}\) for some \(B\) and \(t\) and so:
   \[\id(A\sub \sigma,s \sub \sigma) \equiv \id(\wk(U^n)\sub{\{B,t\}}, d_n \sub
-  {\{B,t\}}) \equiv \id(B,t) \] It follows that the reduction is trivial.
+  {\{B,t\}}) \equiv \id(B,t) \]
+  It follows that the reduction is trivial.
 \end{proof}
 
 It can then be proven that the reductions in this set reduce syntactic
@@ -10280,8 +10363,9 @@ We define this precisely.
   Let \(\mathcal{R}\) be an equality rule set. For \(n \in \mathbb{N}\), define
   the \emph{bounded equality set} \(\mathcal{R}_n\) as:
   \[ \mathcal{R}_n = \left\{ (\Gamma, s, t) \in \mathcal{R} \mid \dim(s) =
-  \dim(t) < n \right\}\] Let the \emph{bounded equality relation} \(s =_n t\) be
-  the equality generated by the set \(\mathcal{R}_n\).
+  \dim(t) < n \right\}\]
+  Let the \emph{bounded equality relation} \(s =_n t\) be the equality generated
+  by the set \(\mathcal{R}_n\).
 \end{definition}
 
 This is used to prove the following lemma, which implies that for a critical
@@ -10294,8 +10378,7 @@ common reduct of \(t\) and \(u\), but simply find reducts \(t'\) and \(u'\) of
   Let \(\mathcal{R}\) be a tame equality rule set which satisfies the
   preservation and support conditions, and further assume that \(\redr\) is
   strongly terminating. Suppose the following diagram can be formed:
-  % https://q.uiver.app/#q=WzAsNixbMiwwLCJzIl0sWzAsMSwidCJdLFs0LDEsInUiXSxbMSwyLCJ0JyJdLFszLDIsInUnIl0sWzIsMiwiPV97XFxkaW0ocyl9Il0sWzAsMiwiIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoic3F1aWdnbHkifX19XSxbMCwxLCIiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJzcXVpZ2dseSJ9fX1dLFsxLDMsIioiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJzcXVpZ2dseSJ9fX1dLFsyLDQsIioiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJzcXVpZ2dseSJ9fX1dXQ==
-  % % tex-fmt: skip
+  % https://q.uiver.app/#q=WzAsNixbMiwwLCJzIl0sWzAsMSwidCJdLFs0LDEsInUiXSxbMSwyLCJ0JyJdLFszLDIsInUnIl0sWzIsMiwiPV97XFxkaW0ocyl9Il0sWzAsMiwiIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoic3F1aWdnbHkifX19XSxbMCwxLCIiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJzcXVpZ2dseSJ9fX1dLFsxLDMsIioiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJzcXVpZ2dseSJ9fX1dLFsyLDQsIioiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJzcXVpZ2dseSJ9fX1dXQ== % tex-fmt: skip
   \[
     \begin{tikzcd}[column sep=tiny]
       && s \\
@@ -10332,7 +10415,7 @@ common reduct of \(t\) and \(u\), but simply find reducts \(t'\) and \(u'\) of
   By \cref{prop:red-is-eq}, \(t' \leftrightsquigarrow_{\mathcal{R}_{\dim(s)}}
   u'\), and so as \(\red_{\mathcal{R}_{\dim(s)}}\) is confluent by inductive
   hypothesis on dimension we have \(v\) such that \(t'
-  \red_{\mathcal{R}_{\dim(s)}}^* v \leftsquigarrow_{\mathcal{R}_{\dim(s)}}^*
+    \red_{\mathcal{R}_{\dim(s)}}^* v \leftsquigarrow_{\mathcal{R}_{\dim(s)}}^*
   u'\). The following diagram can therefore be formed, where all the reductions
   are \(\mathcal{R}_n\) reductions (noting that \(\mathcal{R}_{\dim(s)}
   \subseteq \mathcal{R}_n\)):
@@ -10380,12 +10463,12 @@ be defined, which repeatedly applies reductions until no more can be applied.
 
   Suppose \(s \redrts t\). Then there are terms \(s_i\) such that:
   \[ s \equiv s_0 \rightsquigarrow^* s_1 \leftsquigarrow^* s_2
-  \rightsquigarrow^* \cdots \leftsquigarrow^* s_k \equiv t\] Now we must have
-  \(\N(s_i) \equiv \N(s_{i+1})\) for each \(i\) as if \(s_i \rightsquigarrow^*
-  s_{i+1}\) then both \(\N(s_i)\) and \(\N(s_{i+1})\) are normal forms of
-  \(s_i\) and if \(s_i \leftsquigarrow^* s_{i+1}\) then both are normal forms of
-  \(s_{i+1}\). Therefore, \(\N(s)\) and \(\N(t)\) are syntactically equal as
-  required.
+  \rightsquigarrow^* \cdots \leftsquigarrow^* s_k \equiv t\]
+  Now we must have \(\N(s_i) \equiv \N(s_{i+1})\) for each \(i\) as if \(s_i
+  \rightsquigarrow^* s_{i+1}\) then both \(\N(s_i)\) and \(\N(s_{i+1})\) are
+  normal forms of \(s_i\) and if \(s_i \leftsquigarrow^* s_{i+1}\) then both are
+  normal forms of \(s_{i+1}\). Therefore, \(\N(s)\) and \(\N(t)\) are
+  syntactically equal as required.
 \end{proof}
 \begin{corollary}
   Let \(\mathcal{R}\) be tame and satisfy the preservation and support
@@ -10436,16 +10519,16 @@ terminating and confluent.
   \arr x \star z\), and \(\alpha : f * g \to h\) in some context \(\Gamma\). We
   can then consider the term:
   \[ \Coh {(x : *), (y : *), (f : \arr x \star y), (z : \star), (g : \arr y
-  \star z)} {f * g \to f * g} {\langle x,y,f,z, g \rangle} * \alpha\] which
-  consists of an endo-coherence composed with the variable \(\alpha\). This then
-  reduces as follows:
+  \star z)} {f * g \to f * g} {\langle x,y,f,z, g \rangle} * \alpha\]
+  which consists of an endo-coherence composed with the variable \(\alpha\).
+  This then reduces as follows:
   \begin{align*}
-    &\phantom{{}\red{}}\Coh {(x : *), (y : *), (f : \arr x \star y),
-    (z : \star), (g : \arr y \star z)} {f * g \to f * g} {\langle f,
-    g \rangle} * \alpha\\
+    &\phantom{{}\red{}}\Coh {(x : *), (y : *), (f : \arr x \star y), (z :
+    \star), (g : \arr y \star z)} {f * g \to f * g} {\langle f, g \rangle} *
+    \alpha\\
     &\red \id(\arr x \star z, f * g) * \alpha&\text{by endo-coherence removal}\\
-    &\red \Coh {D^2} {\wk(U^2)} {\langle x,z,f*g,h,\alpha
-    \rangle}&\text{by pruning}\\
+    &\red \Coh {D^2} {\wk(U^2)} {\langle x,z,f*g,h,\alpha \rangle}&\text{by
+    pruning}\\
     &\red \alpha &\text{by disc removal}
   \end{align*}
   and so uses all three reductions to fully simplify to a variable.
@@ -10455,8 +10538,8 @@ We define \Cattsu by the following equality rule set.
 
 \begin{definition}
   Define the equality rule set \su for \Cattsu by:
-  \[ \su = \dr \cup \prune \cup \ecr\] \Cattsu is then the variant of \Cattr
-  where \(\mathcal{R} = \su\).
+  \[ \su = \dr \cup \prune \cup \ecr\]
+  \Cattsu is then the variant of \Cattr where \(\mathcal{R} = \su\).
 \end{definition}
 
 When it is not specified, we will assume that the operation set \(\mathcal{O}\)
@@ -10508,14 +10591,14 @@ which is given by the diagram:
 \[
   \begin{tikzcd}
     \bullet & \bullet & \bullet
-    \arrow[""{name=0, anchor=center, inner sep=0}, "g",
-    curve={height=-18pt}, from=1-1, to=1-2]
-    \arrow[""{name=1, anchor=center, inner sep=0}, "f"',
-    curve={height=18pt}, from=1-1, to=1-2]
-    \arrow[""{name=2, anchor=center, inner sep=0}, "h"',
-    curve={height=18pt}, from=1-2, to=1-3]
-    \arrow[""{name=3, anchor=center, inner sep=0}, "i",
-    curve={height=-18pt}, from=1-2, to=1-3]
+    \arrow[""{name=0, anchor=center, inner sep=0}, "g", curve={height=-18pt},
+    from=1-1, to=1-2]
+    \arrow[""{name=1, anchor=center, inner sep=0}, "f"', curve={height=18pt},
+    from=1-1, to=1-2]
+    \arrow[""{name=2, anchor=center, inner sep=0}, "h"', curve={height=18pt},
+    from=1-2, to=1-3]
+    \arrow[""{name=3, anchor=center, inner sep=0}, "i", curve={height=-18pt},
+    from=1-2, to=1-3]
     \arrow["a"', shorten <=5pt, shorten >=5pt, Rightarrow, from=1, to=0]
     \arrow["b"', shorten <=5pt, shorten >=5pt, Rightarrow, from=2, to=3]
   \end{tikzcd}
@@ -10523,14 +10606,15 @@ which is given by the diagram:
 The following term can be formed, which is similar to an interchange move, and
 changes the order in which two whiskered terms are composed:
 \[ \mathsf{swap} = \Coh {\Delta} {(a *_0 j) *_1 (g *_0 b) \to (f *_0 b) *_1 (a
-*_0 h)} {\id_\Delta}\] Then given a context \(\Gamma\) with terms \(x : *\) and
-\(\alpha,\beta : \id(x) \to \id(x)\), the following term, the Eckmann-Hilton
-term, can be formed:
+*_0 h)} {\id_\Delta}\]
+Then given a context \(\Gamma\) with terms \(x : *\) and \(\alpha,\beta : \id(x)
+\to \id(x)\), the following term, the Eckmann-Hilton term, can be formed:
 \[ \mathsf{EH}_{\alpha,\beta} = \mathsf{swap} \sub{\langle
-x,x,\id(x),\id(x),\alpha, x,\id(x),\id(x),\beta \rangle}\] In \Cattsu, this term
-can be typed as follows:
+x,x,\id(x),\id(x),\alpha, x,\id(x),\id(x),\beta \rangle}\]
+In \Cattsu, this term can be typed as follows:
 \[ \Gamma \vdash \mathsf{EH}_{\alpha,\beta} : \alpha *_1 \beta \to \beta *_1
-\alpha\] and so witnesses the Eckmann-Hilton argument.
+\alpha\]
+and so witnesses the Eckmann-Hilton argument.
 
 We note that there is a clear inverse of the Eckmann Hilton term, which
 immediately gives rise to two morphisms \(\alpha *_1 \beta \to \beta *_1
@@ -10544,16 +10628,18 @@ type \(\id^2(x) \to \id^2(x)\), which is done by suspending the Eckmann-Hilton
 term. By an abuse of notation we define this term to be (only giving the locally
 maximal arguments of the substitution):
 \[\mathsf{EH}_{\phi,\psi} = \Sigma(\mathsf{swap}) \sub{\langle \phi, \psi
-\rangle}\] In this case, the extra dimension gives enough freedom to give an
-equivalence between the resulting two terms \(\phi *_2 \psi \to \psi *_2 \phi\)
-which is called the \emph{syllepsis} and has the type:
+\rangle}\]
+In this case, the extra dimension gives enough freedom to give an equivalence
+between the resulting two terms \(\phi *_2 \psi \to \psi *_2 \phi\) which is
+called the \emph{syllepsis} and has the type:
 \[ \mathsf{Syl}_{\phi,\psi} : \mathsf{EH}_{\phi,\psi} \to
-\mathsf{EH}^{-1}_{\psi,\phi}\] To define this term, a similar approach to the
-approach used for Eckmann-Hilton of giving a single coherence containing a more
-complex type and a substitution containing multiple identity terms, and letting
-the \Cattsu reduction simplify the type to the required one. We delay defining
-this term until \cref{sec:towards-nbe}, where the implementation presented in
-this section can be used to check that the resulting term is well-formed.
+\mathsf{EH}^{-1}_{\psi,\phi}\]
+To define this term, a similar approach to the approach used for Eckmann-Hilton
+of giving a single coherence containing a more complex type and a substitution
+containing multiple identity terms, and letting the \Cattsu reduction simplify
+the type to the required one. We delay defining this term until
+\cref{sec:towards-nbe}, where the implementation presented in this section can
+be used to check that the resulting term is well-formed.
 
 \subsection{Normalisation for \texorpdfstring{\Cattsu}{Cattsu}}
 \label{sec:reduction-cattsu}
@@ -10569,19 +10655,19 @@ reductions from \ecr, the generated reduction is still non-terminating. Consider
 the term \(\id(\arr t A t,\id(A,t))\) for some term \(t\) of type \(A\). Then
 the following reduction sequence can be formed:
 \[ \id(\arr t A t,\id(A,t)) \red \Coh {D^n} {\id(\wk(U^n), d_n) \to
-\id(\wk(U^n), d_n)} {\{A,t\}} \red \id(\arr t A t, \id(A,t)) \] where \(n =
-\dim(A)\), the first reduction is by pruning, and the second reduction is by
-endo-coherence removal. We therefore choose to also restrict the pruning
-equality rule set to not apply when the head term is an identity, obtaining the
-set \prune'. We can now define the reduction system for \Cattsu.
+\id(\wk(U^n), d_n)} {\{A,t\}} \red \id(\arr t A t, \id(A,t)) \]
+where \(n = \dim(A)\), the first reduction is by pruning, and the second
+reduction is by endo-coherence removal. We therefore choose to also restrict the
+pruning equality rule set to not apply when the head term is an identity,
+obtaining the set \prune'. We can now define the reduction system for \Cattsu.
 
 \begin{definition}
   Define the reduction \(\red_{\su'}\) to be the reduction generated by the
   equality rule set \(\su'\) where
-  \[ \su' = \dr \cup \prune' \cup \ecr'\] where \ecr' is the endo-coherence
-  removal set without identity to identity equalities and \prune' is the pruning
-  set restricted to the triples where the left-hand side term is not an
-  identity.
+  \[ \su' = \dr \cup \prune' \cup \ecr'\]
+  where \ecr' is the endo-coherence removal set without identity to identity
+  equalities and \prune' is the pruning set restricted to the triples where the
+  left-hand side term is not an identity.
 \end{definition}
 
 The reduction \(\red_{\su'}\) applies equality rules from \Cattsu when the redex
@@ -10601,11 +10687,11 @@ that all rules reduce the syntactic complexity of terms.
   that
   \[s \equiv \Coh {\lfloor \mathcal{D} \rfloor} {A} {\sigma} \qquad t \equiv
     \Coh {\lfloor \mathcal{D} \sslash p \rfloor} {A \sub {\pi_p}} {\sigma
-    \sslash p}\] where \(s\) is not an identity and \(\lfloor p \rfloor \sub
-    \sigma\) is. We then have \(\sc(s) = \sc(\sigma)\) and \(\sc(t) = \sc(\sigma
-    \sslash p)\), but \(\sigma \sslash p\) is simply \(\sigma\) with two terms
-    removed, one of which is known to be a coherence, and so \(\sc(s) >
-    \sc(t)\).
+  \sslash p}\]
+  where \(s\) is not an identity and \(\lfloor p \rfloor \sub \sigma\) is. We
+  then have \(\sc(s) = \sc(\sigma)\) and \(\sc(t) = \sc(\sigma \sslash p)\), but
+  \(\sigma \sslash p\) is simply \(\sigma\) with two terms removed, one of which
+  is known to be a coherence, and so \(\sc(s) > \sc(t)\).
 \end{proof}
 \begin{corollary}
   The reduction \(\red_{\su'}\) is strongly terminating.
@@ -10630,22 +10716,22 @@ therefore prove that this agrees with the equality relation from \Cattsu.
   We use \cref{lem:subset-lem} for both directions. Since \(\su' \subseteq
   \su\), we are only required to show that if \((\Gamma, s, t) \in \su\) with
   \(\Gamma \vdash_{\su'} s : A\) for some \(A : \Type_\Gamma\) then
-  \[ \Gamma \vdash_{\su'} s = t\] If \((\Gamma,s,t) \in \su'\), then the
-  equality follows from the \textsc{rule} constructor. Otherwise, \(s\) must be
-  an identity and the rule is an instance of endo-coherence removal or pruning.
-  Suppose \(s\) reduces to \(t\) by endo-coherence removal. Then \(s \equiv
-  \id(A,u)\) and
+  \[ \Gamma \vdash_{\su'} s = t\]
+  If \((\Gamma,s,t) \in \su'\), then the equality follows from the \textsc{rule}
+  constructor. Otherwise, \(s\) must be an identity and the rule is an instance
+  of endo-coherence removal or pruning. Suppose \(s\) reduces to \(t\) by
+  endo-coherence removal. Then \(s \equiv \id(A,u)\) and
   \[t \equiv \id(\wk(U^n) \sub {\{A,u\}}, d_n \sub {\{A,u\}}) \equiv \id(A,u)
-  \equiv s\] and so the equality holds by reflexivity.
+  \equiv s\]
+  and so the equality holds by reflexivity.
 
   Now assume \(s\) reduces by pruning to \(t\). Letting \(s \equiv \id(A,u)\)
   and \(n = \dim(A)\), we get:
   \begin{align*}
-    t &\equiv \Coh {\lfloor \mathcal{D}^n \sslash p^n \rfloor} {\arr
-    {d_n} {\wk(U^n)} {d_n} \sub {\pi_{p^n}}} {\{A,u\} \sslash p} \\
-    &= \id(\wk(U^n) \sub {\pi_{p^n}} \sub {\{A,u\} \sslash p^n}, d_n
-    \sub {\pi_{p^n}} \sub {\{A,u\} \sslash p^n})&\text{by
-    endo-coherence removal}\\
+    t &\equiv \Coh {\lfloor \mathcal{D}^n \sslash p^n \rfloor} {\arr {d_n}
+    {\wk(U^n)} {d_n} \sub {\pi_{p^n}}} {\{A,u\} \sslash p} \\
+    &= \id(\wk(U^n) \sub {\pi_{p^n}} \sub {\{A,u\} \sslash p^n}, d_n \sub
+    {\pi_{p^n}} \sub {\{A,u\} \sslash p^n})&\text{by endo-coherence removal}\\
     &\equiv \id(\wk(U^n),d_n) \sub {\pi_{p^n} \bullet \{A,u\} \sslash p^n}\\
     &= \id(\wk(U^n),d_n) \sub {\{A,u\}}&\text{by \cref{prop:prune-ty}}\\
     &\equiv \id(\wk(U^n) \sub {\{A,u\}}, d_n \sub {\{A,u\}})\\
@@ -10701,11 +10787,11 @@ employ the strategy introduced in \cref{lem:conf-strat}.
   well-formed, we must have \(n > 0\) and so \(A \equiv \arr b {A'} c\).
   Therefore:
   \begin{align*}
-    u &\equiv \Coh {\lfloor \mathcal{D}^{n} \sslash p \rfloor}
-    {\wk(U^n) \sub {\pi_{p}}} {\{A,\id(B,a)\} \sslash p}\\
-    &\equiv \Coh {D^{n-1}} {\wk(U^n) \sub {\{\arr {d_{n-1}}
-    {\wk(U^{n-1})} {d_{n-1}}, \id(\wk(U^{n-1}), d_{n-1})\} }}
-    {\{A',b\}}&\text{by \cref{prop:prune-disc}}\\
+    u &\equiv \Coh {\lfloor \mathcal{D}^{n} \sslash p \rfloor} {\wk(U^n) \sub
+    {\pi_{p}}} {\{A,\id(B,a)\} \sslash p}\\
+    &\equiv \Coh {D^{n-1}} {\wk(U^n) \sub {\{\arr {d_{n-1}} {\wk(U^{n-1})}
+    {d_{n-1}}, \id(\wk(U^{n-1}), d_{n-1})\} }} {\{A',b\}}&\text{by
+    \cref{prop:prune-disc}}\\
     &\equiv \Coh {D^{n-1}} {\arr {d_{n-1}} {\wk(U^{n-1})} {d_{n-1}}}
     {\{A',b\}}\\
     &\equiv \id(A',b)
@@ -10713,28 +10799,30 @@ employ the strategy introduced in \cref{lem:conf-strat}.
   Now as \(s\) is well-formed we have \(\Gamma \vdash \{A,\id(B,a)\} : D^n\) and
   so by \cref{lem:disc-typing}, we have \(\Gamma \vdash \id(B,a) : A\) and hence
   by \cref{cor:id-typing} and uniqueness of typing:
-  \[ \arr a {B} a = A \equiv \arr b {A'} c\] and so \(a = b\) and \(B = A'\) and
-  hence \(s \equiv \id(A', b) = \id(B,a) \equiv t\). Since \(\dim(a) = \dim(B) <
-  \dim(s)\), we get \(t =_{\dim(s)} u\) as required.
+  \[ \arr a {B} a = A \equiv \arr b {A'} c\]
+  and so \(a = b\) and \(B = A'\) and hence \(s \equiv \id(A', b) = \id(B,a)
+  \equiv t\). Since \(\dim(a) = \dim(B) < \dim(s)\), we get \(t =_{\dim(s)} u\)
+  as required.
 
   \textbf{Endo coherence removal:} Suppose \(s \red t\) is an endo-coherence
   removal reduction. Then:
   \[ s \equiv \Coh {\Delta} {\arr a A a} {\sigma} \red \id(A \sub \sigma, a \sub
-  \sigma) \equiv t\] with \(s\) not being an identity. We now split on the
-  reduction \(s \red u\). First consider when it is an argument reduction
-  generated by \(\sigma \red \tau\). Then by \cref{prop:red-sub}, we have \(t
-  \equiv \id(A \sub \sigma, a \sub \sigma) \red^* \id(A \sub \tau, a \sub
-  \tau)\). By endo-coherence removal, \(u \red \id(A \sub \tau, a \sub \tau)\),
-  completing this case.
+  \sigma) \equiv t\]
+  with \(s\) not being an identity.
+  We now split on the reduction \(s \red u\). First consider when it is an
+  argument reduction generated by \(\sigma \red \tau\). Then by
+  \cref{prop:red-sub}, we have \(t \equiv \id(A \sub \sigma, a \sub \sigma)
+  \red^* \id(A \sub \tau, a \sub \tau)\). By endo-coherence removal, \(u \red
+  \id(A \sub \tau, a \sub \tau)\), completing this case.
 
   Now suppose the reduction \(s \red u\) is an instance of cell reduction. If it
   is generated from a reduction \(A \red B\) then by \cref{prop:red-sub}, \(t
   \red \id(B \sub \sigma, a \sub \sigma)\) and by endo-coherence removal:
   \[u \equiv \Coh \Delta {\arr a B a} \sigma \red \id(B \sub \sigma, a \sub
-  \sigma)\] We now consider when the reduction is generated by \(\arr a A a \red
-  \arr b A a\), with the case where it is generated by \(\arr a A a \red \arr a
-  A b\) following symmetrically. We consider the reductions sequence  from
-  \(u\):
+  \sigma)\]
+  We now consider when the reduction is generated by \(\arr a A a \red \arr b A
+  a\), with the case where it is generated by \(\arr a A a \red \arr a A b\)
+  following symmetrically. We consider the reductions sequence  from \(u\):
   \begin{align*}
     u &\equiv \Coh \Delta {\arr b A a} {\sigma} \\
     &\red \Coh \Delta {\arr b A b} \sigma &\text{by cell reduction}\\
@@ -10747,10 +10835,11 @@ employ the strategy introduced in \cref{lem:conf-strat}.
   \(\Delta = \lfloor \mathcal{D} \rfloor\) and that the pruning is generated
   from peak \(p : \mathcal{D}\). Then:
   \[ u \equiv \Coh {\lfloor \mathcal{D} \sslash p \rfloor} {(\arr a A a) \sub
-  {\pi_p}} {\sigma \sslash p}\] Then:
+  {\pi_p}} {\sigma \sslash p}\]
+  Then:
   \begin{align*}
-    u &\red \id(A \sub {\pi_p} \sub {\sigma\sslash p},a \sub {\pi_p}
-    \sub {\sigma\sslash p})&\text{by \cref{lem:always-ecr}}\\
+    u &\red \id(A \sub {\pi_p} \sub {\sigma\sslash p},a \sub {\pi_p} \sub
+    {\sigma\sslash p})&\text{by \cref{lem:always-ecr}}\\
     &\equiv \id(A,a) \sub {\pi_p \bullet \sigma \sslash p} \\
     &=_{\dim(s)} \id(A,a) \sub \sigma
   \end{align*}
@@ -10758,33 +10847,36 @@ employ the strategy introduced in \cref{lem:conf-strat}.
   that \(\dim(A) = \dim(a) < \dim(s)\).
 
   \textbf{Pruning:} Let \(s \red t\) be a reduction by pruning with
-  \[ s \equiv \Coh {\lfloor \mathcal{D} \rfloor} A \sigma\] for some
-  \(\mathcal{D} : \Dyck_0\) with peak \(p : \Peak_{\mathcal{D}}\) such that
-  \(\lfloor p \rfloor \sub \sigma\) is an identity. Then:
+  \[ s \equiv \Coh {\lfloor \mathcal{D} \rfloor} A \sigma\]
+  for some \(\mathcal{D} : \Dyck_0\) with peak \(p : \Peak_{\mathcal{D}}\) such
+  that \(\lfloor p \rfloor \sub \sigma\) is an identity. Then:
   \[ t \equiv \Coh {\lfloor \mathcal{D} \sslash p \rfloor} {A \sub {\pi_p}}
-  {\sigma \sslash p}\] We now split on the reduction \(s \red u\). First suppose
-  it is given by an argument reduction \(\sigma \red \tau\). Identities do not
-  admit head reductions, meaning \(\lfloor p \rfloor \sub \tau\) is still an
-  identity. Therefore, pruning can be applied to \(u\) to get:
+  {\sigma \sslash p}\]
+  We now split on the reduction \(s \red u\). First suppose it is given by an
+  argument reduction \(\sigma \red \tau\). Identities do not admit head
+  reductions, meaning \(\lfloor p \rfloor \sub \tau\) is still an identity.
+  Therefore, pruning can be applied to \(u\) to get:
   \[ u \red \Coh {\lfloor \mathcal{D} \sslash p \rfloor} {A \sub {\pi_p}} {\tau
-  \sslash p}\] Now \(\sigma \sslash p\) is simply \(\sigma\) with two terms
-  removed, and so \(\sigma \sslash p \red^* \tau \sslash p\), meaning \(t\)
-  reduces to the same term as \(u\).
+  \sslash p}\]
+  Now \(\sigma \sslash p\) is simply \(\sigma\) with two terms removed, and so
+  \(\sigma \sslash p \red^* \tau \sslash p\), meaning \(t\) reduces to the same
+  term as \(u\).
 
   If \(s \red u\) is a cell reduction \(A \red B\), then pruning can be applied
   to \(u\) immediately to get the term:
   \[\Coh {\lfloor \mathcal{D} \sslash p \rfloor} {B \sub {\pi_p}} {\sigma
-  \sslash p}\] but \(t\) also reduces to this term by \cref{prop:red-sub}.
+  \sslash p}\]
+  but \(t\) also reduces to this term by \cref{prop:red-sub}.
 
   Let \(s \red u\) be a second pruning reduction, at a different peak \(q :
   \Peak_{\mathcal{D}}\). By \cref{prop:prune-conf}, there is a common reduct:
   \[ \Coh {\lfloor (\mathcal{D} \sslash p) \sslash q_p \rfloor} {A \sub {\pi_p}
-  \sub{\pi_{q_p}}} {(\sigma \sslash p) \sslash q_p} \] which both reduce to by
-  pruning if \(\lfloor q_p \rfloor\) and \(\lfloor p_q \rfloor\) are identities.
-  However:
-  \[\lfloor q_p \rfloor \equiv \lfloor q \rfloor \sub {\pi_p}\] and \(\lfloor q
-  \rfloor\) must be an identity for \(s \red u\) to be a valid instance of
-  pruning. Therefore, as identities are preserved by application of
+  \sub{\pi_{q_p}}} {(\sigma \sslash p) \sslash q_p} \]
+  which both reduce to by pruning if \(\lfloor q_p \rfloor\) and \(\lfloor p_q
+  \rfloor\) are identities. However:
+  \[\lfloor q_p \rfloor \equiv \lfloor q \rfloor \sub {\pi_p}\]
+  and \(\lfloor q \rfloor\) must be an identity for \(s \red u\) to be a valid
+  instance of pruning. Therefore, as identities are preserved by application of
   substitution, \(\lfloor  q_p \rfloor\) is an identity. Similarly, \(\lfloor
   p_q \rfloor\) is an identity, and so both \(t\) and \(u\) reduce to the term
   above.
@@ -10843,16 +10935,17 @@ iterated canonical identity from \cref{def:canonical-id}.
 
   We now let \(\Gamma\) be the smallest ps-context prefix of \(\Delta\) such
   that \(\Gamma\) is not a disc. We must have:
-  \[ \Gamma \equiv D^k, (y : A), (f : \arr x A y)\] where \(D^k
-  \vdash_{\mathsf{ps}} x : A\). Furthermore, the last rule used in this
-  derivation must be \textsc{psd}, as if it were \textsc{pse} or \textsc{pss}
-  then \(k = \dim(A)\) and \(\Gamma \equiv D^{k+1}\), breaking the assumption
-  that \(\Gamma\) is not a disc. Therefore, \(D^k \vdash_{\mathsf{ps}} g : \arr
-  w A x\) for some variables \(g\) and \(x\). However, now \(g \sub \sigma\),
-  \(x \sub \sigma\), and \(f \sub \sigma\) are variables of \(D^n\) such that
-  \(\tgt(g \sub \sigma) \equiv x \sub \sigma \equiv \src(f \sub \sigma)\). No
-  such variables exist in \(D^n\) and so we reach a contradiction. We therefore
-  deduce that \(\Delta\) is a disc \(D^n\) for some \(n\).
+  \[ \Gamma \equiv D^k, (y : A), (f : \arr x A y)\]
+  where \(D^k \vdash_{\mathsf{ps}} x : A\). Furthermore, the last rule used in
+  this derivation must be \textsc{psd}, as if it were \textsc{pse} or
+  \textsc{pss} then \(k = \dim(A)\) and \(\Gamma \equiv D^{k+1}\), breaking the
+  assumption that \(\Gamma\) is not a disc. Therefore, \(D^k
+  \vdash_{\mathsf{ps}} g : \arr w A x\) for some variables \(g\) and \(x\).
+  However, now \(g \sub \sigma\), \(x \sub \sigma\), and \(f \sub \sigma\) are
+  variables of \(D^n\) such that \(\tgt(g \sub \sigma) \equiv x \sub \sigma
+  \equiv \src(f \sub \sigma)\). No such variables exist in \(D^n\) and so we
+  reach a contradiction. We therefore deduce that \(\Delta\) is a disc \(D^n\)
+  for some \(n\).
 
   Now \(t \equiv \Coh {D^n} {\arr u A v} \sigma\) and so by induction on
   subterms, \(u\) and \(v\) are equal to iterated canonical identities. We now
@@ -10896,8 +10989,8 @@ and substitutions in pasting diagrams.
 
   Now suppose that \(y \not\in\Supp(t)\). Then we let \(p\) be the peak
   corresponding to \(f\) and consider the term:
-  \[t \sub {\pi_p} : \Term_{\lfloor \mathcal{D}\sslash p \rfloor}\] Then
-  \(\Supp(t \sub {\pi_p}) = \Supp(t)\), which contradicts the minimality of
+  \[t \sub {\pi_p} : \Term_{\lfloor \mathcal{D}\sslash p \rfloor}\]
+  Then \(\Supp(t \sub {\pi_p}) = \Supp(t)\), which contradicts the minimality of
   \(\mathcal{D}\). By a similar argument, \(x\) must also be in \(\Supp(t)\). It
   is also the case that if such a variable \(f : x \to y\) with \(f \not\in
   \Supp(t)\) and \(\{x,y\} \subseteq \Supp(t)\) exists, then \(\Supp(t)\) cannot
@@ -10954,8 +11047,8 @@ is strongly terminating and confluent.
     &(z : *)&&(h : y \to z)
   \end{alignat*}
   we can define the associator as:
-  \[ \alpha = \Coh \Delta {(f * g) * h \to f * (g * h)} {\id_\Delta}\] This then
-  admits the following reduction sequence in \Cattsua:
+  \[ \alpha = \Coh \Delta {(f * g) * h \to f * (g * h)} {\id_\Delta}\]
+  This then admits the following reduction sequence in \Cattsua:
   \begin{align*}
     \alpha &\rightsquigarrow \Coh \Delta {f*g*h \to f * (g * h)}
     {\id_\Delta}&\text{by insertion}\\
@@ -10970,8 +11063,8 @@ We formally define \Cattsua as the version of \Cattr generated by the rule set
 
 \begin{definition}
   We define the equality rule set \sua for \Cattsua by:
-  \[ \sua = \dr \cup \ecr \cup \insert \] \Cattsua is then the variant of \Cattr
-  where \(\mathcal{R} = \sua\).
+  \[ \sua = \dr \cup \ecr \cup \insert \]
+  \Cattsua is then the variant of \Cattr where \(\mathcal{R} = \sua\).
 \end{definition}
 
 As before, when we do not specify an operation set, it should be assumed that
@@ -11025,22 +11118,23 @@ now using \cref{thm:sua-conds}.
   it will be sufficient to prove that for an insertion point \((S, P, T)\),
   dimension \(n \in \mathbb{N}\) and \(\epsilon \in \{-,+\}\) that:
   \[ \bdry n \epsilon S \sub {\kappa_{S,P,T}} = \bdry n \epsilon {\insertion S P
-  T}\] Then:
+  T}\]
+  Then:
   \begin{align*}
-    \bdry n \epsilon S \sub {\kappa_{S,P,T}} &= \Supp(\stdtm {\bound
-    n S} n \sub {\incbd n \epsilon S}) \sub {\kappa_{S,P,T}}&\text{by
-    \cref{lem:std-supp}}\\
+    \bdry n \epsilon S \sub {\kappa_{S,P,T}} &= \Supp(\stdtm {\bound n S} n \sub
+    {\incbd n \epsilon S}) \sub {\kappa_{S,P,T}}&\text{by \cref{lem:std-supp}}\\
     &= \Supp(\stdtm {\bound n S} n \sub {\incbd n \epsilon S \bullet
     \kappa_{S,P,T}})\\
-    &= \Supp(\stdtm {\bound n {\insertion S P T}} n \sub {\incbd n
-    \epsilon {\insertion S P T}})&\text{by (*)}\\
+    &= \Supp(\stdtm {\bound n {\insertion S P T}} n \sub {\incbd n \epsilon
+    {\insertion S P T}})&\text{by (*)}\\
     &= \bdry n \epsilon {\insertion S P T} &\text{by \cref{lem:std-supp}}
   \end{align*}
   where the equality \((*)\) holds as \sua satisfies the support condition by
   \cref{thm:sua-conds} and:
   \[ \insertion S P T \vdash_\sua \stdtm {\bound n S} n \sub {\incbd n \epsilon
     S \bullet \kappa_{S,P,T}} = \stdtm {\bound n {\insertion S P T}} n \sub
-    {\incbd n \epsilon {\insertion S P T}} \] by \cref{thm:std-insert-props}.
+  {\incbd n \epsilon {\insertion S P T}} \]
+  by \cref{thm:std-insert-props}.
 \end{proof}
 
 \subsection{Reduction for \texorpdfstring{\Cattsua}{Cattsua}}
@@ -11076,12 +11170,13 @@ normal form. We now define the resulting reduction system.
 \begin{definition}
   Define the reduction \(\red_{\sua'}\) to be the reduction generated by the
   equality rule set \(\sua'\) where:
-  \[\sua' = \dr \cup \ecr' \cup \insert'\] where \(\ecr'\) is the endo-coherence
-  removal set without the identity-to-identity reductions, and \(\insert'\) is
-  the insertion rule set restricted to insertion redexes \((S,P,T,\Gamma,L,M)\)
-  and types \(A\) such that \(\SCoh S A L\) is not an identity or a unary
-  composite, and \(L(\olsi P) \equiv \stdcoh T {\lh(P)} \sub M\) is an identity
-  or a standard composite which is not a unary composite.
+  \[\sua' = \dr \cup \ecr' \cup \insert'\]
+  where \(\ecr'\) is the endo-coherence removal set without the
+  identity-to-identity reductions, and \(\insert'\) is the insertion rule set
+  restricted to insertion redexes \((S,P,T,\Gamma,L,M)\) and types \(A\) such
+  that \(\SCoh S A L\) is not an identity or a unary composite, and \(L(\olsi P)
+  \equiv \stdcoh T {\lh(P)} \sub M\) is an identity or a standard composite
+  which is not a unary composite.
 \end{definition}
 
 It can be determined by a simple observation that \(\sua'\) is tame, as
@@ -11111,8 +11206,9 @@ equality.
   \equiv \SCoh S A L\) is not an identity or disc. Then there exists a term
   \(s\) with:
   \[a \red_{\sua'}^* s =_{\dim(a)} \SCoh {\insertion S P T} {A \sub
-  {\kappa_{S,P,T}}} {\insertion L P M}\] even when \(L(\olsi P)\) is a unary
-  composite or is not a standard composite or identity.
+  {\kappa_{S,P,T}}} {\insertion L P M}\]
+  even when \(L(\olsi P)\) is a unary composite or is not a standard composite
+  or identity.
 \end{lemma}
 
 \begin{proof}
@@ -11123,20 +11219,22 @@ equality.
   T \equiv S\), \(\insertion L P M \equiv^{\max} L\) and \(\kappa_{S,P,T} =
   \id_S\) and so
   \[a  =_{\dim(a)} \SCoh {\insertion S P T} {A \sub {\kappa_{S,P,T}}}
-  {\insertion L P M}\] We now assume that \(\lh(P) > \dim(T)\). We may also
-  assume without loss of generality that \(\stdcoh T {\lh(P)}\) is not an
-  identity, as otherwise it would be immediately insertable. This allows us to
-  perform endo-coherence removal to get:
+  {\insertion L P M}\]
+  We now assume that \(\lh(P) > \dim(T)\). We may also assume without loss of
+  generality that \(\stdcoh T {\lh(P)}\) is not an identity, as otherwise it
+  would be immediately insertable. This allows us to perform endo-coherence
+  removal to get:
   \[\stdcoh T {\lh(P)} \red \id(\stdty T {\lh(P) - 1}, \stdtm T {\lh(P)- 1})
-  \sub M\] Now suppose \(b \equiv \Coh S A {L'}\) where \(L'\) is the result of
-  applying the above reduction to the term of \(L\) corresponding to \(\olsi
-  P\). Since \(L'(\olsi P)\) is now an identity it can be inserted to get \(b
-  \red c\) where:
+  \sub M\]
+  Now suppose \(b \equiv \Coh S A {L'}\) where \(L'\) is the result of applying
+  the above reduction to the term of \(L\) corresponding to \(\olsi P\). Since
+  \(L'(\olsi P)\) is now an identity it can be inserted to get \(b \red c\)
+  where:
   \begin{align*}
-    c &\equiv \SCoh {S \sslash P} {A \sub {\pi_P}} {\insertion {L'} P
-    {(\{\stdtm T {\lh(P) - 1}\} \bullet M)}}\\
-    &\equiv \SCoh {S \sslash P} {A \sub {\pi_P}} {\insertion {L'} P
-    {(\{\stdcoh T {\lh(P) - 1}\} \bullet M)}}
+    c &\equiv \SCoh {S \sslash P} {A \sub {\pi_P}} {\insertion {L'} P {(\{\stdtm
+    T {\lh(P) - 1}\} \bullet M)}}\\
+    &\equiv \SCoh {S \sslash P} {A \sub {\pi_P}} {\insertion {L'} P {(\{\stdcoh
+    T {\lh(P) - 1}\} \bullet M)}}
   \end{align*}
   where \(\stdtm T {\lh(P - 1)} \equiv \stdcoh T {\lh(P - 1)}\) as if \(\stdtm T
   {\lh(P)-1}\) was a variable then \(\stdcoh T {\lh(P)}\) would be an identity.
@@ -11153,24 +11251,24 @@ equality.
 
   By \cref{lem:pruned-bp,lem:iota-kappa-comm}, we now have:
   \begin{align*}
-    &\phantom{{}\equiv{}}\olsi {P'} \sub {\insertion{L'} P
-    {(\{\stdcoh T {\lh(P) - 1}\} \bullet M)}} \\
-    &\equiv d_{\lh(P) - 1} \sub {\iota_{S,P,D^{\lh(P) - 1}} \bullet
-    (\insertion {L'} P {(\{\stdcoh T {\lh(P) - 1}\} \bullet M)})} \\
+    &\phantom{{}\equiv{}}\olsi {P'} \sub {\insertion{L'} P {(\{\stdcoh T {\lh(P)
+    - 1}\} \bullet M)}} \\
+    &\equiv d_{\lh(P) - 1} \sub {\iota_{S,P,D^{\lh(P) - 1}} \bullet (\insertion
+    {L'} P {(\{\stdcoh T {\lh(P) - 1}\} \bullet M)})} \\
     &\equiv d_{\lh(P) - 1} \sub {\{\stdcoh T {\lh(P) - 1}\} \bullet M} \\
     &\equiv \stdcoh T {\lh(P) - 1}\sub M
   \end{align*}
   As \(\lh(P') - \dim(T) = \lh(P) - \dim(T) - 1\) we can use the induction
   hypothesis to get that \(c \leadsto d\) and:
   \begin{align*}
-    d =_{\dim(a)}{} &\SCoh {\insertion {(S \sslash P)} {P'} T} {A
-    \sub {\pi_P \bullet \kappa_{S\sslash P,P',T}}} {\\&\insertion
-    {(\insertion {L'} P {(\{\stdcoh T {\lh(P) - 1}\} \bullet M)})} {P'} {M}}
+    d =_{\dim(a)}{} &\SCoh {\insertion {(S \sslash P)} {P'} T} {A \sub {\pi_P
+    \bullet \kappa_{S\sslash P,P',T}}} {\\&\insertion {(\insertion {L'} P
+    {(\{\stdcoh T {\lh(P) - 1}\} \bullet M)})} {P'} {M}}
   \end{align*}
   By \cref{lem:pruned-bp,lem:insertion-change-max},
   \begin{equation*}
-    d =_{\dim(a)} \SCoh {\insertion S P T} {A \sub {\kappa_{S,P,T}}}
-    {\insertion L P M}
+    d =_{\dim(a)} \SCoh {\insertion S P T} {A \sub {\kappa_{S,P,T}}} {\insertion
+    L P M}
   \end{equation*}
   which completes the proof as \(a \leadsto^* d\).
 \end{proof}
@@ -11187,9 +11285,9 @@ We further show that insertions into discs can be simulated by disc removal.
 \begin{proof}
   We have the equality:
   \begin{align*}
-    \SCoh {\insertion {D^n} P T} {\stdty {D^n} n \sub \kappa}
-    {\insertion L P M} &\equiv \SCoh T {\stdty {D^n} n \sub
-    {\kappa_{D^n,P,T}}} M&\text{ \cref{lem:disc-insertion-1}}\\
+    \SCoh {\insertion {D^n} P T} {\stdty {D^n} n \sub \kappa} {\insertion L P M}
+    &\equiv \SCoh T {\stdty {D^n} n \sub {\kappa_{D^n,P,T}}} M&\text{
+    \cref{lem:disc-insertion-1}}\\
     &=_n \SCoh T {\stdty T n} M&\text{by \cref{thm:std-insert-props}}\\
     &\equiv \stdcoh T n \sub M\\
     &\equiv L(\olsi P)
@@ -11210,21 +11308,23 @@ Using these lemmas, we now show that the type theories \Cattsua and
   Both directions proceed by \cref{lem:subset-lem}. Since \(\sua' \subseteq
   \sua\), it suffices to show that if \((\Gamma,s,t) \in \sua\) with \(\Gamma
   \vdash_{\sua'} s : A\) for some type \(A\) then:
-  \[ \Gamma \vdash_{\sua'} s = t\] If \((\Gamma,s,t) \in \sua'\), then there is
-  nothing to do. If it is in \(\ecr'\), then the argument is the same as in the
-  proof of \cref{prop:suprime-equiv}. We therefore assume \((\Gamma,s,t) \in
-  \insert\), and so there must be some insertion redex \((S,P,T,\Gamma,L,M)\)
-  such that \(s \equiv \lfloor \SCoh S B L \rfloor\) and
+  \[ \Gamma \vdash_{\sua'} s = t\]
+  If \((\Gamma,s,t) \in \sua'\), then there is nothing to do. If it is in
+  \(\ecr'\), then the argument is the same as in the proof of
+  \cref{prop:suprime-equiv}. We therefore assume \((\Gamma,s,t) \in \insert\),
+  and so there must be some insertion redex \((S,P,T,\Gamma,L,M)\) such that \(s
+  \equiv \lfloor \SCoh S B L \rfloor\) and
   \[ t \equiv \lfloor  \SCoh {\insertion S P T} {B \sub {\kappa_{S,P,T}}}
-  {\insertion L P M} \rfloor \] By an induction on dimension, we assume that the
-  theories generated by \sua and \(\sua'\) are already equivalent for terms of
-  dimension less than \(\dim(s)\). We begin a case analysis of such reductions
-  than are not in \insert. If \(s\) is an identity, then \(B \equiv b \to b\)
-  for some term \(b\) and so \(t\) is an endo-coherence. If \(t\) is already an
-  identity, then \(s \equiv t\). Otherwise:
+  {\insertion L P M} \rfloor \]
+  By an induction on dimension, we assume that the theories generated by \sua
+  and \(\sua'\) are already equivalent for terms of dimension less than
+  \(\dim(s)\). We begin a case analysis of such reductions than are not in
+  \insert. If \(s\) is an identity, then \(B \equiv b \to b\) for some term
+  \(b\) and so \(t\) is an endo-coherence. If \(t\) is already an identity, then
+  \(s \equiv t\). Otherwise:
   \begin{align*}
-    \Gamma \vdash_{\sua'} t &= \id(b \sub {\kappa_{S,P,T}}) \sub
-    {\insertion L P M}\\
+    \Gamma \vdash_{\sua'} t &= \id(b \sub {\kappa_{S,P,T}}) \sub {\insertion L P
+    M}\\
     &\equiv \id(b) \sub {\kappa_{S,P,T} \bullet (\insertion L P M)}\\
     &= \id(b) \sub L\\
     &\equiv s
@@ -11252,10 +11352,10 @@ complexity of the terms involved.
   We extend the notion of syntactic depth to labellings in the obvious way. We
   begin by noting that:
   \begin{align*}
-    \sc(L) &= \left(\bighash_{p \neq \olsi P} \sc(L(p))\right) \+
-    \sc(L(\olsi P))\\
-    &= \left(\bighash_{p \neq \olsi P} \sc(L(p))\right) \+
-    \sc(\stdcoh T {\lh(P)} \sub M)\\
+    \sc(L) &= \left(\bighash_{p \neq \olsi P} \sc(L(p))\right) \+ \sc(L(\olsi
+    P))\\
+    &= \left(\bighash_{p \neq \olsi P} \sc(L(p))\right) \+ \sc(\stdcoh T
+    {\lh(P)} \sub M)\\
     &> \left(\bighash_{p\neq \olsi P} \sc(L(p))\right) \+ \sc(M)
   \end{align*}
   Further, we show that for all labels \(L\) and \(M\) with appropriate
@@ -11266,9 +11366,9 @@ complexity of the terms involved.
   and crucially not \(L(\olsi P)\). If instead \(P = k :: P_2\) then by
   induction hypothesis we get that:
   \[\sc(\insertion {L_k} {P_2} {M_0}) \leq \bighash_{p\neq \olsi {P_2}}
-  \sc(L_k(p)) \+ \sc(M_1)\] It is then clear again that \(\insertion L P M\)
-  contains terms from \(M\) and terms of \(L\) which are not \(L(\olsi P)\), and
-  so the inequality holds.
+  \sc(L_k(p)) \+ \sc(M_1)\]
+  It is then clear again that \(\insertion L P M\) contains terms from \(M\) and
+  terms of \(L\) which are not \(L(\olsi P)\), and so the inequality holds.
 \end{proof}
 
 We can now show that insertion reductions reduce syntactic complexity.
@@ -11281,7 +11381,8 @@ We can now show that insertion reductions reduce syntactic complexity.
 \begin{proof}
   Let \((S,P,T,\Gamma,L,M)\) be an insertion redex so that:
   \[\SCoh S A L \red \SCoh {\insertion S P T} {A \sub \kappa} {\insertion L P
-  M}\] by insertion. By assumption \(\Coh S A L\) is not an identity. Then:
+  M}\]
+  by insertion. By assumption \(\Coh S A L\) is not an identity. Then:
   \begin{align*}
     \sc(t) &= \sc(\SCoh {\insertion S P T} {A \sub \kappa} {\insertion L P M})\\
     &\leq 2\omega^{\dim(A)} \+ \sc(\insertion L P M)\\
@@ -11351,11 +11452,12 @@ composite which is not unary. We now split on the reduction \(a \red c\).
 \(\stdcoh T {\lh(P)} \sub M\) admits an insertion along redex \((T, Q, U,
 \Gamma, M, N)\). Then:
 \[\stdcoh T {\lh(P)} \sub M \red \SCoh {\insertion T Q U} {\stdty T
-{\lh(P)}\sub{\kappa_{T,Q,U}}} {\insertion M Q N}\] We then have \(c \equiv \SCoh
-S A {L'}\) where \(L'\) is \(L\) with the reduction above applied. We can
-conclude that \(\stdcoh T {\lh(P)}\) must be a composite (i.e.\ not an identity)
-as otherwise the second insertion would not be possible. Similarly, \(T\) cannot
-be linear as otherwise \(\stdcoh T {\lh(P)}\) would be a unary composite.
+{\lh(P)}\sub{\kappa_{T,Q,U}}} {\insertion M Q N}\]
+We then have \(c \equiv \SCoh S A {L'}\) where \(L'\) is \(L\) with the
+reduction above applied. We can conclude that \(\stdcoh T {\lh(P)}\) must be a
+composite (i.e.\ not an identity) as otherwise the second insertion would not be
+possible. Similarly, \(T\) cannot be linear as otherwise \(\stdcoh T {\lh(P)}\)
+would be a unary composite.
 
 We now need the following lemmas, the second of which is a directed version of
 \cref{thm:std-insert-props} with more conditions.
@@ -11374,7 +11476,7 @@ We now need the following lemmas, the second of which is a directed version of
   Let \((S,P,T)\) be an insertion point. Then if \(S\) is not linear or \(n \leq
   \dep(S)\), \(\stdty S n \sub{\kappa_{S,P,T}} \red^* \stdty {\insertion S P T}
   n\) and if \(\dep(S) \leq n\) and \(S\) is not linear or \(\dep(S) = n\) then
-  \(\stdtm S n \sub{\kappa_{S,P,T}} \red^* \stdtm {\insertion S P T} n\).
+  \(\stdtm S n  \sub{\kappa_{S,P,T}} \red^* \stdtm {\insertion S P T} n\).
 \end{lemma}
 \begin{proof}
   We proceed by induction on \(n\), starting with the statement for types. If
@@ -11394,18 +11496,18 @@ We now need the following lemmas, the second of which is a directed version of
   {\insertion S P T} n\), and so we need to show that:
   \[\stdtm {\bound n S} n\sub{\incbd n \epsilon S \bullet \kappa_{S,P,T}} \red^*
     \stdty {\bound n {\insertion S P T}} n \sub{\incbd n \epsilon {\insertion S
-    P T}}\]
-    We now note that either the conditions for \cref{lem:insertion-bd-1} or
-    \cref{lem:insertion-bd-2} must hold. If conditions for
-    \cref{lem:insertion-bd-1} hold then (as everything is well-formed in \Catt)
-    we get that the required reduction is trivial. Therefore, we focus on the
-    second case. Here we get from \cref{lem:insertion-bd-2} that:
+  P T}}\]
+  We now note that either the conditions for \cref{lem:insertion-bd-1} or
+  \cref{lem:insertion-bd-2} must hold. If conditions for
+  \cref{lem:insertion-bd-1} hold then (as everything is well-formed in \Catt) we
+  get that the required reduction is trivial. Therefore, we focus on the second
+  case. Here we get from \cref{lem:insertion-bd-2} that:
   \[\stdtm {\bound n S} n\sub{\incbd n \epsilon S \bullet \kappa_{S,P,T}} \equiv
     \stdtm {\bound n S} n\sub{\kappa_{\bound n S,\bound n P,\bound n T} \bullet
-    \incbd n \epsilon {\insertion S P T}}\]
-    Then we can apply the inductive hypothesis for terms as if \(n \leq
-    \dim(S)\) then \(\dep(\bound n S) = n\) and otherwise \(\bound n S = S\) is
-    not linear, and so we get the required reduction.
+  \incbd n \epsilon {\insertion S P T}}\]
+  Then we can apply the inductive hypothesis for terms as if \(n \leq \dim(S)\)
+  then \(\dep(\bound n S) = n\) and otherwise \(\bound n S = S\) is not linear,
+  and so we get the required reduction.
 
   Now we move on to the case for terms. If \(\stdtm S n\) is a variable, then we
   must have that \(S\) is linear and so \(S = D^n\). We must also have in this
@@ -11431,8 +11533,8 @@ We now need the following lemmas, the second of which is a directed version of
   \end{alignat*}
   With the second equivalence coming from \cref{lem:kappa-iota-insert}, the
   second reduction coming from inductive hypothesis (which is well-founded as
-  the proof for types only uses the proof for terms on strictly lower values of
-  \(n\)), and the last reduction coming from \cref{lem:comp-to-tm}.
+    the proof for types only uses the proof for terms on strictly lower values
+  of \(n\)), and the last reduction coming from \cref{lem:comp-to-tm}.
 \end{proof}
 
 By this lemma (as \(T\) is not linear), we have
@@ -11459,9 +11561,9 @@ We now examine how \(b\) reduces. As \(T\) is not linear, there is a branch
 Since \(\th(U) \geq \bh(Q) = \bh(\insertion S P Q)\) we can reduce \(b\) to
 \(b'\) by insertion as follows:
 \begin{equation*}
-  b' \equiv{} \SCoh {\insertion {(\insertion S P T)} {\insertion S P
-  Q} U} {A \sub {\kappa_{S,P,T} \bullet \kappa_{\insertion S P T,
-  \insertion S P Q, U}}} {\insertion {(\insertion L P M)} {\insertion S P Q} N}
+  b' \equiv{} \SCoh {\insertion {(\insertion S P T)} {\insertion S P Q} U} {A
+  \sub {\kappa_{S,P,T} \bullet \kappa_{\insertion S P T, \insertion S P Q, U}}}
+  {\insertion {(\insertion L P M)} {\insertion S P Q} N}
 \end{equation*}
 and then by \cref{lem:inserted-insertion} we get \(b' =_{\dim(a)} c''\) as
 required.
@@ -11525,10 +11627,10 @@ M}\]
 As reduction is compatible with substitution, \(b\) also reduces to~\(c'\). If
 instead \(c\) was an identity then
 \begin{align*}
-  b &\equiv \SCoh {\insertion {D^n} P T} {A \sub {\kappa_{S,P,T}}}
-  {\insertion L P M}\\
-  &\red \SCoh {\insertion {D^n} P T} {\stdty {D^n} {n+1}\sub
-  {\kappa_{S,P,T}}} {(\insertion L P M)}\\
+  b &\equiv \SCoh {\insertion {D^n} P T} {A \sub {\kappa_{S,P,T}}} {\insertion L
+  P M}\\
+  &\red \SCoh {\insertion {D^n} P T} {\stdty {D^n} {n+1}\sub {\kappa_{S,P,T}}}
+  {(\insertion L P M)}\\
   &\red^* \id(d_n) \sub {\kappa_{S,P,T} \bullet \insertion L P M}\\
   &=_{n+1} \id(d_n) \sub L\\
   &\equiv c
@@ -11555,10 +11657,10 @@ Further, for \(b\) to have the correct type for an identity, we must have that
 sent to \(\olsi Q\) by \(\pi_P\) is \(\olsi Q\) itself, and so \(A \equiv
 \SPath(\olsi Q) \to \SPath(\olsi Q)\). Now, by \cref{lem:iota-kappa-comm}:
 \begin{align*}
-  c &\equiv \SCoh {\insertion S Q U} {\stdcoh U {\lh(Q)} \sub {\iota}
-  \to \stdcoh U {\lh(Q)} \sub {\iota}} {\insertion L Q N}\\
-  &\red \id(\stdcoh U {\lh(Q)} \sub \iota) \sub {\insertion L Q
-  N}&\text{ by endo-coherence removal}\\
+  c &\equiv \SCoh {\insertion S Q U} {\stdcoh U {\lh(Q)} \sub {\iota} \to
+  \stdcoh U {\lh(Q)} \sub {\iota}} {\insertion L Q N}\\
+  &\red \id(\stdcoh U {\lh(Q)} \sub \iota) \sub {\insertion L Q N}&\text{ by
+  endo-coherence removal}\\
   &\equiv \id(\stdcoh U {\lh(Q)}) \sub N & \text{by \cref{lem:ins-comm-max}}
 \end{align*}
 Then, \(\insertion L P M\) sends \(\olsi Q\) to \(L(\olsi Q) \equiv \stdcoh U
@@ -11568,22 +11670,20 @@ The case where \(c\) is an identity is symmetric, so we now consider when
 neither \(b\) or \(c\) are identities. We now observe that \(b\) and \(c\)
 further reduce as follows:
 \begin{align*}
-  b &\red^* b' =_{\dim(a)} \SCoh {\insertion {(\insertion S P T)}
-  {\insertion Q P T} U} {A\sub{\kappa_{S,P,T} \bullet
-  \kappa_{\insertion S P T, \insertion Q P T, U}}} {\insertion
-  {(\insertion L P M)} {\insertion Q P T} N}\\
-  c &\red^* c' =_{\dim(a)} \SCoh {\insertion {(\insertion S Q U)}
-  {\insertion P Q U} T} {A\sub{\kappa_{S,Q,U} \bullet
-  \kappa_{\insertion S Q U, \insertion P Q U, T}}} {\insertion
-  {(\insertion L Q N)} {\insertion P Q U} M}
+  b &\red^* b' =_{\dim(a)} \SCoh {\insertion {(\insertion S P T)} {\insertion Q
+  P T} U} {A\sub{\kappa_{S,P,T} \bullet \kappa_{\insertion S P T, \insertion Q P
+  T, U}}} {\insertion {(\insertion L P M)} {\insertion Q P T} N}\\
+  c &\red^* c' =_{\dim(a)} \SCoh {\insertion {(\insertion S Q U)} {\insertion P
+  Q U} T} {A\sub{\kappa_{S,Q,U} \bullet \kappa_{\insertion S Q U, \insertion P Q
+  U, T}}} {\insertion {(\insertion L Q N)} {\insertion P Q U} M}
 \end{align*}
 We show that the first reduction is valid with the validity of the second
 holding by symmetry. If \(b\) is a unary composite then we apply
 \cref{lem:disc-insertion-red} to obtain a suitable \(b'\): Otherwise, we obtain
 the reduction via insertion, noting that:
 \begin{align*}
-  \olsi{\insertion Q P T} \sub {\insertion L P M} &\equiv \olsi{Q}
-  \sub{\kappa} \sub{\insertion L P M}\\
+  \olsi{\insertion Q P T} \sub {\insertion L P M} &\equiv \olsi{Q} \sub{\kappa}
+  \sub{\insertion L P M}\\
   &\equiv L(Q)\\
   &\equiv \stdcoh U {\lh(Q)}\sub N\\
   &\equiv \stdcoh U {\lh(\insertion Q P T)}\sub N
@@ -11661,8 +11761,7 @@ difficult. Nevertheless, the overall form of the evaluation is similar.
 
 \begin{figure}[ht]
   \centering
-  % https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXHRleHR7UmF3IHN5bnRheH0iXSxbMCwyLCJcXHRleHR7Q2hlY2tlZCBzeW50YXh9Il0sWzAsNCwiXFx0ZXh0e05vcm1hbC1mb3JtIHN5bnRheH0iXSxbMCwxLCJcXG1hdGhzZntjaGVja30iLDAseyJjdXJ2ZSI6LTR9XSxbMCwxLCJcXG1hdGhzZntpbmZlcn0iLDIseyJjdXJ2ZSI6NH1dLFsxLDAsIlxcbWF0aHNme3RvXFxfcmF3fSIsMV0sWzEsMiwiXFxtYXRoc2Z7ZXZhbH0iLDAseyJjdXJ2ZSI6LTR9XSxbMiwxLCJcXG1hdGhzZntxdW90ZX0iLDAseyJjdXJ2ZSI6LTR9XV0=
-  % % tex-fmt: skip
+  % https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXHRleHR7UmF3IHN5bnRheH0iXSxbMCwyLCJcXHRleHR7Q2hlY2tlZCBzeW50YXh9Il0sWzAsNCwiXFx0ZXh0e05vcm1hbC1mb3JtIHN5bnRheH0iXSxbMCwxLCJcXG1hdGhzZntjaGVja30iLDAseyJjdXJ2ZSI6LTR9XSxbMCwxLCJcXG1hdGhzZntpbmZlcn0iLDIseyJjdXJ2ZSI6NH1dLFsxLDAsIlxcbWF0aHNme3RvXFxfcmF3fSIsMV0sWzEsMiwiXFxtYXRoc2Z7ZXZhbH0iLDAseyJjdXJ2ZSI6LTR9XSxbMiwxLCJcXG1hdGhzZntxdW90ZX0iLDAseyJjdXJ2ZSI6LTR9XV0= % tex-fmt: skip
   \begin{tikzcd}
     {\text{Raw syntax}} \\
     \\
@@ -11823,11 +11922,13 @@ The span information allows more informative error messages to be given, which
 are formatted using the \href{https://docs.rs/ariadne/latest/ariadne/}{ariadne}
 crate. An example error message is given below:
 \begin{Verbatim}[baselinestretch=0.8,commandchars=\\\{\},frame=lines]
-\textcolor{Diag2}{Error}: Given term "\textcolor{Diag2}{x}" does not match
-    inferred term "\textcolor{Diag1}{y}" ╭─[examples/test.catt:19:34] │ 19 │ def
-    error_test x\{f\}y = comp ⟨x\{f\}\textcolor{Diag2}{x}⟩ │
-    \textcolor{Diag2}{┬} │
-    \textcolor{Diag2}{╰──} Given term ────╯
+\textcolor{Diag2}{Error}: Given term "\textcolor{Diag2}{x}" does not match inferred term "\textcolor{Diag1}{y}"
+    ╭─[examples/test.catt:19:34]
+    │
+ 19 │ def error_test x\{f\}y = comp ⟨x\{f\}\textcolor{Diag2}{x}⟩
+    │                                  \textcolor{Diag2}{┬}
+    │                                  \textcolor{Diag2}{╰──} Given term
+────╯
 \end{Verbatim}
 In the above example, the span attached to the erroneous term \(x\) is used to
 identify the line of the code which should be displayed and determine where the
@@ -11862,9 +11963,10 @@ The core syntax is defined by the following grammar. Following
 \cite{gratzer2019implementing}, a different colour is used for each of the three
 categories of syntax.
 \begin{alignat*}{4}
-  &(\text{Terms})&\quad&\color{Diag1}s,t &\ \ &{}::={}&\ \
-  &{\color{Diag1}\mathsf{var}_p} \mid {\color{Diag1}\mathsf{top\_lvl}(v,s)} \mid
-  {\color{Diag1}\mathsf{coh}[T:A]} \mid \\
+  &(\text{Terms})&\quad&\color{Diag1}s,t
+  &\ \ &{}::={}&\ \ &{\color{Diag1}\mathsf{var}_p} \mid
+  {\color{Diag1}\mathsf{top\_lvl}(v,s)} \mid {\color{Diag1}\mathsf{coh}[T:A]}
+  \mid \\
   &&&&&&&{\color{Diag1}\mathsf{id}_n} \mid {\color{Diag1}\mathsf{comp}_T} \mid
   {\color{Diag1}\mathsf{inc}_n^m(s)} \mid {\color{Diag1}s \sub \sigma} \mid
   {\color{Diag1}s \sub L} \mid {\color{Diag1}\Sigma(s)}\\
@@ -11922,9 +12024,9 @@ Lastly, we introduce the normal form syntax. This is the simplest of the three
 categories of syntax and is closest to the base syntax of \Catt. It is given by
 the following grammar:
 \begin{alignat*}{4}
-  &(\text{Head})&\quad&\color{Diag2}H &\ \ &{}::={}&\ \
-  &{\color{Diag2}\mathsf{coh}[T:A]} \mid {\color{Diag2}\mathsf{id}_n} \mid
-  {\color{Diag2}\mathsf{comp}_T}\\
+  &(\text{Head})&\quad&\color{Diag2}H
+  &\ \ &{}::={}&\ \ &{\color{Diag2}\mathsf{coh}[T:A]} \mid
+  {\color{Diag2}\mathsf{id}_n} \mid {\color{Diag2}\mathsf{comp}_T}\\
   &(\text{Terms})&&\color{Diag2}s,t&&{}::={}&&{\color{Diag2}\mathsf{var}_p} \mid
   {\color{Diag2}H \sub L}\\
   &(\text{Labellings})&&\color{Diag2}L
@@ -12132,9 +12234,9 @@ We next obtain the type \({\color{Diag2}B} =
     \[ \eval_{\color{Diag2}\rho}({\color{Diag1}\mathsf{coh}[S : A]}) =
       {\color{Diag2}\mathsf{id}_{\dim(B')}} \sub
       {\{\eval_{\color{Diag2}L}({\color{Diag1}C}),
-      \eval_{\color{Diag2}L}({\color{Diag1}t})\}}\]
-      where the labelling \(\{\_,\_\}\) from a disc can be trivially constructed
-      by deconstructing the type.
+    \eval_{\color{Diag2}L}({\color{Diag1}t})\}}\]
+    where the labelling \(\{\_,\_\}\) from a disc can be trivially constructed
+    by deconstructing the type.
   \item Suppose endo-coherence removal is disabled, \(S\) is a disc \(D^n\), and
     \(\color{Diag2}B\) is of the form \(\color{Diag2}(\mathsf{var}_{p^n},
     \mathsf{var}_{p^n}) :: B'\), where we recall the path \(p^n\) is the unique
@@ -12232,7 +12334,7 @@ letting \(\color{Diag1}\U\) refer to either a context or tree context:
   its type \(\color{Diag1}A\) in inferred (tree) context \(\color{Diag1}\U\)}\\
   &{\color{Diag1}\U} \vdash s \rightsquigarrow {\color{Diag1}t} :
   {\color{Diag1}A} &&\text{Given \(\color{Diag1}\U\), convert \(s\) to
-  \(\color{Diag1}t\) checking it has some type \(\color{Diag1}A\) in
+    \(\color{Diag1}t\) checking it has some type \(\color{Diag1}A\) in
   \(\color{Diag1}\U\)}\\
   &{\color{Diag1}\U} \vdash s = {\color{Diag2}t} \rightsquigarrow () &&\text{In
   \(\color{Diag1}\U\), check \(s\) has normal form \(\color{Diag2}t\)}\\
@@ -12245,7 +12347,7 @@ letting \(\color{Diag1}\U\) refer to either a context or tree context:
   producing (tree) context \(\color{Diag1}\U\)}\\
   &{\color{Diag1}\U} \vdash \sigma : {\color{Diag1}\Gamma} \rightsquigarrow
   {\color{Diag1}\tau} &&\text{Check \(\sigma\) is a substitution from
-  \(\color{Diag1}\Gamma\) to \(\color{Diag1}\U\), producing
+    \(\color{Diag1}\Gamma\) to \(\color{Diag1}\U\), producing
   \(\color{Diag1}\tau\)}\\
   &{\color{Diag1}\U} \vdash L : T \rightsquigarrow {\color{Diag1}M} :
   {\color{Diag2}A}&&\text{Check labelling \(L\) in \(\color{Diag1}\U\),
@@ -12321,62 +12423,65 @@ highlight some of these rules:
     {\color{Diag1}A})}{v \rightsquigarrow {\color{Diag1}\U} \vdash
     {\color{Diag1}\mathsf{top\_lvl}(v,t)} : {\color{Diag1}A}}\and
     \inferrule{{\color{Diag1}T} \vdash A \rightsquigarrow {\color{Diag1}B} =
-    {\color{Diag2}C} \\ (T, \src({\color{Diag2}C}), \tgt({\color{Diag2}C})) \in
-    \mathcal{O}}{\mathsf{coh}[T : A] \rightsquigarrow {\color{Diag1}T} \vdash
-    {\color{Diag1}\mathsf{coh}[T : B]} : {\color{Diag1}B}}\ \ruleone\and
+      {\color{Diag2}C} \\ (T, \src({\color{Diag2}C}), \tgt({\color{Diag2}C}))
+    \in \mathcal{O}}{\mathsf{coh}[T : A] \rightsquigarrow {\color{Diag1}T}
+    \vdash {\color{Diag1}\mathsf{coh}[T : B]} : {\color{Diag1}B}}\ \ruleone\and
     \inferrule{ }{\mathsf{id} \rightsquigarrow {\color{Diag1}D^1} \vdash
-    {\color{Diag1}\mathsf{id}_0} : {\color{Diag1}\arr {\mathsf{var}_{[0]}}
-    {\star} {\mathsf{var}_{[0]}}}}\and \inferrule{s \rightsquigarrow
-    {\color{Diag1}\U} \vdash {\color{Diag1}t} : {\color{Diag1}A}}{\Sigma(s)
-    \rightsquigarrow {\color{Diag1}\Sigma(\U)} \vdash {\color{Diag1}\Sigma(t)}:
-    {\color{Diag1}\Sigma(A)}}\\
+      {\color{Diag1}\mathsf{id}_0} : {\color{Diag1}\arr {\mathsf{var}_{[0]}}
+    {\star} {\mathsf{var}_{[0]}}}}\and
+    \inferrule{s \rightsquigarrow {\color{Diag1}\U} \vdash {\color{Diag1}t} :
+    {\color{Diag1}A}}{\Sigma(s) \rightsquigarrow {\color{Diag1}\Sigma(\U)}
+    \vdash {\color{Diag1}\Sigma(t)}: {\color{Diag1}\Sigma(A)}}\\
 
     \inferrule{s \rightsquigarrow {\color{Diag1}T} \vdash {\color{Diag1}t} :
     {\color{Diag1}A}}{{\color{Diag1}T} \vdash s \rightsquigarrow
-    {\color{Diag1}t} : {\color{Diag1}A}}\and \inferrule{{\color{Diag1}\U}(i) =
-    (v : {\color{Diag1}A})}{{\color{Diag1}\U} \vdash v \rightsquigarrow
-    {\color{Diag1}\mathsf{var}_i} : {\color{Diag1}A}}\and \inferrule{
-    }{{\color{Diag1}D^n} \vdash \mathsf{id} \rightsquigarrow
+    {\color{Diag1}t} : {\color{Diag1}A}}\and
+    \inferrule{{\color{Diag1}\U}(i) = (v : {\color{Diag1}A})}{{\color{Diag1}\U}
+      \vdash v \rightsquigarrow {\color{Diag1}\mathsf{var}_i} :
+    {\color{Diag1}A}}\and
+    \inferrule{ }{{\color{Diag1}D^n} \vdash \mathsf{id} \rightsquigarrow
     {\color{Diag1}\mathsf{id}_n} : {\color{Diag1}\stdty {D^n} {n + 1}}}\and
     \inferrule{ }{{\color{Diag1}T} \vdash \mathsf{comp} \rightsquigarrow
     {\color{Diag1}\mathsf{comp}_T} : {\color{Diag1}\stdty T n}}\ \ruletwo\and
     \inferrule{s \rightsquigarrow {\color{Diag1}\Gamma} : {\color{Diag1}t} :
-    {\color{Diag1}A} \\ {\color{Diag1}\U} \vdash \sigma : {\color{Diag1}\Gamma}
-    \rightsquigarrow {\color{Diag1}\tau}\\
+      {\color{Diag1}A} \\ {\color{Diag1}\U} \vdash \sigma :
+      {\color{Diag1}\Gamma} \rightsquigarrow {\color{Diag1}\tau}\\
       {\color{Diag1}\U} \vdash \ty(\sigma) = {\color{Diag2}B} \rightsquigarrow
     ()}{{\color{Diag1}\U} \vdash s \sub \sigma \rightsquigarrow {\color{Diag1}t
-    \sub \tau} : {\color{Diag1}A \sub \tau}}\and \inferrule{{\color{Diag1}T}
-    \vdash s \rightsquigarrow {\color{Diag1}t} : {\color{Diag1}A} \\
-    {\color{Diag1}\U} \vdash \mathsf{from\_sub}_T(\sigma) : {\color{Diag1}T}
-    \rightsquigarrow {\color{Diag1}M} : {\color{Diag2}B}\\ {\color{Diag1}\U}
-    \vdash \ty(\sigma) = {\color{Diag2}B} \rightsquigarrow ()}{{\color{Diag1}\U}
-    \vdash s \sub \sigma \rightsquigarrow {\color{Diag1}t \sub M} :
-    {\color{Diag1}A \sub M}}\ \rulethree\and \inferrule{{\color{Diag1}T} : s
-    \rightsquigarrow {\color{Diag1}t} : {\color{Diag1}A} \\ {\color{Diag1}\U}
-    \vdash L : T \rightsquigarrow {\color{Diag1}M} : {\color{Diag2}B}\\
-    {\color{Diag1}\U} \vdash \ty(L) = {\color{Diag2}B} \rightsquigarrow
-    ()}{{\color{Diag1}\U} \vdash s \sub L \rightsquigarrow {\color{Diag1}t \sub
-    M} : {\color{Diag1}A \sub M}}\ \rulefour\\
+    \sub \tau} : {\color{Diag1}A \sub \tau}}\and
+    \inferrule{{\color{Diag1}T} \vdash s \rightsquigarrow {\color{Diag1}t} :
+      {\color{Diag1}A} \\ {\color{Diag1}\U} \vdash \mathsf{from\_sub}_T(\sigma)
+      : {\color{Diag1}T} \rightsquigarrow {\color{Diag1}M} :
+      {\color{Diag2}B}\\ {\color{Diag1}\U} \vdash \ty(\sigma) = {\color{Diag2}B}
+    \rightsquigarrow ()}{{\color{Diag1}\U} \vdash s \sub \sigma \rightsquigarrow
+    {\color{Diag1}t \sub M} : {\color{Diag1}A \sub M}}\ \rulethree\and
+    \inferrule{{\color{Diag1}T} : s \rightsquigarrow {\color{Diag1}t} :
+      {\color{Diag1}A} \\ {\color{Diag1}\U} \vdash L : T \rightsquigarrow
+      {\color{Diag1}M} : {\color{Diag2}B}\\ {\color{Diag1}\U} \vdash \ty(L) =
+    {\color{Diag2}B} \rightsquigarrow ()}{{\color{Diag1}\U} \vdash s \sub L
+      \rightsquigarrow {\color{Diag1}t \sub M} : {\color{Diag1}A \sub
+    M}}\ \rulefour\\
 
     \inferrule{ }{{\color{Diag1}\U} \vdash \_ = {\color{Diag2}t}
-    \rightsquigarrow ()}\and \inferrule{{\color{Diag1}\U} \vdash s
-    \rightsquigarrow {\color{Diag1}t} : {\color{Diag1}A}}{{\color{Diag1}\U}
-    \vdash s = {\eval_{\color{Diag2}\id_{\color{Diag1}\U}}({\color{Diag1}t})}
+    \rightsquigarrow ()}\and
+    \inferrule{{\color{Diag1}\U} \vdash s \rightsquigarrow {\color{Diag1}t} :
+    {\color{Diag1}A}}{{\color{Diag1}\U} \vdash s =
+      {\eval_{\color{Diag2}\id_{\color{Diag1}\U}}({\color{Diag1}t})}
     \rightsquigarrow ()}\\
 
     \inferrule{ }{{\color{Diag1}\U} \vdash \star \rightsquigarrow
-    {\color{Diag1}\star} = {\color{Diag2}\emp}}\and \inferrule{{\color{Diag1}\U}
-    \vdash s \rightsquigarrow {\color{Diag1}s'} : {\color{Diag1}A} \\
-    {\color{Diag1}\U} \vdash t \rightsquigarrow {\color{Diag1}t'} :
-    {\color{Diag1}B} \\
-    \eval_{\color{Diag2}\id_{\color{Diag1}\U}}{\color{Diag1}A} =
+    {\color{Diag1}\star} = {\color{Diag2}\emp}}\and
+    \inferrule{{\color{Diag1}\U} \vdash s \rightsquigarrow {\color{Diag1}s'} :
+      {\color{Diag1}A} \\ {\color{Diag1}\U} \vdash t \rightsquigarrow
+      {\color{Diag1}t'} : {\color{Diag1}B}
+      \\ \eval_{\color{Diag2}\id_{\color{Diag1}\U}}{\color{Diag1}A} =
     \eval_{\color{Diag2}\id_{\color{Diag1}\U}}{\color{Diag1}B}}%
     {{\color{Diag1}\U} \vdash \arr s {} t \rightsquigarrow {\color{Diag1}\arr
       {s'} {A} {t'}} =
       {\color{Diag2}(\eval_{\id_{\color{Diag1}\U}}{\color{Diag1}s'},
-      \eval_{\id_{\color{Diag1}\U}}{\color{Diag1}t'}) ::
-      \eval_{\id_{\color{Diag1}\U}}{\color{Diag1}A}}}\and
-      \inferrule{{\color{Diag1}\U} \vdash s \rightsquigarrow {\color{Diag1}s'} :
+        \eval_{\id_{\color{Diag1}\U}}{\color{Diag1}t'}) ::
+    \eval_{\id_{\color{Diag1}\U}}{\color{Diag1}A}}}\and
+    \inferrule{{\color{Diag1}\U} \vdash s \rightsquigarrow {\color{Diag1}s'} :
       {\color{Diag1}B} \\
       {\color{Diag1}\U} \vdash t \rightsquigarrow {\color{Diag1}t'} :
       {\color{Diag1}C} \\
@@ -12384,30 +12489,34 @@ highlight some of these rules:
       {\color{Diag2}A''}\\
       {\color{Diag2}A''} =
       \eval_{\color{Diag2}\id_{\color{Diag1}\U}}{\color{Diag1}B} =
-      \eval_{\color{Diag2}\id_{\color{Diag1}\U}}{\color{Diag1}C}}%
+    \eval_{\color{Diag2}\id_{\color{Diag1}\U}}{\color{Diag1}C}}%
     {{\color{Diag1}\U} \vdash \arr s {A} t \rightsquigarrow {\color{Diag1}\arr
       {s'} {A'} {t'}} =
       {\color{Diag2}(\eval_{\id_{\color{Diag1}\U}}{\color{Diag1}s'},
-      \eval_{\id_{\color{Diag1}\U}}{\color{Diag1}t'}) :: A''}}\\
+    \eval_{\id_{\color{Diag1}\U}}{\color{Diag1}t'}) :: A''}}\\
 
     \inferrule{{\color{Diag1}\U} \vdash A \rightsquigarrow {\color{Diag1}B} =
     {\color{Diag2}C}}{{\color{Diag1}\U} \vdash A = {\color{Diag2}C}
-    \rightsquigarrow ()}\and \inferrule{{\color{Diag1}\U} \vdash s =
-    {\color{Diag2}s'} \rightsquigarrow ()\\
+    \rightsquigarrow ()}\and
+    \inferrule{{\color{Diag1}\U} \vdash s = {\color{Diag2}s'} \rightsquigarrow
+      ()\\
       {\color{Diag1}\U} \vdash t = {\color{Diag2}t'} \rightsquigarrow ()
     }{{\color{Diag1}\U} \vdash \arr s {} t = {\color{Diag2}\arr {s'} {A} {t'}}
-    \rightsquigarrow ()}\and \inferrule{{\color{Diag1}\U} \vdash s =
-    {\color{Diag2}s'} \rightsquigarrow ()\\
+    \rightsquigarrow ()}\and
+    \inferrule{{\color{Diag1}\U} \vdash s = {\color{Diag2}s'} \rightsquigarrow
+      ()\\
       {\color{Diag1}\U} \vdash t = {\color{Diag2}t'} \rightsquigarrow ()\\
       {\color{Diag1}\U} \vdash A = {\color{Diag2}A'} \rightsquigarrow ()\\
     }{{\color{Diag1}\U} \vdash \arr s {A} t = {\color{Diag2}\arr {s'} {A'} {t'}}
-    \rightsquigarrow ()}\and \inferrule{ }{{\color{Diag1}\U} \vdash \_ =
-    {\color{Diag2}C} \rightsquigarrow ()}\\
+    \rightsquigarrow ()}\and
+    \inferrule{ }{{\color{Diag1}\U} \vdash \_ = {\color{Diag2}C}
+    \rightsquigarrow ()}\\
 
-    \inferrule{ }{T \vdash {} \rightsquigarrow {\color{Diag1}T}}\and \inferrule{
-    }{\emptyset \vdash {} \rightsquigarrow {\color{Diag1}\emptyset}}\and
-    \inferrule{\Gamma \vdash {} \rightsquigarrow {\color{Diag1}\Delta} \\
-    {\color{Diag1}\Delta} \vdash A \rightsquigarrow {\color{Diag1}B} =
+    \inferrule{ }{T \vdash {} \rightsquigarrow {\color{Diag1}T}}\and
+    \inferrule{ }{\emptyset \vdash {} \rightsquigarrow
+    {\color{Diag1}\emptyset}}\and
+    \inferrule{\Gamma \vdash {} \rightsquigarrow {\color{Diag1}\Delta}
+      \\ {\color{Diag1}\Delta} \vdash A \rightsquigarrow {\color{Diag1}B} =
     {\color{Diag2}C}}{\Gamma, (v : A) \vdash {} \rightsquigarrow
     {\color{Diag1}\Delta, (v : B)}}\\
 
@@ -12418,17 +12527,17 @@ highlight some of these rules:
       \eval_{\color{Diag2}\id_{\color{Diag1}\U}}({\color{Diag1}B_i}) =
       \eval_{\color{Diag2}\rho}({\color{Diag1}A_i})\\ {\color{Diag1}\U} \vdash
       \mathsf{flatten}(X) = {\color{Diag2}\ty(\rho)} \rightsquigarrow
-      ()}{{\color{Diag1}\U} \vdash (X,s_0,\dots,s_n) :
+    ()}{{\color{Diag1}\U} \vdash (X,s_0,\dots,s_n) :
       {\color{Diag1}(v_0:A_0),\dots,(v_n:A_n)} \rightsquigarrow
-      {\color{Diag1}(B,t_0,\dots,t_n)} }\ \rulefive\\
+    {\color{Diag1}(B,t_0,\dots,t_n)} }\ \rulefive\\
 
     \inferrule{{\color{Diag1}\U} \vdash \mathsf{flatten}(x) \rightsquigarrow
     {\color{Diag1}A}}{{\color{Diag1}\U} \vdash x : \emp \rightsquigarrow
-    {\color{Diag1}t} :
+      {\color{Diag1}t} :
     \eval_{\color{Diag2}\id_{\color{Diag1}\U}}({\color{Diag1}A})}\and
     \inferrule{{\color{Diag1}\U} \vdash L_i \rightsquigarrow {\color{Diag1}M_i}
-    : {\color{Diag2}(s_i,s_{i+1})::A} \\ {\color{Diag1}\U} \vdash
-    \mathsf{flatten}(x_i) = {\color{Diag2}s_i} \rightsquigarrow
+      : {\color{Diag2}(s_i,s_{i+1})::A} \\ {\color{Diag1}\U} \vdash
+      \mathsf{flatten}(x_i) = {\color{Diag2}s_i} \rightsquigarrow
     ()}{{\color{Diag1}\U} \vdash x_0\{L_0\}\cdots\{L_n\}x_{n+1} \rightsquigarrow
     {\color{Diag1}s_0\{M_0\}\cdots\{M_n\}s_{n+1}} : {\color{Diag2}A}}
   \end{mathpar}
@@ -12480,7 +12589,7 @@ context, and checking the term \(s\) in the resulting core context to get term
 \(\color{Diag1}A\) are then evaluated to normal form, quoted, and converted back
 to raw syntax, before being pretty-printed to the user. The \(\mathsf{size}\)
 command calculates a primitive estimate of the complexity of a term (which we
-note is not the same as the syntactic complexity given in
+  note is not the same as the syntactic complexity given in
 \cref{sec:termination}) by counting the number of constructors in the normal
 form. To run this command, the term \(s\) is checked as before, and converted to
 a normal form term \(\color{Diag2}t\). Then \(\mathsf{size}({\color{Diag2}t})\)
@@ -12500,8 +12609,9 @@ form to check that they are equal. None of the \(\mathsf{normalise}\),
     \mathsf{size}({\color{Diag2}\mathsf{comp}_T}) = 1 \and
     \mathsf{size}({\color{Diag2}\mathsf{var}_p}) = 0 \and
     \mathsf{size}({\color{Diag2}H \sub L}) = \mathsf{size}({\color{Diag2}H}) +
-    \mathsf{size}({\color{Diag2}L})\and \mathsf{size}({\color{Diag2}L}) =
-    \sum_{p : \Path_T} \mathsf{size}({\color{Diag2}L(p)})\and
+    \mathsf{size}({\color{Diag2}L})\and
+    \mathsf{size}({\color{Diag2}L}) = \sum_{p : \Path_T}
+    \mathsf{size}({\color{Diag2}L(p)})\and
     \mathsf{size}({\color{Diag2}[(s_0,t_0), \dots, (s_n,t_n)]}) = \sum_{i= 0}^n
     \left(\mathsf{size}({\color{Diag2}s_i}) +
     \mathsf{size}({\color{Diag2}t_i})\right)
@@ -12541,7 +12651,8 @@ where we have only specified the locally maximal arguments.
 This composite can of course also be given using the \(\mathsf{comp}\)
 construction.
 \begin{lstlisting}[language=Catt]
-  def comp1 [f,g] = comp assert comp1coh(f,g) = comp1(f,g) in [f,g]
+  def comp1 [f,g] = comp
+  assert comp1coh(f,g) = comp1(f,g) in [f,g]
 \end{lstlisting}
 The tree for \(\mathsf{comp}\) is inferred from the labelling \texttt{[f,g]}.
 The assert statement ensures that these two ways of giving the \(1\)-composition
@@ -12549,12 +12660,14 @@ are equal in the theory. The assert passes even with no reduction enabled,
 demonstrating the value of evaluation in the fully weak case. The horizontal and
 vertical composites of \(2\)-cells can be given similarly:
 \begin{lstlisting}[language=Catt]
-  def horiz [[a],[b]] = comp def vert [[a,b]] = comp
+  def horiz [[a],[b]] = comp
+  def vert [[a,b]] = comp
 \end{lstlisting}
 As the vertical composite is the suspension of \(1\)-composition, it can also be
 given using implicit suspension:
 \begin{lstlisting}[language=Catt]
-  def vertsusp [[a,b]] = comp1[a,b] assert vert(a,b) = vertsusp(a,b) in [[a,b]]
+  def vertsusp [[a,b]] = comp1[a,b]
+  assert vert(a,b) = vertsusp(a,b) in [[a,b]]
 \end{lstlisting}
 In this case, the labelling applied to \texttt{comp1} is a tree of depth \(1\)
 where the locally maximal arguments are given by \(2\)-dimensional terms. Type
@@ -12566,9 +12679,9 @@ the assertion.
 The unitors and associator are then given by the following coherences, using the
 \(\mathsf{id}\) builtin for the unitors:
 \begin{lstlisting}[language=Catt]
-  def unitor_l = coh [ x{f}y : comp1(id(x),f) -> f ] def unitor_r = coh [ x{f}y
-  : comp1(f, id(y)) -> f ] def assoc    = coh [ {f}{g}{h} : comp1(comp1(f,g),h)
-  -> comp1(f,comp1(g,h)) ]
+  def unitor_l = coh [ x{f}y : comp1(id(x),f) -> f ]
+  def unitor_r = coh [ x{f}y : comp1(f, id(y)) -> f ]
+  def assoc    = coh [ {f}{g}{h} : comp1(comp1(f,g),h) -> comp1(f,comp1(g,h)) ]
 \end{lstlisting}
 which allows definitions to be given for terms which witness the triangle and
 pentagon equations of monoidal categories:
