@@ -60,7 +60,7 @@ fn test_source() {
             &format!("tests/source/{file}"),
             &format!("tests/target/{file}"),
         ) {
-            panic!("Failed in {file}")
+            panic!("Source test failed in {file}")
         }
     }
 }
@@ -68,16 +68,14 @@ fn test_source() {
 #[test]
 fn test_target() {
     let target_files = read_files_from_dir("./tests/target/");
-    let mut fail = false;
     for file in target_files {
         if !test_file(
             &format!("tests/target/{file}"),
             &format!("tests/target/{file}"),
         ) {
-            fail = true;
+            panic!("Target test failed in {file}")
         }
     }
-    assert!(!fail, "Some tests failed");
 }
 
 #[test]
