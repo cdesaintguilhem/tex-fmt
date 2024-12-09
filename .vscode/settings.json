@@ -1,0 +1,7 @@
+{
+  "latex-workshop.latex.autoBuild.run": "never",
+  "[latex]": {
+    "editor.formatOnSave": false
+  },
+  "editor.rulers": [80, 120]
+}
