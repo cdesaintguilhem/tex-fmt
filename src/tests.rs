@@ -117,6 +117,7 @@ fn test_short() {
         //"quiver.sty",
         //"readme.tex",
         "rewrap.tex",
+        "rewrap-math.tex",
         //"sections.tex",
         // "short_document.tex",
         //"tikz_network.sty",

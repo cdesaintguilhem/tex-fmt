@@ -1,0 +1,51 @@
+\documentclass{article}
+
+\begin{document}
+
+Multi-line math mode should indent but not re-wrap
+\(
+1 + 2 + (
+    3 + 4
+    + 5 + 7 )
++ 8 + 9
+\)
+
+\[
+1 + 2 + (
+    3 + 4
+    + 5 + 7 )
++ 8 + 9
+\]
+
+Many environments should also indent but not re-wrap
+\begin{equation}
+x + y
+= \sum z_i
+\end{equation}
+
+\begin{equation*}
+x + y
+= \sum z_i
+\end{equation*}
+
+\begin{align}
+x & y \\
+z & \cdot
+\end{align}
+
+\begin{align*}
+x & y \\
+z & \cdot
+\end{align*}
+
+\begin{tabular}{cc}
+x & y \\
+z & \cdot
+\end{tabular}
+
+\begin{tabular*}{cc}
+x & y \\
+z & \cdot
+\end{tabular*}
+
+\end{document}
