@@ -5,6 +5,7 @@ use crate::ignore::*;
 use crate::indent::*;
 use crate::logging::*;
 use crate::read::*;
+use crate::regexes::RE_MATH_MODE_OPEN;
 use crate::regexes::{ENV_BEGIN, ENV_END, ITEM, RE_SPLITTING};
 use crate::subs::*;
 use crate::verbatim::*;
@@ -257,6 +258,10 @@ pub struct Pattern {
     pub contains_item: bool,
     /// Whether a splitting pattern is present
     pub contains_splitting: bool,
+    /// Whether the current line opens a math environment
+    pub opens_math_environment: bool,
+    /// Whether the current line closes a math environment
+    pub closes_math_environment: bool,
 }
 
 impl Pattern {
@@ -270,6 +275,10 @@ impl Pattern {
             pattern.contains_env_end = s.contains(ENV_END);
             pattern.contains_item = s.contains(ITEM);
             pattern.contains_splitting = true;
+        }
+
+        if RE_MATH_MODE_OPEN.is_match(s) {
+            pattern.opens_math_environment = true;
         }
 
         pattern
@@ -310,11 +319,26 @@ mod tests {
 
     #[test]
     fn new_pattern() {
+        // Testing splitting patterns
         let pattern =
             Pattern::new("\\begin{enumerate} \\end{enumerate} \\item ");
         assert!(pattern.contains_env_begin);
         assert!(pattern.contains_env_end);
         assert!(pattern.contains_item);
         assert!(pattern.contains_splitting);
+
+        // Testing math patterns
+        assert!(Pattern::new("\\( math after").opens_math_environment);
+        assert!(Pattern::new("    \\( math after").opens_math_environment);
+        assert!(Pattern::new("\\[ math after").opens_math_environment);
+        assert!(Pattern::new("    \\[ math after").opens_math_environment);
+        assert!(
+            !Pattern::new("text before inline maths \\(")
+                .opens_math_environment
+        );
+        assert!(
+            !Pattern::new("text before display maths \\[")
+                .opens_math_environment
+        );
     }
 }

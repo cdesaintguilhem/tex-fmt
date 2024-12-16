@@ -83,4 +83,5 @@ lazy_static! {
         .concat().as_str()
     )
     .unwrap();
+    pub static ref RE_MATH_MODE_OPEN: Regex = Regex::new(r"^\s*[\\(\\\[]").unwrap();
 }
