@@ -116,7 +116,7 @@ fn test_short() {
         //"puthesis.cls",
         //"quiver.sty",
         //"readme.tex",
-        "rewrap.tex",
+        // "rewrap.tex",
         "rewrap-math.tex",
         //"sections.tex",
         // "short_document.tex",

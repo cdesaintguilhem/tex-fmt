@@ -5,8 +5,10 @@ use crate::ignore::*;
 use crate::indent::*;
 use crate::logging::*;
 use crate::read::*;
-use crate::regexes::RE_MATH_MODE_OPEN;
-use crate::regexes::{ENV_BEGIN, ENV_END, ITEM, RE_SPLITTING};
+use crate::regexes::{
+    ENV_BEGIN, ENV_END, ITEM, RE_MATH_MODE_CLOSE, RE_MATH_MODE_OPEN,
+    RE_SPLITTING,
+};
 use crate::subs::*;
 use crate::verbatim::*;
 use crate::wrap::*;
@@ -62,6 +64,8 @@ pub fn format_file(
 
             // Update the state with the line number from the queue.
             temp_state.linum_old = linum_old;
+
+            check_math_mode(&pattern, &mut temp_state);
 
             // If the line should not be ignored ...
             if !set_ignore_and_report(
@@ -124,6 +128,7 @@ pub fn format_file(
                     &pattern,
                     queue.front().map(|(_, next_line)| next_line.as_str()),
                     indent_length,
+                    &mut temp_state,
                     args,
                 ) {
                     // Remove the next line from the queue and replace it after
@@ -186,6 +191,17 @@ pub fn format_file(
     new_text
 }
 
+fn check_math_mode(pattern: &Pattern, state: &mut State) {
+    if pattern.opens_math_environment && !state.math_mode {
+        // We've entered math mode
+        state.math_mode = true;
+    }
+    if state.math_mode && pattern.closes_math_environment {
+        // We've left math mode
+        state.math_mode = false;
+    }
+}
+
 /// Sets the `ignore` and `verbatim` flags in the given [State] based on
 /// `line` and returns whether `line` should be ignored by formatting.
 fn set_ignore_and_report(
@@ -231,6 +247,8 @@ pub struct State {
     pub verbatim: Verbatim,
     /// Line number in the new file of the last non-indented line
     pub linum_last_zero_indent: usize,
+    /// Whether the formatter is currently in math mode
+    pub math_mode: bool,
 }
 
 impl State {
@@ -243,6 +261,7 @@ impl State {
             indent: Indent::new(),
             verbatim: Verbatim::new(),
             linum_last_zero_indent: 1,
+            math_mode: false,
         }
     }
 }
@@ -279,6 +298,10 @@ impl Pattern {
 
         if RE_MATH_MODE_OPEN.is_match(s) {
             pattern.opens_math_environment = true;
+        }
+
+        if RE_MATH_MODE_CLOSE.is_match(s) {
+            pattern.closes_math_environment = true;
         }
 
         pattern
@@ -339,6 +362,18 @@ mod tests {
         assert!(
             !Pattern::new("text before display maths \\[")
                 .opens_math_environment
+        );
+        assert!(Pattern::new("\\) math after").closes_math_environment);
+        assert!(Pattern::new("    \\) math after").closes_math_environment);
+        assert!(Pattern::new("\\] math after").closes_math_environment);
+        assert!(Pattern::new("    \\] math after").closes_math_environment);
+        assert!(
+            !Pattern::new("text before inline maths \\)")
+                .closes_math_environment
+        );
+        assert!(
+            !Pattern::new("text before display maths \\]")
+                .closes_math_environment
         );
     }
 }

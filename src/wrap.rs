@@ -126,12 +126,15 @@ pub fn can_rewrap(
     current_pattern: &Pattern,
     next_line: Option<&str>,
     indent_length: usize,
+    state: &mut State,
     args: &Args,
 ) -> Option<usize> {
     // Early return checks
     if
     // we don't wrap, are on an empty line, or there is no next line,
     !args.wrap || current_line.is_empty() || next_line.is_none()
+    // or we're in math mode
+    || state.math_mode
     // or the current line starts with a splitting command,
     || (current_pattern.contains_splitting && !current_pattern.contains_item)
     // or the current line contains a comment,
