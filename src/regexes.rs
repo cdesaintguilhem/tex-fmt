@@ -30,6 +30,9 @@ const LISTS: [&str; 5] = [
 const VERBATIMS: [&str; 5] =
     ["verbatim", "Verbatim", "lstlisting", "minted", "comment"];
 
+/// Names of LaTeX math environments
+pub const MATH: [&str; 2] = ["equation", "equation*"];
+
 /// Regex matches for sectioning commands
 const SPLITTING: [&str; 6] = [
     r"\\begin\{",
@@ -85,8 +88,8 @@ lazy_static! {
     .unwrap();
     // Matches LaTeX inline or display math opening commands at the start of a
     // line, optionally preceded by whitespace
-    pub static ref RE_MATH_MODE_OPEN: Regex = Regex::new(r"^\s*\\\(|\\\[").unwrap();
+    pub static ref RE_MATH_MODE_OPEN: Regex = Regex::new(r"^\s*(\\\(|\\\[)").unwrap();
     // Matches LaTeX inline or display math closing commands at the start of a
-    // line, optionally preceded by whitespace
-    pub static ref RE_MATH_MODE_CLOSE: Regex = Regex::new(r"^\s*\\\]|\\\]").unwrap();
+    // line, optionally preceded by whitespace,
+    pub static ref RE_MATH_MODE_CLOSE: Regex = Regex::new(r"^\s*(\\\)|\\\])").unwrap();
 }
