@@ -31,7 +31,14 @@ const VERBATIMS: [&str; 5] =
     ["verbatim", "Verbatim", "lstlisting", "minted", "comment"];
 
 /// Names of LaTeX math environments
-pub const MATH: [&str; 2] = ["equation", "equation*"];
+pub const MATH: [&str; 6] = [
+    "equation",
+    "equation*",
+    "align",
+    "align*",
+    "tabular",
+    "tabular*",
+];
 
 /// Regex matches for sectioning commands
 const SPLITTING: [&str; 6] = [
