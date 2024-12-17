@@ -152,6 +152,8 @@ pub fn can_rewrap(
     // command, then it's at the start, and it shouldn't be rewrapped to the
     // previous line
     || RE_SPLITTING.is_match(next_line)
+    // Don't re-wrap from lines that open math mode
+    || Pattern::new(next_line).opens_math_environment
     {
         return None;
     }
