@@ -6,6 +6,7 @@ use crate::indent::*;
 use crate::logging::*;
 use crate::pattern::Pattern;
 use crate::read::*;
+use crate::regexes::*;
 use crate::subs::*;
 use crate::verbatim::*;
 use crate::wrap::*;
@@ -33,8 +34,11 @@ pub fn format_file(
     let old_text = clean_text(old_text, args);
     let mut old_lines = zip(1.., old_text.lines());
 
+    // Check whether the file might contain a preamble
+    let preamble_mode = RE_PREAMBLE.is_match(&old_text);
+
     // Initialise
-    let mut state = State::new();
+    let mut state = State::new(preamble_mode);
     let mut queue: VecDeque<(usize, String)> = vec![].into();
     let mut new_text = String::with_capacity(2 * old_text.len());
 
@@ -55,13 +59,12 @@ pub fn format_file(
         if let Some((linum_old, mut line)) = queue.pop_front() {
             // Read the patterns present on this line.
             let pattern = Pattern::new(&line);
-
             // Temporary state for working on this line.
             let mut temp_state = state.clone();
-
             // Update the state with the line number from the queue.
             temp_state.linum_old = linum_old;
 
+            check_preamble_mode(&line, &mut temp_state);
             check_math_mode(&pattern, &mut temp_state);
 
             // If the line should not be ignored ...
@@ -188,6 +191,14 @@ pub fn format_file(
     new_text
 }
 
+/// If the formatter is in preamble mode, this checks whether `\begin{document}`
+/// is present on the given line and, if it is, exists preamble mode.
+fn check_preamble_mode(line: &str, state: &mut State) {
+    if state.preamble_mode {
+        state.preamble_mode = !RE_END_PREAMBLE.is_match(line);
+    }
+}
+
 fn check_math_mode(pattern: &Pattern, state: &mut State) {
     if pattern.opens_math_environment && !state.math_mode {
         // We've entered math mode
@@ -246,11 +257,13 @@ pub struct State {
     pub linum_last_zero_indent: usize,
     /// Whether the formatter is currently in math mode
     pub math_mode: bool,
+    /// Whether the formatter is currently in preamble mode
+    pub preamble_mode: bool,
 }
 
 impl State {
     /// Construct a new default state
-    pub const fn new() -> Self {
+    pub const fn new(preamble_mode: bool) -> Self {
         Self {
             linum_old: 1,
             linum_new: 1,
@@ -259,6 +272,7 @@ impl State {
             verbatim: Verbatim::new(),
             linum_last_zero_indent: 1,
             math_mode: false,
+            preamble_mode,
         }
     }
 }

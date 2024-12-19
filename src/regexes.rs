@@ -99,4 +99,24 @@ lazy_static! {
     // Matches LaTeX inline or display math closing commands at the start of a
     // line, optionally preceded by whitespace,
     pub static ref RE_MATH_MODE_CLOSE: Regex = Regex::new(r"^\s*(\\\)|\\\])").unwrap();
+    // Matches a string that indicates whether a LaTeX file contains preamble content
+    pub static ref RE_PREAMBLE: Regex = Regex::new(r"(\\begin\{document\}|%! tex-fmt: preamble)").unwrap();
+    // Matches the `\begin{document}` pattern which ends a LaTeX preamble
+    pub static ref RE_END_PREAMBLE: Regex = Regex::new(r"\\begin\{document\}").unwrap();
+
+}
+
+#[cfg(test)]
+mod tests {
+    use crate::regexes::RE_PREAMBLE;
+
+    #[test]
+    fn preamble() {
+        assert!(RE_PREAMBLE.is_match(
+            "Preamble text.\n\\begin{document}\nText goes here.\\end{document}"
+        ));
+        assert!(RE_PREAMBLE.is_match(
+            "%! tex-fmt: preamble\n\\documentclass{article}\n\\usepackage{}"
+        ));
+    }
 }
