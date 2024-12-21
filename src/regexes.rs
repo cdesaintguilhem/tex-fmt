@@ -101,9 +101,6 @@ lazy_static! {
     pub static ref RE_MATH_MODE_CLOSE: Regex = Regex::new(r"^\s*(\\\)|\\\])").unwrap();
     // Matches a string that indicates whether a LaTeX file contains preamble content
     pub static ref RE_PREAMBLE: Regex = Regex::new(r"(\\begin\{document\}|%! tex-fmt: preamble)").unwrap();
-    // Matches the `\begin{document}` pattern which ends a LaTeX preamble
-    pub static ref RE_END_PREAMBLE: Regex = Regex::new(r"\\begin\{document\}").unwrap();
-
 }
 
 #[cfg(test)]

@@ -195,7 +195,7 @@ pub fn format_file(
 /// is present on the given line and, if it is, exists preamble mode.
 fn check_preamble_mode(line: &str, state: &mut State) {
     if state.preamble_mode {
-        state.preamble_mode = !RE_END_PREAMBLE.is_match(line);
+        state.preamble_mode = !line.contains("\\begin{document}");
     }
 }
 
