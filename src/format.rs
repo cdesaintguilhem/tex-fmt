@@ -128,7 +128,7 @@ pub fn format_file(
                     &pattern,
                     queue.front().map(|(_, next_line)| next_line.as_str()),
                     indent_length,
-                    &mut temp_state,
+                    &temp_state,
                     args,
                 ) {
                     // Remove the next line from the queue and replace it after
@@ -199,6 +199,8 @@ fn check_preamble_mode(line: &str, state: &mut State) {
     }
 }
 
+/// Records into the [`State`] whether the given [`Pattern`] opens or closes
+/// math mode.
 fn check_math_mode(pattern: &Pattern, state: &mut State) {
     if pattern.opens_math_environment && !state.math_mode {
         // We've entered math mode

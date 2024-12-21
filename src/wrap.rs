@@ -127,7 +127,7 @@ pub fn can_rewrap(
     current_pattern: &Pattern,
     next_line: Option<&str>,
     indent_length: usize,
-    state: &mut State,
+    state: &State,
     args: &Args,
 ) -> Option<usize> {
     // Early return checks
